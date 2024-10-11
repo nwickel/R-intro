@@ -51,6 +51,7 @@ Two-day introduction to R covering (two mornings)
 * Maybe add for next time:
   - Simple data simulation and power analysis
   - Pipes
+  - Styleguides
   - RMarkdown
   - Using RProjects in RStudio
 
