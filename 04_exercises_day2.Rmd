@@ -19,10 +19,7 @@ Write an executable and commented R script.
    Export the plot to a png or pdf file. All labels should be readable, so
    reduce `width` and `height` of the output device.
 
-   ```{r, results = "hide"}
-   # opens pdf-file
-   pdf("figures/cars.pdf", height = 3.375, width = 3.375, pointsize = 10)
-   #
+   ```{r, results = "hide", fig.height = 3.375, fig.width = 3.375}
    par(mai = c(.6,.6,.15,.1), mgp = c(2,.7,0), tck = -.015)
    plot(cars, type = "n", axes = FALSE, xlim = c(0, 30),
      xlab = "Speed (mph)", ylab = "Stopping distance (ft)")
@@ -33,12 +30,6 @@ Write an executable and commented R script.
    box(bty = "L")
    legend(0, 120, expression(hat(y) == hat(beta)[0] + hat(beta)[1] * Speed),
      lty = 1, lwd = 2, bty = "n")
-   #
-   dev.off()  # closes pdf-file
-   ```
-   
-   ```{r, echo = FALSE, fig.width = 3, fig.cap = "Plot for the cars data set.", fig.align = "center", results = "show", fig.show = "show"}
-   knitr::include_graphics("figures/cars.pdf")
    ```
 
 2. Load `Vocabulary.txt` into R again. Make a scatter plot of "score in
@@ -53,7 +44,7 @@ Write an executable and commented R script.
    Export the plot to a file. Play with the graphical parameters. The goal
    is a publication-ready figure.
 
-   ```{r, results = "hide"}
+   ```{r, results = "hide", fig.height = 3.375, fig.width = 3.375}
    voc <- read.table("data/Vocabulary.txt", header = TRUE, stringsAsFactors = TRUE)
    
    # calculate standard errors
@@ -62,8 +53,6 @@ Write an executable and commented R script.
    vocm$n  <- aggregate(vocabulary ~ education, voc, length)[,2]
    vocm$se <- vocm$sd / sqrt(vocm$n)
    
-   pdf("figures/eduvoc.pdf", height = 3.375, width = 3.375, pointsize = 10)
-   #
    par(mai = c(.6,.6,.15,.1), mgp = c(2,.7,0), tck = -.015)
    plot(jitter(vocabulary, 2) ~ jitter(education, 2), voc, pch = ".", 
      cex = .8, xlab = "Education (in years)", ylab = "Vocabulary (words correct)",
@@ -71,18 +60,12 @@ Write an executable and commented R script.
    points(vocabulary ~ I(0:20), vocm, pch = 16)
    with(vocm, arrows(0:20, vocabulary + se, 0:20, vocabulary - se, angle = 90,
      length = .05, code = 3))
-   #
-   dev.off()
-   ```
-   
-   ```{r, echo = FALSE, fig.width = 3, fig.cap = "Plot for the vocabulary data set.", fig.align = "center", results = "show", fig.show = "show"}
-   knitr::include_graphics("figures/eduvoc.pdf")
    ```
 
-
-   ```{r, fig.width = 4, fig.height = 3.3, fig.align = "center", fig.show = "hide"}
+   ```{r, fig.width = 3.375, fig.height = 3.375}
    # Solution with ggplot()
    library(ggplot2)
+
    ggplot(data = vocm, mapping = aes(x = education, y = vocabulary)) +
      geom_jitter(data = voc, mapping = aes(x = education, y = vocabulary), pch=".",
                  color = "gray") +
@@ -92,7 +75,6 @@ Write an executable and commented R script.
      theme_bw()
    ```
 
-
 3. Find out if there are sex differences in the relationship of "years of
    education" and "score in vocabulary test," and if these differences
    depend on the year the test was taken in. Load the `lattice` package and
@@ -100,11 +82,11 @@ Write an executable and commented R script.
    `ggplot2` package. Hint: Make one scatter plot for each year
    of education with one regression line for men and one for women.
 
-   ```{r, results = "hide"}
+   ```{r, fig.height = 6.75, fig.width = 6.75}
    library(lattice)
-   pdf("figures/panels.pdf", height = 6.75, width = 6.75, pointsize = 10)
-   #
+
    voc$year <- factor(voc$year)
+
    xyplot(jitter(vocabulary, 2) ~ jitter(education, 2) | year, data = voc,
      groups = sex, type = c("p", "r"), col = c("darkgrey","black"), pch = ".", lwd = 2,
      xlab = "Education (in years)", ylab = "Vocabulary (words correct)", lty = 1:2,
@@ -114,15 +96,9 @@ Write an executable and commented R script.
      key = list(lines = list(lwd = 2, col = c("darkgrey", "black"), lty = 1:2),
        text = list(levels(voc$sex)), columns = 2)
    )
-   #
-   dev.off()
    ```
    
-   ```{r, echo = FALSE, fig.width = 6.3, fig.cap = "Trellis plot for the vocabulary data set.", fig.align = "center", results = "show", fig.show = "show"}
-   knitr::include_graphics("figures/panels.pdf")
-   ```
-
-   ```{r, fig.width = 4, fig.height = 3.3, fig.align = "center", fig.show = "hide"}
+   ```{r, message = FALSE, fig.width = 7, fig.height = 6.75}
    # Solution with ggplot()
    ggplot(data = voc, mapping = aes(x = education, y = vocabulary, color = sex)) +
      geom_jitter(pch=".") +
@@ -185,8 +161,6 @@ Write an executable and commented R script.
    with(dat2, t.test(Lzeit[Aufg == "A"], Lzeit[Aufg == "B"], paired = TRUE))
    ```
    
-\newpage
-
 5. For $n = 12$ subjects, intelligence (variable $X$) and memory
    performance (variable $Y$) have been measured. The following value pairs
    were obtained:

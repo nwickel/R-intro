@@ -315,49 +315,49 @@ with
 <span class="math display">\[\begin{equation*}
   T \sim t(n+m-2)
 \end{equation*}\]</span></p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="advanced-topics.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: a handmade t test function</span></span>
-<span id="cb296-2"><a href="advanced-topics.html#cb296-2" aria-hidden="true" tabindex="-1"></a>twosam <span class="ot">&lt;-</span> <span class="cf">function</span>(y1, y2){              <span class="co"># definition</span></span>
-<span id="cb296-3"><a href="advanced-topics.html#cb296-3" aria-hidden="true" tabindex="-1"></a>  n1  <span class="ot">&lt;-</span> <span class="fu">length</span>(y1); n2  <span class="ot">&lt;-</span> <span class="fu">length</span>(y2)   <span class="co"># body</span></span>
-<span id="cb296-4"><a href="advanced-topics.html#cb296-4" aria-hidden="true" tabindex="-1"></a>  yb1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y1);   yb2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y2)</span>
-<span id="cb296-5"><a href="advanced-topics.html#cb296-5" aria-hidden="true" tabindex="-1"></a>  s1  <span class="ot">&lt;-</span> <span class="fu">var</span>(y1);    s2  <span class="ot">&lt;-</span> <span class="fu">var</span>(y2)</span>
-<span id="cb296-6"><a href="advanced-topics.html#cb296-6" aria-hidden="true" tabindex="-1"></a>  s   <span class="ot">&lt;-</span> ((n1 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>s1 <span class="sc">+</span> (n2 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>s2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb296-7"><a href="advanced-topics.html#cb296-7" aria-hidden="true" tabindex="-1"></a>  tst <span class="ot">&lt;-</span> (yb1 <span class="sc">-</span> yb2)<span class="sc">/</span><span class="fu">sqrt</span>(s<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span>
-<span id="cb296-8"><a href="advanced-topics.html#cb296-8" aria-hidden="true" tabindex="-1"></a>  tst                                    <span class="co"># return value, can also be a list</span></span>
-<span id="cb296-9"><a href="advanced-topics.html#cb296-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb296-10"><a href="advanced-topics.html#cb296-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb296-11"><a href="advanced-topics.html#cb296-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calling the function</span></span>
-<span id="cb296-12"><a href="advanced-topics.html#cb296-12" aria-hidden="true" tabindex="-1"></a>tstat <span class="ot">&lt;-</span> <span class="fu">twosam</span>(PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;ctrl&quot;</span>],</span>
-<span id="cb296-13"><a href="advanced-topics.html#cb296-13" aria-hidden="true" tabindex="-1"></a>                PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;trt1&quot;</span>])</span>
-<span id="cb296-14"><a href="advanced-topics.html#cb296-14" aria-hidden="true" tabindex="-1"></a>tstat</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="advanced-topics.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: a handmade t test function</span></span>
+<span id="cb295-2"><a href="advanced-topics.html#cb295-2" aria-hidden="true" tabindex="-1"></a>twosam <span class="ot">&lt;-</span> <span class="cf">function</span>(y1, y2){              <span class="co"># definition</span></span>
+<span id="cb295-3"><a href="advanced-topics.html#cb295-3" aria-hidden="true" tabindex="-1"></a>  n1  <span class="ot">&lt;-</span> <span class="fu">length</span>(y1); n2  <span class="ot">&lt;-</span> <span class="fu">length</span>(y2)   <span class="co"># body</span></span>
+<span id="cb295-4"><a href="advanced-topics.html#cb295-4" aria-hidden="true" tabindex="-1"></a>  yb1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y1);   yb2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y2)</span>
+<span id="cb295-5"><a href="advanced-topics.html#cb295-5" aria-hidden="true" tabindex="-1"></a>  s1  <span class="ot">&lt;-</span> <span class="fu">var</span>(y1);    s2  <span class="ot">&lt;-</span> <span class="fu">var</span>(y2)</span>
+<span id="cb295-6"><a href="advanced-topics.html#cb295-6" aria-hidden="true" tabindex="-1"></a>  s   <span class="ot">&lt;-</span> ((n1 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>s1 <span class="sc">+</span> (n2 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>s2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb295-7"><a href="advanced-topics.html#cb295-7" aria-hidden="true" tabindex="-1"></a>  tst <span class="ot">&lt;-</span> (yb1 <span class="sc">-</span> yb2)<span class="sc">/</span><span class="fu">sqrt</span>(s<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span>
+<span id="cb295-8"><a href="advanced-topics.html#cb295-8" aria-hidden="true" tabindex="-1"></a>  tst                                    <span class="co"># return value, can also be a list</span></span>
+<span id="cb295-9"><a href="advanced-topics.html#cb295-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb295-10"><a href="advanced-topics.html#cb295-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb295-11"><a href="advanced-topics.html#cb295-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calling the function</span></span>
+<span id="cb295-12"><a href="advanced-topics.html#cb295-12" aria-hidden="true" tabindex="-1"></a>tstat <span class="ot">&lt;-</span> <span class="fu">twosam</span>(PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;ctrl&quot;</span>],</span>
+<span id="cb295-13"><a href="advanced-topics.html#cb295-13" aria-hidden="true" tabindex="-1"></a>                PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;trt1&quot;</span>])</span>
+<span id="cb295-14"><a href="advanced-topics.html#cb295-14" aria-hidden="true" tabindex="-1"></a>tstat</span></code></pre></div>
 <pre><code>## [1] 1.19126</code></pre>
 </div>
 <div id="named-arguments-and-defaults" class="section level3 hasAnchor" number="11.2.2">
 <h3><span class="header-section-number">11.2.2</span> Named arguments and defaults<a href="advanced-topics.html#named-arguments-and-defaults" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If there is a function defined by</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="advanced-topics.html#cb298-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, data.frame, graph, limit) { </span>
-<span id="cb298-2"><a href="advanced-topics.html#cb298-2" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb298-3"><a href="advanced-topics.html#cb298-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="advanced-topics.html#cb297-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, data.frame, graph, limit) { </span>
+<span id="cb297-2"><a href="advanced-topics.html#cb297-2" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb297-3"><a href="advanced-topics.html#cb297-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>then the function may be invoked in several ways, for example</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="advanced-topics.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(d, df, <span class="cn">TRUE</span>, <span class="dv">20</span>)</span>
-<span id="cb299-2"><a href="advanced-topics.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(d, df, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">limit =</span> <span class="dv">20</span>)</span>
-<span id="cb299-3"><a href="advanced-topics.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(<span class="at">data =</span> d, <span class="at">limit =</span> <span class="dv">20</span>, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">data.frame =</span> df)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="advanced-topics.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(d, df, <span class="cn">TRUE</span>, <span class="dv">20</span>)</span>
+<span id="cb298-2"><a href="advanced-topics.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(d, df, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">limit =</span> <span class="dv">20</span>)</span>
+<span id="cb298-3"><a href="advanced-topics.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(<span class="at">data =</span> d, <span class="at">limit =</span> <span class="dv">20</span>, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">data.frame =</span> df)</span></code></pre></div>
 <p>All of them are equivalent (cf. positional matching and keyword matching)</p>
 <p>In many cases, arguments can be given commonly appropriate default values, in
 which case they may be omitted altogether from the call</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="advanced-topics.html#cb300-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, data.frame, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">limit =</span> <span class="dv">20</span>) {</span>
-<span id="cb300-2"><a href="advanced-topics.html#cb300-2" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb300-3"><a href="advanced-topics.html#cb300-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="advanced-topics.html#cb299-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, data.frame, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">limit =</span> <span class="dv">20</span>) {</span>
+<span id="cb299-2"><a href="advanced-topics.html#cb299-2" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb299-3"><a href="advanced-topics.html#cb299-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>It could be called as</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="advanced-topics.html#cb301-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">fun1</span>(d, df)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="advanced-topics.html#cb300-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">fun1</span>(d, df)</span></code></pre></div>
 <p>which is now equivalent to the three cases above, or as</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="advanced-topics.html#cb302-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">fun1</span>(d, df, <span class="at">limit =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="advanced-topics.html#cb301-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">fun1</span>(d, df, <span class="at">limit =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>which changes one of the defaults.</p>
 </div>
 <div id="exercise" class="section level3 hasAnchor" number="11.2.3">
 <h3><span class="header-section-number">11.2.3</span> Exercise<a href="advanced-topics.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Write a function in R that cumulatively sums up the values of vector <span class="math inline">\(\mathbf{x} = (1~2~3~4 \dots 20)&#39;\)</span>. The result should look like:
 <span class="math inline">\(\mathbf{y} = (1~3~6~10 \dots 210)&#39;\)</span>.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="advanced-topics.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="advanced-topics.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
 </div>
 </div>
 <div id="conditional-execution" class="section level2 hasAnchor" number="11.3">
@@ -370,35 +370,35 @@ which case they may be omitted altogether from the call</p>
 <li><p>case distinction, e.,g., in mathematical expressions</p></li>
 </ul>
 <p>Conditional execution of code is available in R via</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="advanced-topics.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(expr_1) {</span>
-<span id="cb304-2"><a href="advanced-topics.html#cb304-2" aria-hidden="true" tabindex="-1"></a>  expr_2</span>
-<span id="cb304-3"><a href="advanced-topics.html#cb304-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb304-4"><a href="advanced-topics.html#cb304-4" aria-hidden="true" tabindex="-1"></a>  expr_3</span>
-<span id="cb304-5"><a href="advanced-topics.html#cb304-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="advanced-topics.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(expr_1) {</span>
+<span id="cb303-2"><a href="advanced-topics.html#cb303-2" aria-hidden="true" tabindex="-1"></a>  expr_2</span>
+<span id="cb303-3"><a href="advanced-topics.html#cb303-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb303-4"><a href="advanced-topics.html#cb303-4" aria-hidden="true" tabindex="-1"></a>  expr_3</span>
+<span id="cb303-5"><a href="advanced-topics.html#cb303-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>where <code>expr_1</code> must evaluate to a single logical value.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="advanced-topics.html#cb305-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb305-2"><a href="advanced-topics.html#cb305-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb305-3"><a href="advanced-topics.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
-<span id="cb305-4"><a href="advanced-topics.html#cb305-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.na</span>(x)) y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="cf">else</span> <span class="fu">stop</span>(<span class="st">&quot;x is missing&quot;</span>)</span>
-<span id="cb305-5"><a href="advanced-topics.html#cb305-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb305-6"><a href="advanced-topics.html#cb305-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
-<span id="cb305-7"><a href="advanced-topics.html#cb305-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="dv">5</span>){   <span class="co"># in case x = 5:</span></span>
-<span id="cb305-8"><a href="advanced-topics.html#cb305-8" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># add 1 to x and</span></span>
-<span id="cb305-9"><a href="advanced-topics.html#cb305-9" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">3</span>      <span class="co"># set y to three</span></span>
-<span id="cb305-10"><a href="advanced-topics.html#cb305-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>        <span class="co"># else:</span></span>
-<span id="cb305-11"><a href="advanced-topics.html#cb305-11" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span>      <span class="co"># set y to seven</span></span>
-<span id="cb305-12"><a href="advanced-topics.html#cb305-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb305-13"><a href="advanced-topics.html#cb305-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3</span></span>
-<span id="cb305-14"><a href="advanced-topics.html#cb305-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">99</span>) <span class="fu">cat</span>(<span class="st">&quot;x is smaller than 99</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="advanced-topics.html#cb304-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb304-2"><a href="advanced-topics.html#cb304-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-3"><a href="advanced-topics.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
+<span id="cb304-4"><a href="advanced-topics.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.na</span>(x)) y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="cf">else</span> <span class="fu">stop</span>(<span class="st">&quot;x is missing&quot;</span>)</span>
+<span id="cb304-5"><a href="advanced-topics.html#cb304-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-6"><a href="advanced-topics.html#cb304-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
+<span id="cb304-7"><a href="advanced-topics.html#cb304-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="dv">5</span>){   <span class="co"># in case x = 5:</span></span>
+<span id="cb304-8"><a href="advanced-topics.html#cb304-8" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># add 1 to x and</span></span>
+<span id="cb304-9"><a href="advanced-topics.html#cb304-9" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">3</span>      <span class="co"># set y to three</span></span>
+<span id="cb304-10"><a href="advanced-topics.html#cb304-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>        <span class="co"># else:</span></span>
+<span id="cb304-11"><a href="advanced-topics.html#cb304-11" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span>      <span class="co"># set y to seven</span></span>
+<span id="cb304-12"><a href="advanced-topics.html#cb304-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-13"><a href="advanced-topics.html#cb304-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3</span></span>
+<span id="cb304-14"><a href="advanced-topics.html#cb304-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">99</span>) <span class="fu">cat</span>(<span class="st">&quot;x is smaller than 99</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## x is smaller than 99</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="advanced-topics.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Vectorized version with ifelse() function</span></span>
-<span id="cb307-2"><a href="advanced-topics.html#cb307-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb307-3"><a href="advanced-topics.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
-<span id="cb307-4"><a href="advanced-topics.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;A3&quot;</span>, <span class="st">&quot;A4&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="advanced-topics.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Vectorized version with ifelse() function</span></span>
+<span id="cb306-2"><a href="advanced-topics.html#cb306-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb306-3"><a href="advanced-topics.html#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
+<span id="cb306-4"><a href="advanced-topics.html#cb306-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;A3&quot;</span>, <span class="st">&quot;A4&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;A3&quot; &quot;A2&quot;</code></pre>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="advanced-topics.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
-<span id="cb309-2"><a href="advanced-topics.html#cb309-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span></span>
-<span id="cb309-3"><a href="advanced-topics.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="sc">-</span>x, x)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="advanced-topics.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
+<span id="cb308-2"><a href="advanced-topics.html#cb308-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb308-3"><a href="advanced-topics.html#cb308-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="sc">-</span>x, x)</span></code></pre></div>
 <pre><code>## [1] 2 1 0 1 2</code></pre>
 <div id="exercise-1" class="section level3 hasAnchor" number="11.3.1">
 <h3><span class="header-section-number">11.3.1</span> Exercise<a href="advanced-topics.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -411,7 +411,7 @@ f(x) =
   1 &amp; \text{if } x &gt; 0.
 \end{cases}
 \]</span></p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="advanced-topics.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="advanced-topics.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
 </div>
 </div>
 <div id="loops" class="section level2 hasAnchor" number="11.4">
@@ -423,54 +423,54 @@ f(x) =
 <li><p>There are <code>for()</code> and <code>while()</code> loops for repeated execution</p></li>
 <li><p>The most simple “loop” is <code>replicate()</code></p></li>
 </ul>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="advanced-topics.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for central limit theorem</span></span>
-<span id="cb312-2"><a href="advanced-topics.html#cb312-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb312-3"><a href="advanced-topics.html#cb312-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)     <span class="co"># Draw random numbers</span></span>
-<span id="cb312-4"><a href="advanced-topics.html#cb312-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y)</span></code></pre></div>
-<p><img src="R_intro_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="advanced-topics.html#cb313-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">runif</span>(<span class="dv">100</span>)))</span>
-<span id="cb313-2"><a href="advanced-topics.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code></pre></div>
-<p><img src="R_intro_files/figure-html/unnamed-chunk-79-2.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="advanced-topics.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples repeat and while</span></span>
-<span id="cb314-2"><a href="advanced-topics.html#cb314-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb314-3"><a href="advanced-topics.html#cb314-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb314-4"><a href="advanced-topics.html#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
-<span id="cb314-5"><a href="advanced-topics.html#cb314-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span>              <span class="co"># Add 1 to i</span></span>
-<span id="cb314-6"><a href="advanced-topics.html#cb314-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) <span class="cf">break</span>       <span class="co"># Stop if i = 3</span></span>
-<span id="cb314-7"><a href="advanced-topics.html#cb314-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb314-8"><a href="advanced-topics.html#cb314-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb314-9"><a href="advanced-topics.html#cb314-9" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
-<span id="cb314-10"><a href="advanced-topics.html#cb314-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">-</span> <span class="dv">1</span>              <span class="co"># As long as i &gt; 1, subtract 1</span></span>
-<span id="cb314-11"><a href="advanced-topics.html#cb314-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb314-12"><a href="advanced-topics.html#cb314-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb314-13"><a href="advanced-topics.html#cb314-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example vector operations</span></span>
-<span id="cb314-14"><a href="advanced-topics.html#cb314-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb314-15"><a href="advanced-topics.html#cb314-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">0</span>)     <span class="co"># Vector of length 5</span></span>
-<span id="cb314-16"><a href="advanced-topics.html#cb314-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb314-17"><a href="advanced-topics.html#cb314-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> x)</span>
-<span id="cb314-18"><a href="advanced-topics.html#cb314-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(i))</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="advanced-topics.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for central limit theorem</span></span>
+<span id="cb311-2"><a href="advanced-topics.html#cb311-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-3"><a href="advanced-topics.html#cb311-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)     <span class="co"># Draw random numbers</span></span>
+<span id="cb311-4"><a href="advanced-topics.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="advanced-topics.html#cb312-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">runif</span>(<span class="dv">100</span>)))</span>
+<span id="cb312-2"><a href="advanced-topics.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-76-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="advanced-topics.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples repeat and while</span></span>
+<span id="cb313-2"><a href="advanced-topics.html#cb313-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb313-3"><a href="advanced-topics.html#cb313-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb313-4"><a href="advanced-topics.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb313-5"><a href="advanced-topics.html#cb313-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span>              <span class="co"># Add 1 to i</span></span>
+<span id="cb313-6"><a href="advanced-topics.html#cb313-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) <span class="cf">break</span>       <span class="co"># Stop if i = 3</span></span>
+<span id="cb313-7"><a href="advanced-topics.html#cb313-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb313-8"><a href="advanced-topics.html#cb313-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb313-9"><a href="advanced-topics.html#cb313-9" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb313-10"><a href="advanced-topics.html#cb313-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">-</span> <span class="dv">1</span>              <span class="co"># As long as i &gt; 1, subtract 1</span></span>
+<span id="cb313-11"><a href="advanced-topics.html#cb313-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb313-12"><a href="advanced-topics.html#cb313-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb313-13"><a href="advanced-topics.html#cb313-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example vector operations</span></span>
+<span id="cb313-14"><a href="advanced-topics.html#cb313-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb313-15"><a href="advanced-topics.html#cb313-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">0</span>)     <span class="co"># Vector of length 5</span></span>
+<span id="cb313-16"><a href="advanced-topics.html#cb313-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb313-17"><a href="advanced-topics.html#cb313-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> x)</span>
+<span id="cb313-18"><a href="advanced-topics.html#cb313-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(i))</span></code></pre></div>
 <pre><code>## [1] 1.732051
 ## [1] 2.44949
 ## [1] 2
 ## [1] 2.828427
 ## [1] 0</code></pre>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="advanced-topics.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x))    <span class="co"># Same using indices</span></span>
-<span id="cb316-2"><a href="advanced-topics.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(x[i]))</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="advanced-topics.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x))    <span class="co"># Same using indices</span></span>
+<span id="cb315-2"><a href="advanced-topics.html#cb315-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(x[i]))</span></code></pre></div>
 <pre><code>## [1] 1.732051
 ## [1] 2.44949
 ## [1] 2
 ## [1] 2.828427
 ## [1] 0</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="advanced-topics.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x)){   <span class="co"># For all i [1,2,3,4,5]&#39;</span></span>
-<span id="cb318-2"><a href="advanced-topics.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> x[i]<span class="sc">^</span><span class="dv">2</span>          <span class="co"># square ith element of x</span></span>
-<span id="cb318-3"><a href="advanced-topics.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x[i])             <span class="co"># and show it on monitor</span></span>
-<span id="cb318-4"><a href="advanced-topics.html#cb318-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="advanced-topics.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x)){   <span class="co"># For all i [1,2,3,4,5]&#39;</span></span>
+<span id="cb317-2"><a href="advanced-topics.html#cb317-2" aria-hidden="true" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> x[i]<span class="sc">^</span><span class="dv">2</span>          <span class="co"># square ith element of x</span></span>
+<span id="cb317-3"><a href="advanced-topics.html#cb317-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x[i])             <span class="co"># and show it on monitor</span></span>
+<span id="cb317-4"><a href="advanced-topics.html#cb317-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 9
 ## [1] 36
 ## [1] 16
 ## [1] 64
 ## [1] 0</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="advanced-topics.html#cb320-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">2</span>                       <span class="co"># BETTER</span></span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="advanced-topics.html#cb319-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">2</span>                       <span class="co"># BETTER</span></span></code></pre></div>
 <pre><code>## [1]   81 1296  256 4096    0</code></pre>
 <div id="exercise-2" class="section level3 hasAnchor" number="11.4.1">
 <h3><span class="header-section-number">11.4.1</span> Exercise<a href="advanced-topics.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -485,7 +485,7 @@ replace its elements iteratively</p></li>
 </ol></li>
 </ul>
 <p>Tip: The first method is more efficient, especially for long vectors.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="advanced-topics.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="advanced-topics.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
 </div>
 </div>
 <div id="avoiding-loops" class="section level2 hasAnchor" number="11.5">
@@ -498,38 +498,38 @@ usually much faster in R.</p>
 <li><p>Data frames, lists and vectors: <code>lapply()</code> and <code>sapply()</code></p></li>
 <li><p>Group-wise calculations: <code>tapply()</code></p></li>
 </ul>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="advanced-topics.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example apply()</span></span>
-<span id="cb323-2"><a href="advanced-topics.html#cb323-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb323-3"><a href="advanced-topics.html#cb323-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
-<span id="cb323-4"><a href="advanced-topics.html#cb323-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb323-5"><a href="advanced-topics.html#cb323-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate row maxima</span></span>
-<span id="cb323-6"><a href="advanced-topics.html#cb323-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">nrow</span>(X))</span>
-<span id="cb323-7"><a href="advanced-topics.html#cb323-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(X)){</span>
-<span id="cb323-8"><a href="advanced-topics.html#cb323-8" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> <span class="fu">max</span>(X[i,])</span>
-<span id="cb323-9"><a href="advanced-topics.html#cb323-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb323-10"><a href="advanced-topics.html#cb323-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb323-11"><a href="advanced-topics.html#cb323-11" aria-hidden="true" tabindex="-1"></a><span class="co"># or:</span></span>
-<span id="cb323-12"><a href="advanced-topics.html#cb323-12" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, <span class="dv">1</span>, max)  <span class="co"># Maximum for each row</span></span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="advanced-topics.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example apply()</span></span>
+<span id="cb322-2"><a href="advanced-topics.html#cb322-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb322-3"><a href="advanced-topics.html#cb322-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb322-4"><a href="advanced-topics.html#cb322-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb322-5"><a href="advanced-topics.html#cb322-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate row maxima</span></span>
+<span id="cb322-6"><a href="advanced-topics.html#cb322-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">nrow</span>(X))</span>
+<span id="cb322-7"><a href="advanced-topics.html#cb322-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(X)){</span>
+<span id="cb322-8"><a href="advanced-topics.html#cb322-8" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> <span class="fu">max</span>(X[i,])</span>
+<span id="cb322-9"><a href="advanced-topics.html#cb322-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb322-10"><a href="advanced-topics.html#cb322-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb322-11"><a href="advanced-topics.html#cb322-11" aria-hidden="true" tabindex="-1"></a><span class="co"># or:</span></span>
+<span id="cb322-12"><a href="advanced-topics.html#cb322-12" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, <span class="dv">1</span>, max)  <span class="co"># Maximum for each row</span></span></code></pre></div>
 <pre><code>## [1] 8 9 4</code></pre>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="advanced-topics.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, <span class="dv">2</span>, max)  <span class="co"># Maximum for each column</span></span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="advanced-topics.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, <span class="dv">2</span>, max)  <span class="co"># Maximum for each column</span></span></code></pre></div>
 <pre><code>## [1] 7 9 6 4</code></pre>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="advanced-topics.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example lapply()</span></span>
-<span id="cb327-2"><a href="advanced-topics.html#cb327-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> 0i)</span>
-<span id="cb327-3"><a href="advanced-topics.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(L, mean)       <span class="co"># Keep list with data type</span></span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="advanced-topics.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example lapply()</span></span>
+<span id="cb326-2"><a href="advanced-topics.html#cb326-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> 0i)</span>
+<span id="cb326-3"><a href="advanced-topics.html#cb326-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(L, mean)       <span class="co"># Keep list with data type</span></span></code></pre></div>
 <pre><code>## $x
 ## [1] 5.5
 ## 
 ## $y
 ## [1] 3+0i</code></pre>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="advanced-topics.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(L, mean)       <span class="co"># Create vector, same data type</span></span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="advanced-topics.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(L, mean)       <span class="co"># Create vector, same data type</span></span></code></pre></div>
 <pre><code>##      x      y 
 ## 5.5+0i 3.0+0i</code></pre>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="advanced-topics.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris, class)   <span class="co"># Work column wise on data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="advanced-topics.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris, class)   <span class="co"># Work column wise on data frame</span></span></code></pre></div>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
 ##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="advanced-topics.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example tapply()</span></span>
-<span id="cb333-2"><a href="advanced-topics.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Oats, <span class="at">package =</span> <span class="st">&quot;nlme&quot;</span>)</span>
-<span id="cb333-3"><a href="advanced-topics.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Oats, <span class="fu">tapply</span>(yield, <span class="fu">list</span>(Block, Variety), mean))</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="advanced-topics.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example tapply()</span></span>
+<span id="cb332-2"><a href="advanced-topics.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Oats, <span class="at">package =</span> <span class="st">&quot;nlme&quot;</span>)</span>
+<span id="cb332-3"><a href="advanced-topics.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Oats, <span class="fu">tapply</span>(yield, <span class="fu">list</span>(Block, Variety), mean))</span></code></pre></div>
 <pre><code>##     Golden Rain Marvellous Victory
 ## VI        90.25     109.00   89.50
 ## V         95.50      85.25   92.00
@@ -537,11 +537,11 @@ usually much faster in R.</p>
 ## IV       108.00      95.00   91.50
 ## II       113.25     121.25   87.25
 ## I        133.25     129.75  143.00</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="advanced-topics.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(warpbreaks)</span>
-<span id="cb335-2"><a href="advanced-topics.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(warpbreaks<span class="sc">$</span>breaks, warpbreaks<span class="sc">$</span>tension, sum)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="advanced-topics.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(warpbreaks)</span>
+<span id="cb334-2"><a href="advanced-topics.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(warpbreaks<span class="sc">$</span>breaks, warpbreaks<span class="sc">$</span>tension, sum)</span></code></pre></div>
 <pre><code>##   L   M   H 
 ## 655 475 390</code></pre>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="advanced-topics.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(warpbreaks<span class="sc">$</span>breaks, warpbreaks[ , <span class="sc">-</span><span class="dv">1</span>], mean)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="advanced-topics.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(warpbreaks<span class="sc">$</span>breaks, warpbreaks[ , <span class="sc">-</span><span class="dv">1</span>], mean)</span></code></pre></div>
 <pre><code>##     tension
 ## wool        L        M        H
 ##    A 44.55556 24.00000 24.55556
@@ -555,7 +555,7 @@ usually much faster in R.</p>
 <li><p>Think of as many vector based alternatives as possible to avoid this loop and
 calculate the column means</p></li>
 </ul>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="advanced-topics.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="advanced-topics.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
 </div>
 </div>
 <div id="random-number-generation" class="section level2 hasAnchor" number="11.6">
@@ -588,18 +588,18 @@ by one of the letters <code>p</code>, <code>q</code>, <code>d</code>, <code>r</c
 is <em>seeded</em>: Upon restart of R, new random numbers are generated. To replicate
 the results of a simulation, the seed (starting value) can be set explicitly
 with <code>set.seed()</code>.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="advanced-topics.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
-<span id="cb340-2"><a href="advanced-topics.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)     <span class="co"># Draw from standard normal distribution</span></span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="advanced-topics.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
+<span id="cb339-2"><a href="advanced-topics.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)     <span class="co"># Draw from standard normal distribution</span></span></code></pre></div>
 <pre><code>##  [1]  0.2675468  1.2276608  0.6615322 -0.8732706 -0.5384081 -0.7154350 -1.5953854 -0.9341066
 ##  [9]  0.9747744  1.4430671</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="advanced-topics.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">1</span>)  <span class="co"># Draw from Poisson distribution</span></span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="advanced-topics.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">1</span>)  <span class="co"># Draw from Poisson distribution</span></span></code></pre></div>
 <pre><code>##  [1] 1 1 0 3 0 1 1 1 2 2</code></pre>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="advanced-topics.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling with or without replacement from a vector</span></span>
-<span id="cb344-2"><a href="advanced-topics.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="advanced-topics.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling with or without replacement from a vector</span></span>
+<span id="cb343-2"><a href="advanced-topics.html#cb343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##  [1] 3 3 5 4 2 3 4 4 3 5</code></pre>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="advanced-topics.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
-<span id="cb346-2"><a href="advanced-topics.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1223</span>)  <span class="co"># On each run, random numbers will be identical</span></span>
-<span id="cb346-3"><a href="advanced-topics.html#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="advanced-topics.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
+<span id="cb345-2"><a href="advanced-topics.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1223</span>)  <span class="co"># On each run, random numbers will be identical</span></span>
+<span id="cb345-3"><a href="advanced-topics.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 0.6289619 0.1267469 0.3285822</code></pre>
 <div id="exercise-4" class="section level3 hasAnchor" number="11.6.1">
 <h3><span class="header-section-number">11.6.1</span> Exercise<a href="advanced-topics.html#exercise-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -612,7 +612,7 @@ with <code>set.seed()</code>.</p>
 <li><span class="math inline">\(S = X + Y + Z\)</span></li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="advanced-topics.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="advanced-topics.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
 
 </div>
 </div>

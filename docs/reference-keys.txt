@@ -1,6 +1,3 @@
-fig:unnamed-chunk-54
-fig:unnamed-chunk-56
-fig:unnamed-chunk-59
 r-as-calculator
 creating-variables
 data-types
