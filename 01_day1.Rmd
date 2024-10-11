@@ -1,0 +1,358 @@
+```{r setup, include = FALSE}
+rm(list = ls())
+```
+
+# R as calculator
+
+R is an interactive environment. You can simply use it as a calculator.
+
+```{r}
+2 + 2
+3 - 7
+2 * 2
+4^2   # or 4**2
+5 / 4
+log(3)
+exp(1)
+```
+
+In longer equations you can use brackets.
+
+```{r}
+sqrt(2) * ((5 - 1/6)^2 - pi/2^(1/3))
+```
+# Creating variables
+
+You can store results in a variable using the `<-` operator.
+
+```{r}
+x <- sqrt(2)
+y <- x^2
+ls()
+# rm(list = ls())   # deletes all user defined objects
+```
+
+Variable names cannot start with a number. But you can add numbers after a
+letter, e.g., `x1` and `x2`.
+
+# Data types
+
+## Vectors
+
+Vectors can be created with the concatenate (or combine) function `c()`.
+
+```{r}
+x <- c(6, 3, 2, 8)
+x
+```
+
+You can use mathematical operations element wise on a vector.
+
+```{r}
+mean(x)
+x + 2
+sqrt(x)
+y <- c(2, 4)
+x + y   # shorter vector is "recycled" or "broadcasted"
+x + rep(y, 2)
+```
+
+### Creating vectors
+
+Vectors can be created in different ways. All objects within one vector
+must be of the same type. If they are not, R automatically converts all
+elements to the most general type.
+
+Often used types of vectors are
+
+* character vectors with their elements in quotation marks
+* logical vectors with values `TRUE`, `FALSE` and `NA` (missing values
+  indicated by `NA`)
+
+You can check the type with `class()` or `typeof()`.
+
+```{r, fig.dim = c(3.5, 4), fig.align = "center"}
+c("a", "b", "c", 4, 7.7)
+seq(1, 2, .1)
+seq(1, 2, length.out = 10)
+seq(from = 1, to = 5, by = 1)
+seq(1, 4, along.with = x)
+1:10
+-5:5
+rep(1:5, 2)
+rep(c("a", "b", "c"), each = 3)
+rep(c("a", "b", "c"), c(2, 4, 6))
+table(rep(c("a", "b", "c"), c(2, 4, 6)))
+rep(1:4, each = 2, times = 3)         # length 24, 3 complete replications
+rep(rep(1:4, each = 2), 3)            # more complicated way
+paste("subj", 1:10, sep = "_")
+weight <- c(60, 72, 57, 90, 95, 72)
+height <- c(1.75, 1.80, 1.65, 1.90, 1.74, 1.91)
+plot(height, weight, ylim = c(45, 100))
+
+# logical vectors
+c(TRUE, FALSE, FALSE, TRUE)
+weight > 60
+sum(weight > 60)
+mean(weight > 60)
+```
+
+Factors are data structures for categorical variables, such as diagnosis,
+socio-economic status, sex, etc.
+
+```{r}
+ses <- factor(c("low", "inter", "high"))
+ses
+ses2 <- factor(ses, levels = c("low", "inter", "high"))
+ses2
+factor(rep(1:2, each = 10), labels = c("on", "of"))
+# sort factor levels
+l <- paste(c("subj", "cond"), rep(1:10, each = 2), sep = "_")
+f <- factor(l, levels = l)
+f
+```
+
+## Matrices
+
+R offers multiple functionalities to work with matrices.
+
+```{r}
+A <- matrix(1:12, nrow = 3, ncol = 4, byrow = TRUE)
+A
+rownames(A) <- c("a1", "a2", "a3")
+t(A)
+diag(A)
+diag(6)
+diag(c(3, 5, 7))
+cbind(a1 = 1:4, a2 = 5:8, a3 = 9:12)
+rbind(a1 = 1:4, a2 = 5:8, a3 = 9:12)
+5 * A
+B <- t(A)
+B %*% A
+```
+
+Arrays are data structures having more than two dimensions.
+
+```{r}
+array(c(A, 2 * A), c(3, 4, 2))
+```
+
+## Lists
+
+If it is necessary to store different types of R objects into a single
+data structure, we need a list.
+
+```{r}
+list1 <- list(w = weight, h = height, s = ses2, A = A)
+list1
+list1$A
+list1[[2]]
+```
+
+## Data frames
+
+Data frames are the fundamental data structure in R. Data frames are
+lists with the restriction that all list elements (column vectors) have the
+same length. The rows in a data frame refer to one unit (observation or
+subject).
+
+```{r}
+id <- factor(paste("s", 1:6, sep = ""))
+dat <- data.frame(id, weight, height)
+dat
+dat$id
+```
+
+Frequently used functions (not only) for data frames are
+
+```{r, fig.dim = c(5, 5), fig.align = "center"}
+dim(dat)      # show number of rows and columns
+names(dat)    # variable names
+plot(dat)     # pairwise plots
+str(dat)      # show variables of dat
+summary(dat)  # descriptive statistics
+```
+
+# Indexing
+
+## Indexing vectors
+
+Elements of a vector can be accessed using `[]` (see `?Extract`).
+
+```{r}
+weight[4]
+weight[4] <- 92
+weight[c(1, 2, 6)]
+weight[1:5]
+weight[-3]
+```
+
+Indices may be logical.
+
+```{r}
+weight[weight > 60]                # values greater than 60
+weight[weight > 60 & weight < 80]  # between 60 and 80
+height[weight > 60 & weight < 80]
+```
+
+## Indexing data frames
+
+Data frames have a row and a column index. Omitting one index selects all
+rows or columns, respectively.
+
+```{r}
+dat[3, 2]               # 3rd row, 2nd column
+dat[1:4, ]              # rows 1 to 4, all columns
+dat[, 3]                # all rows, 3rd column
+
+dat[dat$id == "s2", ]   # all observations of s2
+dat[dat$weight > 60, ]  # all observations above 60kg
+```
+
+# Calling functions
+
+In R everything is a function. Functions consist of
+
+* a name
+* a pair of brackets
+* the arguments (none, one, or more)
+* a return value (visible, invisible, NULL). 
+
+Functions can be called either with positional or with keyword matching.
+
+```{r, fig.show = "hide"}
+# Keyword matching
+plot(y = weight, x = height, pch = 16, col = "blue")
+
+# Positional matching
+plot(height, weight)
+# see ?plot.default
+
+# Mixed
+plot(height, weight, pch = 16, col = "blue")
+```
+Another way to call functions is to use pipes. Pipes are sometimes useful
+to not store intermediate objects. Sometimes they are better "readable".
+
+```{r, fig.show = "hide"}
+dat |> plot(weight ~ height, data = _)
+```
+
+
+## Useful functions
+
+```{r}
+set.seed(1124)      # set seed for reproducibility
+
+dat2 <- data.frame(
+  id      = rep(paste0("subj", 1:10), each = 2), 
+  cond    = factor(rep(c("c1", "c2"), each = 10)),
+  time    = factor(c("t1", "t2")),
+  iqscore = rnorm(20, mean = 100, sd = 15)
+)
+dat2
+```
+
+In R, data from different distributions can be randomly generated. See
+`?Distributions` for a list of the distributions inbuilt in the stats
+package. All of them follow the same schema: there is a root name (`norm`
+for the normal distribution); one can get density values for a certain
+range with `dnorm()`, quantiles for certain probability values with
+`qnorm()`, probability values for certain quantiles with `pnorm()` and
+random numbers drawn from the distribution with `rnorm()`.
+
+
+```{r}
+# calculating correlation
+t1 <- dat2[dat2$time == "t1", "iqscore"]
+t2 <- dat2[dat2$time == "t2", "iqscore"]
+cor.test( ~ t1 + t2)
+```
+
+### Function `reshape()`
+
+```{r}
+dat2[order(dat2$time), ] # sort by time
+
+datw <- reshape(dat2, direction = "wide", idvar = c("id", "cond"),
+                timevar = "time")
+names(datw)[3:4] <- c("t1", "t2")
+cor.test( ~ t1 + t2, datw)
+
+reshape(datw, direction = "long", varying = 3:4, idvar = "id", v.names = "iqscore",
+        times = c("t1", "t2"))
+reshape(datw, direction = "long", varying = c("t1", "t2"), idvar = "id",
+        v.names = "iqscore", times = c("t1", "t2"))
+
+datl <- reshape(datw, direction = "long", varying = c("t1", "t2"), idvar = "id",
+                v.names = "iqscore", times = c("t1", "t2"))
+
+datl[order(datl$id), ]
+
+# with more than one independent variable
+dat2$math <- rnorm(20)
+
+dat3 <- reshape(dat2, direction = "wide", idvar = c("id", "cond"),
+                timevar = "time")
+
+reshape(dat3, direction = "long", varying = list(c(3, 5), c(4, 6)), idvar = "id",
+        v.names = c("iqscore", "math"), times = c("t1", "t2"))
+```
+
+### Function `aggregate()`
+
+```{r}
+aggregate(iqscore ~ cond + time, dat2, mean)
+aggregate(cbind(iqscore, math) ~ cond + time, dat2, mean)
+
+aggregate(cbind(iqscore, math) ~ cond + time, dat2, sd)
+aggregate(cbind(iqscore, math) ~ cond + time, dat2, var)
+aggregate(cbind(iqscore, math) ~ cond + time, dat2, sum)
+aggregate(cbind(iqscore, math) ~ cond + time, dat2, length)
+
+# Using a customized function
+ms <- function(x) {
+  m <- mean(x)
+  s <- sd(x)
+  n <- length(x)
+  se <- s/sqrt(n)
+  c(sd = s, mean = m, se = se, n = n)
+}
+aggregate(cbind(iqscore, math) ~ cond + time, dat2, ms)
+```
+
+# Data input/output
+
+The most flexible function to read (text) data into R is `read.table()`.
+
+```{r}
+getwd()     # Get working directory
+# setwd()   # Set working directory
+df <- read.table("data/ourdata.dat", header = TRUE, stringsAsFactors = TRUE)
+str(df)
+# Fix error
+df[df$id == 20, "age"] <- 31
+write.table(df, "data/ourdata_corr.dat", row.names = FALSE, quote = FALSE)
+
+# SPSS files
+library(foreign)
+ds <- read.spss("data/lowbwt.sav", to.data.frame = TRUE)
+write.csv2(ds, "data/spss_to_excel.csv")
+```
+
+Look up information about `read.table()` with `?read.table`. More
+information can be found on the slides.
+
+## Integrated data sets in R
+
+R has plenty of data sets already available. These data sets can be
+listed with `data()`. If all available data sets in all installed packages
+should be listed use `data(package = .packages(all.available = TRUE))`.
+
+```{r}
+rm(list = ls())
+data(cars)
+ls()
+#?cars
+```
+

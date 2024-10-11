@@ -1,0 +1,16 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    sharing: null
+    toc:
+      before: |
+        <li><a href="./">Introduction to R</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    edit: null
+    download: null
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  citation_package: natbib
+  keep_tex: yes

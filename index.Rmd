@@ -1,0 +1,59 @@
+---
+title: "Introduction to R"
+author: "Nora Wickelmaier"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+bibliography: literature/lit.bib
+biblio-style: apalike
+link-citations: yes
+csl: norsk-apa-manual.csl
+---
+
+# Course Information {-}
+
+This is a two-day course introducing basic R knowledge for the PhD students at
+the IWM.
+
+This book is _work in progress_.
+
+## R resources {-}
+
+R is a programming language and it takes a while to learn it. It also takes
+some practice that you will only get while using it -- daily if possible.
+It is also helpful to read through at least one book about R. Here are some
+suggestions:
+
+* Navarro, D. (2013). Learning statistics with R. Lulu. com.
+  https://learningstatisticswithr.com/book/ 
+* Long, J. D., & Teetor, P. (2019). R Cookbook: Proven recipes for data
+  analysis, statistics, and graphics. 2nd edition. O'Reilly.
+  https://rc2e.com/
+* Grolemund, G. (2014). Hands-on programming with R. Write your own
+  functions and simulations. O'Reilly.
+  https://rstudio-education.github.io/hopr/
+* Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy,
+  transform, visualize, and model data (First edition). O'Reilly.
+  http://r4ds.had.co.nz/
+* Wickham, H. (2019). Advanced R. CRC press. https://adv-r.hadley.nz/
+
+
+## Let's get started {-}
+
+Let us first open an R console. What R version is installed on your
+system? If it is an old version, you should consider to update it.
+
+```{r}
+version
+```
+
+You can close R  be typing `q()`. It will ask you, if you want to save the
+workspace image. Always answer `no`. This can also be done by saying `q(save =
+"no")`. In RStudio you might want to go to `Tools -> Global Options` and then
+*remove* the ticks for "Restore .RData into workspace at startup" and "Always
+save history". You can also set "Save workspace to .Rdata on exit: Never".
+
+R has an extensive help system. Type `?<function_name>` or
+`help(<function_name>)` in order to see the documentation for each function. If
+you are not sure what the function was called use `??<search_term>`. Typing
+`help.start()` into your R console, opens up inbuilt manuals and FAQ sites.
+

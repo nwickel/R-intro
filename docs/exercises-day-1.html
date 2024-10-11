@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Exercises Day 1 | Introduction to R</title>
+  <meta name="description" content="Chapter 7 Exercises Day 1 | Introduction to R" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Exercises Day 1 | Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Exercises Day 1 | Introduction to R" />
+  
+  
+  
+
+<meta name="author" content="Nora Wickelmaier" />
+
+
+<meta name="date" content="2024-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-inputoutput.html"/>
+<link rel="next" href="simple-data-analysis-in-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lets-get-started"><i class="fa fa-check"></i>Let’s get started</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-as-calculator.html"><a href="r-as-calculator.html"><i class="fa fa-check"></i><b>1</b> R as calculator</a></li>
+<li class="chapter" data-level="2" data-path="creating-variables.html"><a href="creating-variables.html"><i class="fa fa-check"></i><b>2</b> Creating variables</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-types.html"><a href="data-types.html#creating-vectors"><i class="fa fa-check"></i><b>3.1.1</b> Creating vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>4</b> Indexing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="indexing.html"><a href="indexing.html#indexing-vectors"><i class="fa fa-check"></i><b>4.1</b> Indexing vectors</a></li>
+<li class="chapter" data-level="4.2" data-path="indexing.html"><a href="indexing.html#indexing-data-frames"><i class="fa fa-check"></i><b>4.2</b> Indexing data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="calling-functions.html"><a href="calling-functions.html#useful-functions"><i class="fa fa-check"></i><b>5.1</b> Useful functions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="calling-functions.html"><a href="calling-functions.html#function-reshape"><i class="fa fa-check"></i><b>5.1.1</b> Function <code>reshape()</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="calling-functions.html"><a href="calling-functions.html#function-aggregate"><i class="fa fa-check"></i><b>5.1.2</b> Function <code>aggregate()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>6</b> Data input/output</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>6.1</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>7</b> Exercises Day 1</a></li>
+<li class="chapter" data-level="8" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>8</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>8.1</b> t tests</a></li>
+<li class="chapter" data-level="8.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>8.2</b> Linear models</a></li>
+<li class="chapter" data-level="8.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>8.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>9</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>9.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="9.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>9.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="9.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>9.3</b> The Grammar of Graphics <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>9.3.1</b> Some examples</a></li>
+<li class="chapter" data-level="9.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>9.3.2</b> Facets</a></li>
+<li class="chapter" data-level="9.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>9.3.3</b> Geometric objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>10</b> Exercises Day 2</a></li>
+<li class="chapter" data-level="11" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>11</b> Advanced topics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>11.1</b> Programming resources</a></li>
+<li class="chapter" data-level="11.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>11.2</b> Writing Functions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> Implementing a function for a simple two-sample t test</a></li>
+<li class="chapter" data-level="11.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>11.2.2</b> Named arguments and defaults</a></li>
+<li class="chapter" data-level="11.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>11.2.3</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>11.3</b> Conditional execution</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>11.4</b> Loops</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-2"><i class="fa fa-check"></i><b>11.4.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>11.5</b> Avoiding loops</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-3"><i class="fa fa-check"></i><b>11.5.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>11.6</b> Random number generation</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-4"><i class="fa fa-check"></i><b>11.6.1</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercises-day-1" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Exercises Day 1<a href="exercises-day-1.html#exercises-day-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Write an executable and commented R script.</p>
+<p>Essential components</p>
+<ul>
+<li>Header</li>
+<li>Set the working directory</li>
+<li>Useful, short, and precise comments</li>
+</ul>
+<p>Formal guidelines</p>
+<ul>
+<li>Rows not longer than 80 symbols</li>
+<li>Well-arranged code by using indentions and spaces</li>
+<li>Spaces before and after binary operators (<code>&lt;-</code>, <code>+</code>, <code>-</code>, <code>~</code>, <code>=</code>, <code>&lt;</code>,
+<code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>==</code> etc.)</li>
+<li><em>No</em> space between function name and bracket</li>
+</ul>
+<p>After executing the script (with the function <code>source()</code>) all computations
+should have been executed and all objects should be available in the
+working memory.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create two vectors <code>height</code> (in cm) and <code>weight</code> (in kg) with the values
+<span class="math inline">\((159~173~173~184~168~163~180~186~153~174)&#39;\)</span> and <span class="math inline">\((63~73~70~68~67~61~67~74~63~68)&#39;\)</span>.</p>
+<ul>
+<li>Compute mean, standard deviation, variance, and correlation for both
+vectors.</li>
+<li>Create a scatter plot with height on the <span class="math inline">\(x\)</span> axis and weight on the
+<span class="math inline">\(y\)</span> axis. Use meaningful axis labels.</li>
+<li>Calculate the body mass index for each subject:</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[ \text{BMI} = \frac{\text{weight in kg}}{\text{(height~in~m)}^2}. \]</span></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="exercises-day-1.html#cb186-1" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">159</span>, <span class="dv">173</span>, <span class="dv">173</span>, <span class="dv">184</span>, <span class="dv">168</span>, <span class="dv">163</span>, <span class="dv">180</span>, <span class="dv">186</span>, <span class="dv">153</span>, <span class="dv">174</span>)</span>
+<span id="cb186-2"><a href="exercises-day-1.html#cb186-2" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">63</span>, <span class="dv">73</span>, <span class="dv">70</span>, <span class="dv">68</span>, <span class="dv">67</span>, <span class="dv">61</span>, <span class="dv">67</span>, <span class="dv">74</span>, <span class="dv">63</span>, <span class="dv">68</span>)</span>
+<span id="cb186-3"><a href="exercises-day-1.html#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-4"><a href="exercises-day-1.html#cb186-4" aria-hidden="true" tabindex="-1"></a>(m_h <span class="ot">&lt;-</span> <span class="fu">mean</span>(height))</span></code></pre></div>
+<pre><code>## [1] 171.3</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="exercises-day-1.html#cb188-1" aria-hidden="true" tabindex="-1"></a>(s_h <span class="ot">&lt;-</span> <span class="fu">sd</span>(height))</span></code></pre></div>
+<pre><code>## [1] 10.70877</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exercises-day-1.html#cb190-1" aria-hidden="true" tabindex="-1"></a>(v_h <span class="ot">&lt;-</span> <span class="fu">var</span>(height))</span></code></pre></div>
+<pre><code>## [1] 114.6778</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="exercises-day-1.html#cb192-1" aria-hidden="true" tabindex="-1"></a>(m_w <span class="ot">&lt;-</span> <span class="fu">mean</span>(weight))</span></code></pre></div>
+<pre><code>## [1] 67.4</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="exercises-day-1.html#cb194-1" aria-hidden="true" tabindex="-1"></a>(s_w <span class="ot">&lt;-</span> <span class="fu">sd</span>(weight))</span></code></pre></div>
+<pre><code>## [1] 4.247875</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="exercises-day-1.html#cb196-1" aria-hidden="true" tabindex="-1"></a>(v_w <span class="ot">&lt;-</span> <span class="fu">var</span>(weight))</span></code></pre></div>
+<pre><code>## [1] 18.04444</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="exercises-day-1.html#cb198-1" aria-hidden="true" tabindex="-1"></a>(kor <span class="ot">&lt;-</span> <span class="fu">cor</span>(weight, height))</span></code></pre></div>
+<pre><code>## [1] 0.7469363</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="exercises-day-1.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> height, <span class="at">xlab =</span> <span class="st">&quot;Height&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Weight&quot;</span>)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/ex1-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exercises-day-1.html#cb201-1" aria-hidden="true" tabindex="-1"></a>(bmi <span class="ot">&lt;-</span> weight<span class="sc">/</span>(height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  [1] 24.91990 24.39106 23.38869 20.08507 23.73866 22.95909 20.67901 21.38976 26.91273
+## [10] 22.46003</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Create a column vector <span class="math inline">\(\mathbf{x} = (1~5~8~3~7~2~6)&#39;\)</span>. Create another
+column vector <span class="math inline">\(\mathbf{y}\)</span> of the same length containing the odd numbers
+<span class="math inline">\(1, 3, 5, \ldots\)</span> using the function <code>seq()</code>. Compute a vector
+<span class="math inline">\(\mathbf{z}\)</span> as linear combination of <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span>:
+<span class="math inline">\(\mathbf{z} = 4\mathbf{x} + 2\mathbf{y}\)</span>.</li>
+</ol>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="exercises-day-1.html#cb203-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">6</span>)</span>
+<span id="cb203-2"><a href="exercises-day-1.html#cb203-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="at">by =</span> <span class="dv">2</span>, <span class="at">along.with =</span> x)</span>
+<span id="cb203-3"><a href="exercises-day-1.html#cb203-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> y</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Combine <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(\mathbf{z}\)</span> into a matrix
+<span class="math inline">\(\mathbf{A}\)</span>. Treat <span class="math inline">\(\mathbf{x}\)</span>, <span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(\mathbf{z}\)</span> as
+column vectors. Then create a matrix <span class="math inline">\(\mathbf{B}\)</span> with <span class="math inline">\(\mathbf{x}\)</span>,
+<span class="math inline">\(\mathbf{y}\)</span>, and <span class="math inline">\(\mathbf{z}\)</span> as row vectors. Compute the matrix
+product <span class="math inline">\(\mathbf{B}\mathbf{A}\)</span>.</li>
+</ol>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="exercises-day-1.html#cb204-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x, y, z)</span>
+<span id="cb204-2"><a href="exercises-day-1.html#cb204-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">t</span>(A)</span>
+<span id="cb204-3"><a href="exercises-day-1.html#cb204-3" aria-hidden="true" tabindex="-1"></a>B <span class="sc">%*%</span> A</span></code></pre></div>
+<pre><code>##      x    y    z
+## x  188  240 1232
+## y  240  455 1870
+## z 1232 1870 8668</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Create a data frame with two independent variables: <em>Hand</em> with
+levels “right” and “left” and <em>Condition</em> with levels 1, 2, 3,
+4, and 5. Simulate reaction times for 50 subjects. Assume reaction time
+is normally distributed with <span class="math inline">\(RT \sim N(\mu = 400,\sigma^2 = 625)\)</span>. There
+are 10 subjects in each condition. Use functions <code>str()</code> and
+<code>summary()</code> on your data frame. What does the output tell you?</li>
+</ol>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="exercises-day-1.html#cb206-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb206-2"><a href="exercises-day-1.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">hand =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;right&quot;</span>), <span class="at">each =</span> <span class="dv">25</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;right&quot;</span>,<span class="st">&quot;left&quot;</span>)),</span>
+<span id="cb206-3"><a href="exercises-day-1.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cond =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">10</span>)),</span>
+<span id="cb206-4"><a href="exercises-day-1.html#cb206-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">RT   =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">400</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="dv">625</span>))</span>
+<span id="cb206-5"><a href="exercises-day-1.html#cb206-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb206-6"><a href="exercises-day-1.html#cb206-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    50 obs. of  3 variables:
+##  $ hand: Factor w/ 2 levels &quot;right&quot;,&quot;left&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ cond: Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5 1 2 3 4 5 ...
+##  $ RT  : num  427 433 402 420 376 ...</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="exercises-day-1.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat)</span></code></pre></div>
+<pre><code>##     hand    cond         RT       
+##  right:25   1:10   Min.   :345.9  
+##  left :25   2:10   1st Qu.:383.0  
+##             3:10   Median :402.3  
+##             4:10   Mean   :401.9  
+##             5:10   3rd Qu.:418.2  
+##                    Max.   :452.6</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Go to
+<a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Applied-Regression-3E/" class="uri">http://socserv.socsci.mcmaster.ca/jfox/Books/Applied-Regression-3E/</a> and
+download <code>Vocabulary.txt</code> from the data sets there <span class="citation">(<a href="#ref-Fox2008" role="doc-biblioref">Fox, 2008</a>)</span>. Store
+it in a local folder on your computer. Set that folder as your working
+directory using <code>setwd()</code>. Use <code>read.table()</code> to load this
+data frame into R’s working memory. Hint: With <code>?read.table</code> you
+can get documentation for this function. Find out the number of
+observations, number of variables, names of variables, descriptive
+statistics for the dependent variables, and the levels of the factor
+variables.</li>
+</ol>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="exercises-day-1.html#cb210-1" aria-hidden="true" tabindex="-1"></a>voc <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/Vocabulary.txt&quot;</span>, <span class="at">header =</span> T, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb210-2"><a href="exercises-day-1.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(voc)</span></code></pre></div>
+<pre><code>## [1] 21638     5</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="exercises-day-1.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(voc)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    21638 obs. of  5 variables:
+##  $ id        : int  20040001 20040002 20040003 20040005 20040008 20040010 20040012 20040013 20040016 20040017 ...
+##  $ year      : int  2004 2004 2004 2004 2004 2004 2004 2004 2004 2004 ...
+##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 1 2 1 2 2 1 2 2 1 ...
+##  $ education : int  9 14 14 17 14 14 12 10 11 9 ...
+##  $ vocabulary: int  3 6 9 8 1 7 6 6 5 1 ...</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="exercises-day-1.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(voc)</span></code></pre></div>
+<pre><code>## [1] &quot;id&quot;         &quot;year&quot;       &quot;sex&quot;        &quot;education&quot;  &quot;vocabulary&quot;</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="exercises-day-1.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(voc)</span></code></pre></div>
+<pre><code>##        id                year          sex          education      vocabulary    
+##  Min.   :19740001   Min.   :1974   Female:12312   Min.   : 0.0   Min.   : 0.000  
+##  1st Qu.:19821102   1st Qu.:1982   Male  : 9326   1st Qu.:12.0   1st Qu.: 5.000  
+##  Median :19891156   Median :1989                  Median :12.0   Median : 6.000  
+##  Mean   :19889570   Mean   :1989                  Mean   :12.8   Mean   : 5.996  
+##  3rd Qu.:19960795   3rd Qu.:1996                  3rd Qu.:15.0   3rd Qu.: 7.000  
+##  Max.   :20042811   Max.   :2004                  Max.   :20.0   Max.   :10.000</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>You can use the <code>$</code>-operator to extract single variables from the data
+frame “Vocabulary.” Extract the variable <code>vocabulary</code> and calculate
+<span class="math inline">\(mean\)</span> and <span class="math inline">\(sd\)</span> for it. Look at the 217th row of your data frame. What
+can you tell about that subject? When was this person tested? Sex? How
+long went this person to school? What score did it have in the
+vocabulary test? Next, extract only those cases from your data frame
+that are male, got tested in 1974 and scored below 2 in the vocabulary
+test.</li>
+</ol>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="exercises-day-1.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(voc<span class="sc">$</span>vocabulary)</span></code></pre></div>
+<pre><code>## [1] 5.996164</code></pre>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="exercises-day-1.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(voc<span class="sc">$</span>vocabulary)</span></code></pre></div>
+<pre><code>## [1] 2.165205</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="exercises-day-1.html#cb222-1" aria-hidden="true" tabindex="-1"></a>voc[<span class="dv">217</span>,]</span></code></pre></div>
+<pre><code>##           id year    sex education vocabulary
+## 217 20040401 2004 Female        14          5</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="exercises-day-1.html#cb224-1" aria-hidden="true" tabindex="-1"></a>voc[voc<span class="sc">$</span>year <span class="sc">==</span> <span class="st">&quot;1974&quot;</span> <span class="sc">&amp;</span> voc<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;Male&quot;</span> <span class="sc">&amp;</span> voc<span class="sc">$</span>vocabulary <span class="sc">&lt;</span> <span class="dv">2</span>,]</span></code></pre></div>
+<pre><code>##            id year  sex education vocabulary
+## 2765 19740016 1974 Male        12          1
+## 2767 19740018 1974 Male         0          1
+## 2839 19740092 1974 Male         4          1
+## 2877 19740131 1974 Male        11          1
+## 2947 19740202 1974 Male        12          1
+## 3106 19740364 1974 Male        11          1
+## 3197 19740456 1974 Male        10          1
+## 3469 19740735 1974 Male         8          1
+## 3569 19740836 1974 Male         7          1
+## 3787 19741065 1974 Male         9          0
+## 3910 19741190 1974 Male        12          1
+## 3916 19741196 1974 Male         6          0
+## 4033 19741315 1974 Male         3          1
+## 4036 19741320 1974 Male        14          1
+## 4042 19741327 1974 Male         2          0
+## 4105 19741391 1974 Male         8          0
+## 4185 19741474 1974 Male        12          0</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Sort your data frame in a way that people with the same number of years
+of education are grouped together; now, within that, group by their
+score of the vocabulary test. Hint: Use <code>order()</code>. Then you can apply
+functions <code>head()</code> and <code>tail()</code> to look at the first and last 20
+observations, respectively. What do you hypothesize about the
+relationship of “years of education” and “score in vocabulary test?”</li>
+</ol>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="exercises-day-1.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(voc[<span class="fu">order</span>(voc<span class="sc">$</span>education, voc<span class="sc">$</span>vocabulary),], <span class="at">n =</span> <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##             id year    sex education vocabulary
+## 9246  19840436 1984 Female         0          0
+## 10908 19870704 1987 Female         0          0
+## 11594 19871441 1987   Male         0          0
+## 11783 19872195 1987   Male         0          0
+## 11902 19872336 1987 Female         0          0
+## 19694 19961907 1996 Female         0          0
+## 2622  20002546 2000 Female         0          1
+## 2767  19740018 1974   Male         0          1
+## 6001  19780377 1978   Male         0          1
+## 7104  19781523 1978   Male         0          1
+## 7401  19820313 1982 Female         0          1
+## 11877 19872308 1987 Female         0          1
+## 11880 19872311 1987   Male         0          1
+## 3024  19740281 1974   Male         0          3
+## 3421  19740686 1974   Male         0          3
+## 4096  19741381 1974   Male         0          3
+## 4862  19760700 1976 Female         0          3
+## 11863 19872294 1987   Male         0          3
+## 17069 19940736 1994   Male         0          4
+## 286   20040528 2004   Male         0          5</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="exercises-day-1.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(voc[<span class="fu">order</span>(voc<span class="sc">$</span>education, voc<span class="sc">$</span>vocabulary),], <span class="at">n =</span> <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##             id year    sex education vocabulary
+## 19057 19960918 1996   Male        20         10
+## 19149 19961061 1996   Male        20         10
+## 19292 19961280 1996   Male        20         10
+## 19296 19961288 1996   Male        20         10
+## 19342 19961358 1996   Male        20         10
+## 19343 19961359 1996   Male        20         10
+## 19771 19962028 1996   Male        20         10
+## 19877 19962202 1996   Male        20         10
+## 19975 19962348 1996 Female        20         10
+## 20183 19962672 1996   Male        20         10
+## 20361 19980056 1998   Male        20         10
+## 20470 19980306 1998   Male        20         10
+## 20473 19980313 1998 Female        20         10
+## 20666 19980740 1998   Male        20         10
+## 20706 19980826 1998   Male        20         10
+## 20764 19980952 1998 Female        20         10
+## 21180 19981861 1998   Male        20         10
+## 21225 19981967 1998 Female        20         10
+## 21324 19982182 1998 Female        20         10
+## 21384 19982295 1998   Male        20         10</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>We now want to know if there are sex differences in “years of education”
+and “score in vocabulary test.” For that we want to look at the mean
+scores for men and women separately. Hint: Use <code>aggregate()</code>. You can
+also look at the means for every year checking if, e.,g., “years of
+education” have increased within the last couple of decades.</li>
+</ol>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="exercises-day-1.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(voc[,<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">by =</span> <span class="fu">list</span>(voc<span class="sc">$</span>sex), <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##   Group.1 education vocabulary
+## 1  Female  12.64352   6.032732
+## 2    Male  12.99517   5.947888</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="exercises-day-1.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(voc[,<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">by =</span> <span class="fu">list</span>(voc<span class="sc">$</span>year), <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##    Group.1 education vocabulary
+## 1     1974  11.87483   6.024205
+## 2     1976  11.83473   6.044630
+## 3     1978  12.04380   5.964960
+## 4     1982  12.21126   5.741149
+## 5     1984  12.47575   5.994294
+## 6     1987  12.57177   5.694461
+## 7     1988  12.75326   5.766304
+## 8     1989  12.84401   5.940083
+## 9     1990  13.11620   6.138498
+## 10    1991  12.90219   6.090531
+## 11    1993  13.10365   6.033564
+## 12    1994  13.30543   6.167391
+## 13    1996  13.43676   6.039657
+## 14    1998  13.39047   6.131437
+## 15    2000  13.30587   6.011442
+## 16    2004  13.74965   6.210709</code></pre>
+
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Fox2008" class="csl-entry">
+Fox, J. (2008). <em>Applied regression analysis and generalized linear models</em>. Sage Publications.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-inputoutput.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="simple-data-analysis-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

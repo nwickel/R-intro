@@ -1,0 +1,358 @@
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.align = "center", fig.show = "")
+```
+
+# Simple data analysis in R
+
+R is a free software environment for statistical computing and graphics.
+The stats package, which is automatically loaded when R starts up, contains
+functions for statistical calculations and random number generation. For a
+complete list of functions, see `library(help = stats)`.
+
+## t tests
+
+```{r}
+# One-sample t test
+rt <- rnorm(100, mean = 400, sd = 20)
+t.test(rt, mu = 400)
+
+# Two-sample t test for independent groups
+t.test(weight ~ group, PlantGrowth[PlantGrowth$group != "ctrl", ],
+       var.equal = TRUE)
+
+# Two-sample t test for dependent groups
+t.test(extra ~ group, sleep, paired = T)
+```
+
+## Linear models
+
+Let us first fit a simple linear regression.
+
+```{r, fig.dim = c(4, 4.5)}
+dat <- data.frame(
+  x = c(18, 23, 25, 35, 65, 54, 34, 56, 72, 19, 23, 42, 18, 39, 37),
+  y = c(202, 186, 187, 180, 156, 169, 174, 172, 153, 199, 193, 174, 198, 183, 178)
+)
+lm1 <- lm(y ~ x, dat)
+plot(y ~ x, dat)
+abline(lm1)
+coef(lm1)
+predict(lm1)
+resid(lm1)
+names(lm1)
+summary(lm1)
+```
+
+```{r, fig.dim = c(8, 8)}
+# model diagnostics
+par(mfrow = c(2, 2))
+plot(lm1)
+```
+
+
+## Analysis of Variance (ANOVA)
+
+An ANOVA is just a special case of a regression where all predictors are
+categorical. Using the function `aov()` instead of `lm()` gives us
+different results for the extractor functions.
+
+```{r anova}
+dat <- read.table(text = "
+  id group   score
+   1 control  8
+   2 control 12
+   3 control  7
+   4 control 10
+   5 control 11
+   6 control 12
+   7 pro      7
+   8 pro      9
+   9 pro     15
+  10 pro     13
+  11 pro     11
+  12 pro     16
+  13 pro     12
+  14 pro      8
+  15 pro     13
+  16 pro     16
+  17 contra   4
+  18 contra   5
+  19 contra   6
+  20 contra   3
+  21 contra   8
+  22 contra  10
+  23 contra   3
+  24 contra   9
+", header = TRUE)
+
+aov1 <- aov(score ~ group, data = dat)
+summary(aov1)
+```
+
+We can again look at the model diagnostics.
+
+```{r, fig.dim = c(8, 8)}
+# model diagnostics
+par(mfrow = c(2, 2))
+plot(aov1)
+```
+
+
+# Plotting
+
+There are two graphics systems in R
+
+* Traditional graphics
+* Grid graphics
+
+## Traditional plots
+
+```{r, fig.dim = c(4, 4.5)}
+plot(cars)
+```
+
+Stepwise plotting -- first example:
+
+```{r, fig.dim = c(4, 4.5)}
+dat <- read.table(header = TRUE, text = "
+  A B rt
+  a1 b1 825
+  a1 b2 792
+  a1 b3 840
+  a2 b1 997
+  a2 b2 902
+  a2 b3 786
+", stringsAsFactors = TRUE)
+
+plot(rt ~ as.numeric(B), dat, type = "n", axes = FALSE, xlim = c(.8, 3.2),
+  ylim = c(750, 1000), xlab = "Difficulty", ylab = "Mean reaction time (ms)")
+
+# Plot the data points separately for each level of factor A.
+points(rt ~ as.numeric(B), dat[dat$A == "a1", ], type = "b", pch = 16)
+points(rt ~ as.numeric(B), dat[dat$A == "a2", ], type = "b", pch = 4)
+
+# Add axes and a legend.
+axis(side = 1, at = 1:3, expression(B[1], B[2], B[3]))
+axis(side = 2)
+legend(2.5, 975, expression(A[1], A[2]), pch = c(16, 4), bty = "n",
+  title = "Task")
+```
+
+Second example:
+
+```{r, fig.dim = c(5, 4.5)}
+plot(Sepal.Length ~ Sepal.Width, iris, axes = FALSE, type = "n",
+     xlab = "Sepal width", ylab = "Sepal Length")
+
+points(Sepal.Length ~ Sepal.Width, subset(iris, iris$Species == "setosa"),
+      col = "magenta", pch = 21)
+points(Sepal.Length ~ Sepal.Width, subset(iris, iris$Species == "versicolor"),
+      col = "red", pch = 22)
+points(Sepal.Length ~ Sepal.Width, subset(iris, iris$Species == "virginica"),
+      col = "purple", pch = 23)
+
+axis(1)
+axis(2)
+
+legend("topleft", c("setosa", "versicolor", "virginica"),
+       pch = 21:23, col = c("magenta", "red", "purple"), bty = "n")
+
+lm1 <- lm(Sepal.Length ~ Sepal.Width, subset(iris, iris$Species == "setosa"))
+lm2 <- lm(Sepal.Length ~ Sepal.Width, subset(iris, iris$Species == "versicolor"))
+lm3 <- lm(Sepal.Length ~ Sepal.Width, subset(iris, iris$Species == "virginica"))
+
+abline(lm1, col = "magenta")
+abline(lm2, col = "red")
+abline(lm3, col = "purple")
+```
+
+
+## Lattice plots
+
+The lattice package implements Trellis plots in R. These are plots
+conditional on other variables. They are perfectly suited for visualizing
+complex relationships.
+
+```{r, fig.dim = c(5.3, 5)}
+library(lattice)
+states <- data.frame(state.x77, state.name = state.name,
+                     state.region = state.region) # built-in data sets
+xyplot(Murder ~ Population | state.region, states)
+```
+
+```{r, fig.dim = c(6, 6), include = FALSE}
+# Fine control
+xyplot(Murder ~ Population | state.region, states, groups = state.name,
+       xlim = c(-5000, 25000), ylab = "Murder rate (per 100000)",
+
+  # panel function
+  panel = function(x, y, subscripts, groups){
+    panel.grid(-1, -1)      # align with ticks
+    panel.abline(lm(y ~ x)) # regression line
+    ltext(x, y, labels = groups[subscripts], cex = 1)
+  },
+
+  scales = list(tck = .5, cex = .7, x = list(at = seq(0, 20000, 5000))),
+
+  strip = strip.custom(bg = "gray96"), # strip function
+
+  par.strip.text = list(cex = .7)
+)
+```
+
+```{r, fig.dim = c(6, 3.5)}
+xyplot(Sepal.Length ~ Sepal.Width, iris, groups = Species,
+       type = c("p", "r"), auto.key = TRUE)
+```
+
+Other example to "quickly" look at data:
+
+```{r, fig.dim = c(4, 4), include = FALSE}
+xyplot(extra ~ group, sleep, groups = ID, type = "b")
+```
+
+```{r, fig.dim = c(5.3, 4)}
+xyplot(weight ~ Time | Diet, ChickWeight, groups = Chick,
+      type = c("g", "p", "r"))
+```
+
+
+## The Grammar of Graphics `ggplot2`
+
+```{r, include = FALSE}
+library(ggplot2)
+theme_set(theme_test())
+```
+
+R has very powerful graphics function. Creating beautiful (publication
+ready) plots might be one of the best reasons to learn R. The R package
+`ggplot2` gives you endless possibilities. In recent years it has become
+the state of the art way to create plots in R. It has a steeper learning
+curve than the functions above (and I recommend to get some knowledge about
+them, too, so you understand how plotting in R works), but it is well worth
+the effort to invest some time. A good place to start are the following
+(online) books:
+
+* Chang, W. (2018). R graphics cookbook: practical recipes for visualizing
+  data. O'Reilly Media. https://r-graphics.org/
+* Wickham, H. (2016). ggplot2: elegant graphics for data analysis
+  Springer-Verlag New York. https://ggplot2-book.org/
+
+The grammar of graphics has a simple structure
+
+```
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(
+    mapping = aes(<MAPPINGS>),
+    stat = <STAT>,
+    position = <POSITION>
+  ) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION>
+```
+
+```{r}
+# load package
+library(ggplot2)
+# load data
+data(mpg)
+# ?mpg
+mpg
+```
+
+### Some examples
+
+```{r, fig.dim = c(3.5, 3.5)}
+# start your plot with coordinate system
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +   # then add layers
+  theme_bw()                                        # and a theme
+```
+
+
+```{r, fig.dim = c(4, 3.5)}
+# even more information
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, shape = fl))
+```
+
+
+What is the difference between these plots?
+
+```{r, fig.dim = c(5, 3.5)}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+```{r, fig.dim = c(4, 3.5)}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+What happens when we do this?
+
+```{r, fig.dim = c(5, 3.5)}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+
+
+### Facets
+
+* Way to visualize additional variables
+* Split plot into several facets
+* Usually only meaningful for categorical variables
+* Used with R's formula notation `y ~ x`
+
+```{r, fig.dim = c(6, 4)}
+# one variable
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_wrap(~ class, nrow = 2)
+```
+
+
+```{r, fig.dim = c(6, 4)}
+# two variables
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ cyl)
+```
+
+
+### Geometric objects
+
+* A `geom` is the geometrical object that a plot uses to represent data
+* For example bar charts, box plots, line charts, ...
+* Every `geom` function takes a `mapping` argument `ggplot2` provides over
+  40 `geoms`, and extension packages provide even more (see
+  https://exts.ggplot2.tidyverse.org/gallery/ for a sampling)
+
+```{r, fig.dim = c(4, 3)}
+# scatter plot
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+
+```{r, fig.dim = c(4, 3)}
+# fitted line
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
+```
+
+
+```{r, fig.dim = c(4.5, 3)}
+# add another variable
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+```
+
+
+
+```{r, fig.dim = c(4.5, 3)}
+# more layers: points and regression lines
+ggplot(mpg) +
+  geom_point(aes(x = displ, y = hwy, color = drv)) +
+  geom_smooth(aes(x = displ, y = hwy, color = drv), method = "lm")
+```

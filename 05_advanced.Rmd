@@ -1,0 +1,375 @@
+# Advanced topics
+
+The following covers some advanced topics on Programming in R that I usually do
+not cover in the first introduction to R. Most of this is very useful when you
+want to simulate data in R, e.g., for power simulations.
+
+## Programming resources
+
+Some more advanced resources for R programming are the following:
+
+* Advanced R  https://adv-r.hadley.nz/
+
+* Happy Git and GitHub for the useR https://happygitwithr.com/
+
+* R Programming for Research https://geanders.github.io/RProgrammingForResearch/
+
+* Building reproducible analytical pipelines with R https://raps-with-r.dev/
+
+* Data Skills for Reproducible Science https://psyteachr.github.io/msc-data-skills/
+
+---
+nocite: |
+  @Venables2022, @Ligges2008, @Wickham_styleguide, @Anderson2023
+---
+
+## Writing Functions
+
+* Functions in R consist of
+  - a name
+  - a pair of brackets
+  - the arguments (none, one, or more)
+  - a return value (visible, invisible, \texttt{NULL})
+
+* Arguments are passed
+  - either without name (in the defined order)
+
+    -> positional matching
+ 
+  - or with name (in arbitrary order)
+
+    -> keyword matching
+
+* Even if no arguments are passed, the brackets need to be written, e.g.,
+  `ls()`, `dir()`, `getwd()`
+
+* Entering only the name of a function without brackets will display the R code
+  of that function
+
+### Implementing a function for a simple two-sample t test
+
+Let us implement a simple function ourselves. A function that implements a
+two-sample t test
+
+\begin{equation*}
+  T = \frac{\bar{x} - \bar{y}}
+      {\sqrt{\hat{\sigma}^2\, \left(\frac{1}{n} + \frac{1}{m}\right)}}
+    = \frac{\bar{x} - \bar{y}}
+      {\sqrt{\frac{(n-1) \, s_x^2 + (m-1) \, s_y^2}
+          {n+m-2}\cdot \left(\frac{1}{n} + \frac{1}{m}\right)}}
+\end{equation*}
+with
+\begin{equation*}
+  T \sim t(n+m-2)
+\end{equation*}
+
+```{r}
+# Example: a handmade t test function
+twosam <- function(y1, y2){              # definition
+  n1  <- length(y1); n2  <- length(y2)   # body
+  yb1 <- mean(y1);   yb2 <- mean(y2)
+  s1  <- var(y1);    s2  <- var(y2)
+  s   <- ((n1 - 1)*s1 + (n2 - 1)*s2)/(n1 + n2 - 2)
+  tst <- (yb1 - yb2)/sqrt(s*(1/n1 + 1/n2))
+  tst                                    # return value, can also be a list
+}
+
+# Calling the function
+tstat <- twosam(PlantGrowth$weight[PlantGrowth$group == "ctrl"],
+                PlantGrowth$weight[PlantGrowth$group == "trt1"])
+tstat
+```
+### Named arguments and defaults
+
+If there is a function \texttt{fun1} defined by
+
+```{r, eval = FALSE}
+fun1 <- function(data, data.frame, graph, limit) { 
+...
+}
+```
+then the function may be invoked in several ways, for example
+
+```{r, eval = FALSE}
+fun1(d, df, TRUE, 20)
+fun1(d, df, graph = TRUE, limit = 20)
+fun1(data = d, limit = 20, graph = TRUE, data.frame = df)
+```
+
+All of them are equivalent (cf. positional matching and keyword matching)
+
+In many cases, arguments can be given commonly appropriate default values, in
+which case they may be omitted altogether from the call
+
+```{r, eval = FALSE}
+fun1 <- function(data, data.frame, graph = TRUE, limit = 20) {
+...
+}
+```
+
+It could be called as
+
+```{r, eval = FALSE}
+ans <- fun1(d, df)
+```
+
+which is now equivalent to the three cases above, or as
+
+```{r, eval = FALSE}
+ans <- fun1(d, df, limit = 10)
+```
+
+which changes one of the defaults.
+
+### Exercise
+
+Write a function in R that cumulatively sums up the values of vector $\mathbf{x}
+= (1~2~3~4 \dots 20)'$. The result should look like: 
+$\mathbf{y} = (1~3~6~10 \dots 210)'$.
+
+```{r}
+# TODO: Add solution to exercise
+```
+
+## Conditional execution
+
+When programming, a distinction of cases is often necessary for
+
+* checking of arguments
+
+* return of error messages
+
+* interrupting a running process
+
+* case distinction, e.\,g., in mathematical expressions
+
+Conditional execution of code is available in R via
+
+```{r, eval = FALSE}
+if(expr_1) {
+  expr_2
+} else {
+  expr_3
+}
+```
+
+where `expr_1` must evaluate to a single logical value.
+
+```{r}
+x <- 5
+
+# Example 1
+if(!is.na(x)) y <- x^2 else stop("x is missing")
+
+# Example 2
+if(x == 5){   # in case x = 5:
+  x <- x + 1  # add 1 to x and
+  y <- 3      # set y to three
+} else        # else:
+  y <- 7      # set y to seven
+
+# Example 3
+if(x < 99) cat("x is smaller than 99\n")
+
+## Vectorized version with ifelse() function
+
+# Example 1
+ifelse(x == c(5, 6), c("A1", "A2"), c("A3", "A4"))
+
+# Example 2
+x <- -2:2
+ifelse(x < 0, -x, x)
+```
+
+### Exercise
+
+Implement the following function in R:
+
+\[
+f(x) =
+\begin{cases}
+ -1 & \text{if } x < 0,\\
+  0 & \text{if } x = 0,\\
+  1 & \text{if } x > 0.
+\end{cases}
+\]
+
+```{r}
+# TODO: Add solution to exercise
+```
+
+## Loops
+
+* Loops are necessary to execute repeating commands
+
+* Especially for simulations, loops are often used
+
+* In this case, the same functions or commands are executed for different random numbers
+
+* There are `for()` and `while()` loops for repeated execution
+
+* The most simple "loop" is `replicate()`
+
+```{r}
+# Example for central limit theorem
+
+y <- runif(100)     # Draw random numbers
+hist(y)
+
+x <- replicate(1000, mean(runif(100)))
+hist(x)
+
+# Examples repeat and while
+
+i <- 0
+repeat {
+  i <- i + 1              # Add 1 to i
+  if (i == 3) break       # Stop if i = 3
+}
+
+while (i > 1) {
+  i <- i - 1              # As long as i > 1, subtract 1
+}
+
+# Example vector operations
+
+x <- c(3, 6, 4, 8, 0)     # Vector of length 5
+
+for(i in x)
+  print(sqrt(i))
+
+for(i in seq_along(x))    # Same using indices
+  print(sqrt(x[i]))
+
+for(i in seq_along(x)){   # For all i [1,2,3,4,5]'
+  x[i] <- x[i]^2          # square ith element of x
+  print(x[i])             # and show it on monitor
+}
+
+x^2                       # BETTER
+```
+
+### Exercise
+
+* Create a vector $\mathbf{x} = (3~5~7~9~11~13~15~17)'$ with a for-loop
+
+  Tip: Use the formula $n\cdot2 + 1$
+
+* Implement two different methods:
+
+  1. Allocate memory: Start with a vector of zeros and the correct length and
+     replace its elements iteratively
+    
+  2. Growing: Start with a `NULL` object and iteratively add new results
+
+Tip: The first method is more efficient, especially for long vectors.
+
+```{r}
+# TODO: Add solution to exercise
+```
+
+## Avoiding loops
+
+The `apply()` family of functions may be used in many places where in
+traditional languages loops are employed. Using vector based alternatives is
+usually much faster in R.
+
+* Matrices and arrays: `apply()`
+
+* Data frames, lists and vectors: `lapply()` and `sapply()`
+
+* Group-wise calculations: `tapply()`
+
+```{r}
+# Example apply()
+
+X <- matrix(c(4, 7, 3, 8, 9, 2, 5, 6, 2, 3, 2, 4), nrow = 3, ncol = 4)
+
+# Calculate row maxima
+res <- numeric(nrow(X))
+for(i in 1:nrow(X)){
+  res[i] <- max(X[i,])
+}
+
+# or:
+apply(X, 1, max)  # Maximum for each row
+apply(X, 2, max)  # Maximum for each column
+
+# Example lapply()
+L <- list(x = 1:10, y = 1:5 + 0i)
+lapply(L, mean)       # Keep list with data type
+sapply(L, mean)       # Create vector, same data type
+
+sapply(iris, class)   # Work column wise on data frame
+
+# Example tapply()
+data(Oats, package = "nlme")
+with(Oats, tapply(yield, list(Block, Variety), mean))
+
+data(warpbreaks)
+tapply(warpbreaks$breaks, warpbreaks$tension, sum)
+tapply(warpbreaks$breaks, warpbreaks[ , -1], mean)
+```
+
+### Exercise
+
+* Load the iris data set into R using `data(iris)`
+
+* Write a for-loop to calculate the means for the dependent variables
+  (columns 1 to 4)
+
+* Think of as many vector based alternatives as possible to avoid this loop and
+  calculate the column means
+
+
+```{r}
+# TODO: Add solution to exercise
+```
+
+## Random number generation
+
+Most distributions that R handles have four functions. There is a root name,
+e.g., the root name for the normal distribution is `norm`. This root is prefixed
+by one of the letters `p`, `q`, `d`, `r`.
+
+|      |                                                             |
+| ---- | ----------------------------------------------------------- |
+| `p`  | probability: the cumulative distribution function (CDF)     |
+| `q`  | quantile: the inverse CDF                                   |
+| `d`  | density: the probability (density) function (PDF)           |
+| `r`  | random: a random variable having the specified distribution |
+
+See `?Distributions` for a list of distributions or the CRAN task view
+https://cran.r-project.org/view=Distributions. The random number generator in R
+is _seeded_: Upon restart of R, new random numbers are generated. To replicate
+the results of a simulation, the seed (starting value) can be set explicitly
+with `set.seed()`.
+
+```{r}
+# Examples
+rnorm(10)     # Draw from standard normal distribution
+rpois(10, 1)  # Draw from Poisson distribution
+
+# Sampling with or without replacement from a vector
+sample(1:5, size = 10, replace = TRUE)
+
+# Set seed
+set.seed(1223)  # On each run, random numbers will be identical
+runif(3)
+```
+
+### Exercise
+
+* Create a data frame with four variables and 20 observations:
+
+  1. $X \sim N(\mu=100, \sigma^2=15^2)$
+  2. $Y \sim Bin(n=10, p=0.2)$
+  3. $Z \sim Pois(\lambda=1)$
+  4. $S = X + Y + Z$
+
+```{r}
+# TODO: Add solution to exercise
+```
+
+
+

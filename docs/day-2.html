@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Day 2 | Introduction to R</title>
+  <meta name="description" content="Chapter 3 Day 2 | Introduction to R" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Day 2 | Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Day 2 | Introduction to R" />
+  
+  
+  
+
+<meta name="author" content="Nora Wickelmaier" />
+
+
+<meta name="date" content="2024-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="exercises-day-1.html"/>
+<link rel="next" href="exercises-day-2.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course Information</a></li>
+<li class="chapter" data-level="1" data-path="day-1.html"><a href="day-1.html"><i class="fa fa-check"></i><b>1</b> Day 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="day-1.html"><a href="day-1.html#some-initial-thoughts"><i class="fa fa-check"></i><b>1.1</b> Some initial thoughts</a></li>
+<li class="chapter" data-level="1.2" data-path="day-1.html"><a href="day-1.html#lets-get-started"><i class="fa fa-check"></i><b>1.2</b> Let’s get started</a></li>
+<li class="chapter" data-level="1.3" data-path="day-1.html"><a href="day-1.html#r-as-calculator"><i class="fa fa-check"></i><b>1.3</b> R as calculator</a></li>
+<li class="chapter" data-level="1.4" data-path="day-1.html"><a href="day-1.html#creating-variables"><i class="fa fa-check"></i><b>1.4</b> Creating variables</a></li>
+<li class="chapter" data-level="1.5" data-path="day-1.html"><a href="day-1.html#data-types"><i class="fa fa-check"></i><b>1.5</b> Data types</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="day-1.html"><a href="day-1.html#vectors"><i class="fa fa-check"></i><b>1.5.1</b> Vectors</a></li>
+<li class="chapter" data-level="1.5.2" data-path="day-1.html"><a href="day-1.html#matrices"><i class="fa fa-check"></i><b>1.5.2</b> Matrices</a></li>
+<li class="chapter" data-level="1.5.3" data-path="day-1.html"><a href="day-1.html#lists"><i class="fa fa-check"></i><b>1.5.3</b> Lists</a></li>
+<li class="chapter" data-level="1.5.4" data-path="day-1.html"><a href="day-1.html#data-frames"><i class="fa fa-check"></i><b>1.5.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="day-1.html"><a href="day-1.html#indexing"><i class="fa fa-check"></i><b>1.6</b> Indexing</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="day-1.html"><a href="day-1.html#indexing-vectors"><i class="fa fa-check"></i><b>1.6.1</b> Indexing vectors</a></li>
+<li class="chapter" data-level="1.6.2" data-path="day-1.html"><a href="day-1.html#indexing-data-frames"><i class="fa fa-check"></i><b>1.6.2</b> Indexing data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="day-1.html"><a href="day-1.html#calling-functions"><i class="fa fa-check"></i><b>1.7</b> Calling functions</a></li>
+<li class="chapter" data-level="1.8" data-path="day-1.html"><a href="day-1.html#useful-functions"><i class="fa fa-check"></i><b>1.8</b> Useful functions</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="day-1.html"><a href="day-1.html#function-reshape"><i class="fa fa-check"></i><b>1.8.1</b> Function <code>reshape()</code></a></li>
+<li class="chapter" data-level="1.8.2" data-path="day-1.html"><a href="day-1.html#function-aggregate"><i class="fa fa-check"></i><b>1.8.2</b> Function <code>aggregate()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="day-1.html"><a href="day-1.html#data-inputoutput"><i class="fa fa-check"></i><b>1.9</b> Data input/output</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="day-1.html"><a href="day-1.html#spss-files"><i class="fa fa-check"></i><b>1.9.1</b> SPSS files</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="day-1.html"><a href="day-1.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>1.10</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>2</b> Exercises Day 1</a></li>
+<li class="chapter" data-level="3" data-path="day-2.html"><a href="day-2.html"><i class="fa fa-check"></i><b>3</b> Day 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="day-2.html"><a href="day-2.html#simple-data-analysis-in-r"><i class="fa fa-check"></i><b>3.1</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="day-2.html"><a href="day-2.html#t-tests"><i class="fa fa-check"></i><b>3.1.1</b> t tests</a></li>
+<li class="chapter" data-level="3.1.2" data-path="day-2.html"><a href="day-2.html#linear-models"><i class="fa fa-check"></i><b>3.1.2</b> Linear models</a></li>
+<li class="chapter" data-level="3.1.3" data-path="day-2.html"><a href="day-2.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>3.1.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="day-2.html"><a href="day-2.html#plotting"><i class="fa fa-check"></i><b>3.2</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="day-2.html"><a href="day-2.html#traditional-plots"><i class="fa fa-check"></i><b>3.2.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="3.2.2" data-path="day-2.html"><a href="day-2.html#lattice-plots"><i class="fa fa-check"></i><b>3.2.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="3.2.3" data-path="day-2.html"><a href="day-2.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>3.2.3</b> The Grammar of Graphics <code>ggplot2</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>4</b> Exercises Day 2</a></li>
+<li class="chapter" data-level="5" data-path="slides.html"><a href="slides.html"><i class="fa fa-check"></i><b>5</b> Slides</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="slides.html"><a href="slides.html#advanced-topics"><i class="fa fa-check"></i><b>5.1</b> Advanced topics</a></li>
+<li class="chapter" data-level="5.2" data-path="slides.html"><a href="slides.html#complete-introduction"><i class="fa fa-check"></i><b>5.2</b> Complete introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="day-2" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Day 2<a href="day-2.html#day-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="simple-data-analysis-in-r" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Simple data analysis in R<a href="day-2.html#simple-data-analysis-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R is a free software environment for statistical computing and graphics.
+The stats package, which is automatically loaded when R starts up, contains
+functions for statistical calculations and random number generation. For a
+complete list of functions, see <code>library(help = stats)</code>.</p>
+<div id="t-tests" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> t tests<a href="day-2.html#t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="day-2.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sample t test</span></span>
+<span id="cb248-2"><a href="day-2.html#cb248-2" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">400</span>, <span class="at">sd =</span> <span class="dv">20</span>)</span>
+<span id="cb248-3"><a href="day-2.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rt, <span class="at">mu =</span> <span class="dv">400</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  rt
+## t = -1.701, df = 99, p-value = 0.09208
+## alternative hypothesis: true mean is not equal to 400
+## 95 percent confidence interval:
+##  392.2731 400.5938
+## sample estimates:
+## mean of x 
+##  396.4334</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="day-2.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t test for independent groups</span></span>
+<span id="cb250-2"><a href="day-2.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(weight <span class="sc">~</span> group, PlantGrowth[PlantGrowth<span class="sc">$</span>group <span class="sc">!=</span> <span class="st">&quot;ctrl&quot;</span>, ],</span>
+<span id="cb250-3"><a href="day-2.html#cb250-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  weight by group
+## t = -3.0101, df = 18, p-value = 0.007518
+## alternative hypothesis: true difference in means between group trt1 and group trt2 is not equal to 0
+## 95 percent confidence interval:
+##  -1.4687336 -0.2612664
+## sample estimates:
+## mean in group trt1 mean in group trt2 
+##              4.661              5.526</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="day-2.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t test for dependent groups</span></span>
+<span id="cb252-2"><a href="day-2.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(extra <span class="sc">~</span> group, sleep, <span class="at">paired =</span> T)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  extra by group
+## t = -4.0621, df = 9, p-value = 0.002833
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  -2.4598858 -0.7001142
+## sample estimates:
+## mean difference 
+##           -1.58</code></pre>
+</div>
+<div id="linear-models" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Linear models<a href="day-2.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us first fit a simple linear regression.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="day-2.html#cb254-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb254-2"><a href="day-2.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">65</span>, <span class="dv">54</span>, <span class="dv">34</span>, <span class="dv">56</span>, <span class="dv">72</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">42</span>, <span class="dv">18</span>, <span class="dv">39</span>, <span class="dv">37</span>),</span>
+<span id="cb254-3"><a href="day-2.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">202</span>, <span class="dv">186</span>, <span class="dv">187</span>, <span class="dv">180</span>, <span class="dv">156</span>, <span class="dv">169</span>, <span class="dv">174</span>, <span class="dv">172</span>, <span class="dv">153</span>, <span class="dv">199</span>, <span class="dv">193</span>, <span class="dv">174</span>, <span class="dv">198</span>, <span class="dv">183</span>, <span class="dv">178</span>)</span>
+<span id="cb254-4"><a href="day-2.html#cb254-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb254-5"><a href="day-2.html#cb254-5" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, dat)</span>
+<span id="cb254-6"><a href="day-2.html#cb254-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, dat)</span>
+<span id="cb254-7"><a href="day-2.html#cb254-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm1)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-29-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="day-2.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lm1)</span></code></pre></div>
+<pre><code>## (Intercept)           x 
+## 210.0484584  -0.7977266</code></pre>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="day-2.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm1)</span></code></pre></div>
+<pre><code>##        1        2        3        4        5        6        7        8        9       10 
+## 195.6894 191.7007 190.1053 182.1280 158.1962 166.9712 182.9258 165.3758 152.6121 194.8917 
+##       11       12       13       14       15 
+## 191.7007 176.5439 195.6894 178.9371 180.5326</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="day-2.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">resid</span>(lm1)</span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7          8 
+##  6.3106197 -5.7007474 -3.1052943 -2.1280287 -2.1962317  2.0287761 -8.9257552  6.6242292 
+##          9         10         11         12         13         14         15 
+##  0.3878543  4.1083463  1.2992526 -2.5439427  2.3106197  4.0628776 -2.5325755</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="day-2.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lm1)</span></code></pre></div>
+<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;          &quot;fitted.values&quot;
+##  [6] &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;   &quot;xlevels&quot;       &quot;call&quot;         
+## [11] &quot;terms&quot;         &quot;model&quot;</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="day-2.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -8.9258 -2.5383  0.3879  3.1867  6.6242 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 210.04846    2.86694   73.27  &lt; 2e-16 ***
+## x            -0.79773    0.06996  -11.40 3.85e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.578 on 13 degrees of freedom
+## Multiple R-squared:  0.9091, Adjusted R-squared:  0.9021 
+## F-statistic:   130 on 1 and 13 DF,  p-value: 3.848e-08</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="day-2.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model diagnostics</span></span>
+<span id="cb265-2"><a href="day-2.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb265-3"><a href="day-2.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-30-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<div id="analysis-of-variance-anova" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Analysis of Variance (ANOVA)<a href="day-2.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An ANOVA is just a special case of a regression where all predictors are
+categorical. Using the function <code>aov()</code> instead of <code>lm()</code> gives us
+different results for the extractor functions.</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="day-2.html#cb266-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> <span class="st">&quot;</span></span>
+<span id="cb266-2"><a href="day-2.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="st">  id group   score</span></span>
+<span id="cb266-3"><a href="day-2.html#cb266-3" aria-hidden="true" tabindex="-1"></a><span class="st">   1 control  8</span></span>
+<span id="cb266-4"><a href="day-2.html#cb266-4" aria-hidden="true" tabindex="-1"></a><span class="st">   2 control 12</span></span>
+<span id="cb266-5"><a href="day-2.html#cb266-5" aria-hidden="true" tabindex="-1"></a><span class="st">   3 control  7</span></span>
+<span id="cb266-6"><a href="day-2.html#cb266-6" aria-hidden="true" tabindex="-1"></a><span class="st">   4 control 10</span></span>
+<span id="cb266-7"><a href="day-2.html#cb266-7" aria-hidden="true" tabindex="-1"></a><span class="st">   5 control 11</span></span>
+<span id="cb266-8"><a href="day-2.html#cb266-8" aria-hidden="true" tabindex="-1"></a><span class="st">   6 control 12</span></span>
+<span id="cb266-9"><a href="day-2.html#cb266-9" aria-hidden="true" tabindex="-1"></a><span class="st">   7 pro      7</span></span>
+<span id="cb266-10"><a href="day-2.html#cb266-10" aria-hidden="true" tabindex="-1"></a><span class="st">   8 pro      9</span></span>
+<span id="cb266-11"><a href="day-2.html#cb266-11" aria-hidden="true" tabindex="-1"></a><span class="st">   9 pro     15</span></span>
+<span id="cb266-12"><a href="day-2.html#cb266-12" aria-hidden="true" tabindex="-1"></a><span class="st">  10 pro     13</span></span>
+<span id="cb266-13"><a href="day-2.html#cb266-13" aria-hidden="true" tabindex="-1"></a><span class="st">  11 pro     11</span></span>
+<span id="cb266-14"><a href="day-2.html#cb266-14" aria-hidden="true" tabindex="-1"></a><span class="st">  12 pro     16</span></span>
+<span id="cb266-15"><a href="day-2.html#cb266-15" aria-hidden="true" tabindex="-1"></a><span class="st">  13 pro     12</span></span>
+<span id="cb266-16"><a href="day-2.html#cb266-16" aria-hidden="true" tabindex="-1"></a><span class="st">  14 pro      8</span></span>
+<span id="cb266-17"><a href="day-2.html#cb266-17" aria-hidden="true" tabindex="-1"></a><span class="st">  15 pro     13</span></span>
+<span id="cb266-18"><a href="day-2.html#cb266-18" aria-hidden="true" tabindex="-1"></a><span class="st">  16 pro     16</span></span>
+<span id="cb266-19"><a href="day-2.html#cb266-19" aria-hidden="true" tabindex="-1"></a><span class="st">  17 contra   4</span></span>
+<span id="cb266-20"><a href="day-2.html#cb266-20" aria-hidden="true" tabindex="-1"></a><span class="st">  18 contra   5</span></span>
+<span id="cb266-21"><a href="day-2.html#cb266-21" aria-hidden="true" tabindex="-1"></a><span class="st">  19 contra   6</span></span>
+<span id="cb266-22"><a href="day-2.html#cb266-22" aria-hidden="true" tabindex="-1"></a><span class="st">  20 contra   3</span></span>
+<span id="cb266-23"><a href="day-2.html#cb266-23" aria-hidden="true" tabindex="-1"></a><span class="st">  21 contra   8</span></span>
+<span id="cb266-24"><a href="day-2.html#cb266-24" aria-hidden="true" tabindex="-1"></a><span class="st">  22 contra  10</span></span>
+<span id="cb266-25"><a href="day-2.html#cb266-25" aria-hidden="true" tabindex="-1"></a><span class="st">  23 contra   3</span></span>
+<span id="cb266-26"><a href="day-2.html#cb266-26" aria-hidden="true" tabindex="-1"></a><span class="st">  24 contra   9</span></span>
+<span id="cb266-27"><a href="day-2.html#cb266-27" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb266-28"><a href="day-2.html#cb266-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb266-29"><a href="day-2.html#cb266-29" aria-hidden="true" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(score <span class="sc">~</span> group, <span class="at">data =</span> dat)</span>
+<span id="cb266-30"><a href="day-2.html#cb266-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov1)</span></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## group        2    162      81   10.12 0.000834 ***
+## Residuals   21    168       8                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>We can again look at the model diagnostics.</p>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="day-2.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model diagnostics</span></span>
+<span id="cb268-2"><a href="day-2.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb268-3"><a href="day-2.html#cb268-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov1)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-31-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="plotting" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Plotting<a href="day-2.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are two graphics systems in R</p>
+<ul>
+<li>Traditional graphics</li>
+<li>Grid graphics</li>
+</ul>
+<div id="traditional-plots" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Traditional plots<a href="day-2.html#traditional-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="day-2.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-32-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Stepwise plotting – first example:</p>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="day-2.html#cb270-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">text =</span> <span class="st">&quot;</span></span>
+<span id="cb270-2"><a href="day-2.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="st">  A B rt</span></span>
+<span id="cb270-3"><a href="day-2.html#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="st">  a1 b1 825</span></span>
+<span id="cb270-4"><a href="day-2.html#cb270-4" aria-hidden="true" tabindex="-1"></a><span class="st">  a1 b2 792</span></span>
+<span id="cb270-5"><a href="day-2.html#cb270-5" aria-hidden="true" tabindex="-1"></a><span class="st">  a1 b3 840</span></span>
+<span id="cb270-6"><a href="day-2.html#cb270-6" aria-hidden="true" tabindex="-1"></a><span class="st">  a2 b1 997</span></span>
+<span id="cb270-7"><a href="day-2.html#cb270-7" aria-hidden="true" tabindex="-1"></a><span class="st">  a2 b2 902</span></span>
+<span id="cb270-8"><a href="day-2.html#cb270-8" aria-hidden="true" tabindex="-1"></a><span class="st">  a2 b3 786</span></span>
+<span id="cb270-9"><a href="day-2.html#cb270-9" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb270-10"><a href="day-2.html#cb270-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-11"><a href="day-2.html#cb270-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rt <span class="sc">~</span> <span class="fu">as.numeric</span>(B), dat, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">xlim =</span> <span class="fu">c</span>(.<span class="dv">8</span>, <span class="fl">3.2</span>),</span>
+<span id="cb270-12"><a href="day-2.html#cb270-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">750</span>, <span class="dv">1000</span>), <span class="at">xlab =</span> <span class="st">&quot;Difficulty&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Mean reaction time (ms)&quot;</span>)</span>
+<span id="cb270-13"><a href="day-2.html#cb270-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-14"><a href="day-2.html#cb270-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data points separately for each level of factor A.</span></span>
+<span id="cb270-15"><a href="day-2.html#cb270-15" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(rt <span class="sc">~</span> <span class="fu">as.numeric</span>(B), dat[dat<span class="sc">$</span>A <span class="sc">==</span> <span class="st">&quot;a1&quot;</span>, ], <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb270-16"><a href="day-2.html#cb270-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(rt <span class="sc">~</span> <span class="fu">as.numeric</span>(B), dat[dat<span class="sc">$</span>A <span class="sc">==</span> <span class="st">&quot;a2&quot;</span>, ], <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">4</span>)</span>
+<span id="cb270-17"><a href="day-2.html#cb270-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-18"><a href="day-2.html#cb270-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Add axes and a legend.</span></span>
+<span id="cb270-19"><a href="day-2.html#cb270-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">expression</span>(B[<span class="dv">1</span>], B[<span class="dv">2</span>], B[<span class="dv">3</span>]))</span>
+<span id="cb270-20"><a href="day-2.html#cb270-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">2</span>)</span>
+<span id="cb270-21"><a href="day-2.html#cb270-21" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">2.5</span>, <span class="dv">975</span>, <span class="fu">expression</span>(A[<span class="dv">1</span>], A[<span class="dv">2</span>]), <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">4</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb270-22"><a href="day-2.html#cb270-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Task&quot;</span>)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-33-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Second example:</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="day-2.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, iris, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb271-2"><a href="day-2.html#cb271-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Sepal width&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Sepal Length&quot;</span>)</span>
+<span id="cb271-3"><a href="day-2.html#cb271-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-4"><a href="day-2.html#cb271-4" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="fu">subset</span>(iris, iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>),</span>
+<span id="cb271-5"><a href="day-2.html#cb271-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">&quot;magenta&quot;</span>, <span class="at">pch =</span> <span class="dv">21</span>)</span>
+<span id="cb271-6"><a href="day-2.html#cb271-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="fu">subset</span>(iris, iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;versicolor&quot;</span>),</span>
+<span id="cb271-7"><a href="day-2.html#cb271-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">pch =</span> <span class="dv">22</span>)</span>
+<span id="cb271-8"><a href="day-2.html#cb271-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="fu">subset</span>(iris, iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;virginica&quot;</span>),</span>
+<span id="cb271-9"><a href="day-2.html#cb271-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">pch =</span> <span class="dv">23</span>)</span>
+<span id="cb271-10"><a href="day-2.html#cb271-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-11"><a href="day-2.html#cb271-11" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span>
+<span id="cb271-12"><a href="day-2.html#cb271-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>)</span>
+<span id="cb271-13"><a href="day-2.html#cb271-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-14"><a href="day-2.html#cb271-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;versicolor&quot;</span>, <span class="st">&quot;virginica&quot;</span>),</span>
+<span id="cb271-15"><a href="day-2.html#cb271-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">23</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;magenta&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb271-16"><a href="day-2.html#cb271-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-17"><a href="day-2.html#cb271-17" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="fu">subset</span>(iris, iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>))</span>
+<span id="cb271-18"><a href="day-2.html#cb271-18" aria-hidden="true" tabindex="-1"></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="fu">subset</span>(iris, iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;versicolor&quot;</span>))</span>
+<span id="cb271-19"><a href="day-2.html#cb271-19" aria-hidden="true" tabindex="-1"></a>lm3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, <span class="fu">subset</span>(iris, iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;virginica&quot;</span>))</span>
+<span id="cb271-20"><a href="day-2.html#cb271-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb271-21"><a href="day-2.html#cb271-21" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm1, <span class="at">col =</span> <span class="st">&quot;magenta&quot;</span>)</span>
+<span id="cb271-22"><a href="day-2.html#cb271-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm2, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb271-23"><a href="day-2.html#cb271-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm3, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-34-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="lattice-plots" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Lattice plots<a href="day-2.html#lattice-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The lattice package implements Trellis plots in R. These are plots
+conditional on other variables. They are perfectly suited for visualizing
+complex relationships.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="day-2.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb272-2"><a href="day-2.html#cb272-2" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(state.x77, <span class="at">state.name =</span> state.name,</span>
+<span id="cb272-3"><a href="day-2.html#cb272-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">state.region =</span> state.region) <span class="co"># built-in data sets</span></span>
+<span id="cb272-4"><a href="day-2.html#cb272-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xyplot</span>(Murder <span class="sc">~</span> Population <span class="sc">|</span> state.region, states)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-35-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="day-2.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xyplot</span>(Sepal.Length <span class="sc">~</span> Sepal.Width, iris, <span class="at">groups =</span> Species,</span>
+<span id="cb273-2"><a href="day-2.html#cb273-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;r&quot;</span>), <span class="at">auto.key =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Other example to “quickly” look at data:</p>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="day-2.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xyplot</span>(weight <span class="sc">~</span> Time <span class="sc">|</span> Diet, ChickWeight, <span class="at">groups =</span> Chick,</span>
+<span id="cb274-2"><a href="day-2.html#cb274-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;g&quot;</span>, <span class="st">&quot;p&quot;</span>, <span class="st">&quot;r&quot;</span>))</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-39-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+</div>
+<div id="the-grammar-of-graphics-ggplot2" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> The Grammar of Graphics <code>ggplot2</code><a href="day-2.html#the-grammar-of-graphics-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R has very powerful graphics function. Creating beautiful (publication
+ready) plots might be one of the best reasons to learn R. The R package
+<code>ggplot2</code> gives you endless possibilities. In recent years it has become
+the state of the art way to create plots in R. It has a steeper learning
+curve than the functions above (and I recommend to get some knowledge about
+them, too, so you understand how plotting in R works), but it is well worth
+the effort to invest some time. A good place to start are the following
+(online) books:</p>
+<ul>
+<li>Chang, W. (2018). R graphics cookbook: practical recipes for visualizing
+data. O’Reilly Media. <a href="https://r-graphics.org/" class="uri">https://r-graphics.org/</a></li>
+<li>Wickham, H. (2016). ggplot2: elegant graphics for data analysis
+Springer-Verlag New York. <a href="https://ggplot2-book.org/" class="uri">https://ggplot2-book.org/</a></li>
+</ul>
+<p>The grammar of graphics has a simple structure</p>
+<pre><code>ggplot(data = &lt;DATA&gt;) +
+  &lt;GEOM_FUNCTION&gt;(
+    mapping = aes(&lt;MAPPINGS&gt;),
+    stat = &lt;STAT&gt;,
+    position = &lt;POSITION&gt;
+  ) +
+  &lt;COORDINATE_FUNCTION&gt; +
+  &lt;FACET_FUNCTION&gt;</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="day-2.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load package</span></span>
+<span id="cb276-2"><a href="day-2.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb276-3"><a href="day-2.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb276-4"><a href="day-2.html#cb276-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mpg)</span>
+<span id="cb276-5"><a href="day-2.html#cb276-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ?mpg</span></span>
+<span id="cb276-6"><a href="day-2.html#cb276-6" aria-hidden="true" tabindex="-1"></a>mpg</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 11
+##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
+##  1 audi         a4           1.8  1999     4 auto(l5)   f        18    29 p     compact
+##  2 audi         a4           1.8  1999     4 manual(m5) f        21    29 p     compact
+##  3 audi         a4           2    2008     4 manual(m6) f        20    31 p     compact
+##  4 audi         a4           2    2008     4 auto(av)   f        21    30 p     compact
+##  5 audi         a4           2.8  1999     6 auto(l5)   f        16    26 p     compact
+##  6 audi         a4           2.8  1999     6 manual(m5) f        18    26 p     compact
+##  7 audi         a4           3.1  2008     6 auto(av)   f        18    27 p     compact
+##  8 audi         a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact
+##  9 audi         a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact
+## 10 audi         a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact
+## # ℹ 224 more rows</code></pre>
+<div id="some-examples" class="section level4 hasAnchor" number="3.2.3.1">
+<h4><span class="header-section-number">3.2.3.1</span> Some examples<a href="day-2.html#some-examples" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="day-2.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start your plot with coordinate system</span></span>
+<span id="cb278-2"><a href="day-2.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb278-3"><a href="day-2.html#cb278-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span>   <span class="co"># then add layers</span></span>
+<span id="cb278-4"><a href="day-2.html#cb278-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()                                        <span class="co"># and a theme</span></span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-42-1.png" width="336" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="day-2.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># even more information</span></span>
+<span id="cb279-2"><a href="day-2.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb279-3"><a href="day-2.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">shape =</span> fl))</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-43-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>What is the difference between these plots?</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="day-2.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb280-2"><a href="day-2.html#cb280-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class))</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-44-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="day-2.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb281-2"><a href="day-2.html#cb281-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-45-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>What happens when we do this?</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="day-2.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb282-2"><a href="day-2.html#cb282-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-46-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="facets" class="section level4 hasAnchor" number="3.2.3.2">
+<h4><span class="header-section-number">3.2.3.2</span> Facets<a href="day-2.html#facets" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Way to visualize additional variables</li>
+<li>Split plot into several facets</li>
+<li>Usually only meaningful for categorical variables</li>
+<li>Used with R’s formula notation <code>y ~ x</code></li>
+</ul>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="day-2.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one variable</span></span>
+<span id="cb283-2"><a href="day-2.html#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb283-3"><a href="day-2.html#cb283-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb283-4"><a href="day-2.html#cb283-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> class, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-47-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="day-2.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two variables</span></span>
+<span id="cb284-2"><a href="day-2.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb284-3"><a href="day-2.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb284-4"><a href="day-2.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(drv <span class="sc">~</span> cyl)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-48-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="geometric-objects" class="section level4 hasAnchor" number="3.2.3.3">
+<h4><span class="header-section-number">3.2.3.3</span> Geometric objects<a href="day-2.html#geometric-objects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>A <code>geom</code> is the geometrical object that a plot uses to represent data</li>
+<li>For example bar charts, box plots, line charts, …</li>
+<li>Every <code>geom</code> function takes a <code>mapping</code> argument <code>ggplot2</code> provides over
+40 <code>geoms</code>, and extension packages provide even more (see
+<a href="https://exts.ggplot2.tidyverse.org/gallery/" class="uri">https://exts.ggplot2.tidyverse.org/gallery/</a> for a sampling)</li>
+</ul>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="day-2.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot</span></span>
+<span id="cb285-2"><a href="day-2.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb285-3"><a href="day-2.html#cb285-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-49-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="day-2.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fitted line</span></span>
+<span id="cb286-2"><a href="day-2.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb286-3"><a href="day-2.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy))</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-50-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="day-2.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add another variable</span></span>
+<span id="cb288-2"><a href="day-2.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
+<span id="cb288-3"><a href="day-2.html#cb288-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">linetype =</span> drv))</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-51-1.png" width="432" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="day-2.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># more layers: points and regression lines</span></span>
+<span id="cb290-2"><a href="day-2.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg) <span class="sc">+</span></span>
+<span id="cb290-3"><a href="day-2.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv)) <span class="sc">+</span></span>
+<span id="cb290-4"><a href="day-2.html#cb290-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> drv), <span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-52-1.png" width="432" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="exercises-day-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-day-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

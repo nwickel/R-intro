@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Advanced topics | Introduction to R</title>
+  <meta name="description" content="Chapter 11 Advanced topics | Introduction to R" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Advanced topics | Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Advanced topics | Introduction to R" />
+  
+  
+  
+
+<meta name="author" content="Nora Wickelmaier" />
+
+
+<meta name="date" content="2024-10-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="exercises-day-2.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lets-get-started"><i class="fa fa-check"></i>Let’s get started</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-as-calculator.html"><a href="r-as-calculator.html"><i class="fa fa-check"></i><b>1</b> R as calculator</a></li>
+<li class="chapter" data-level="2" data-path="creating-variables.html"><a href="creating-variables.html"><i class="fa fa-check"></i><b>2</b> Creating variables</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-types.html"><a href="data-types.html#creating-vectors"><i class="fa fa-check"></i><b>3.1.1</b> Creating vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>4</b> Indexing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="indexing.html"><a href="indexing.html#indexing-vectors"><i class="fa fa-check"></i><b>4.1</b> Indexing vectors</a></li>
+<li class="chapter" data-level="4.2" data-path="indexing.html"><a href="indexing.html#indexing-data-frames"><i class="fa fa-check"></i><b>4.2</b> Indexing data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="calling-functions.html"><a href="calling-functions.html#useful-functions"><i class="fa fa-check"></i><b>5.1</b> Useful functions</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="calling-functions.html"><a href="calling-functions.html#function-reshape"><i class="fa fa-check"></i><b>5.1.1</b> Function <code>reshape()</code></a></li>
+<li class="chapter" data-level="5.1.2" data-path="calling-functions.html"><a href="calling-functions.html#function-aggregate"><i class="fa fa-check"></i><b>5.1.2</b> Function <code>aggregate()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>6</b> Data input/output</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>6.1</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>7</b> Exercises Day 1</a></li>
+<li class="chapter" data-level="8" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>8</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>8.1</b> t tests</a></li>
+<li class="chapter" data-level="8.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>8.2</b> Linear models</a></li>
+<li class="chapter" data-level="8.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>8.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>9</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>9.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="9.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>9.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="9.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>9.3</b> The Grammar of Graphics <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>9.3.1</b> Some examples</a></li>
+<li class="chapter" data-level="9.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>9.3.2</b> Facets</a></li>
+<li class="chapter" data-level="9.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>9.3.3</b> Geometric objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>10</b> Exercises Day 2</a></li>
+<li class="chapter" data-level="11" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>11</b> Advanced topics</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>11.1</b> Programming resources</a></li>
+<li class="chapter" data-level="11.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>11.2</b> Writing Functions</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> Implementing a function for a simple two-sample t test</a></li>
+<li class="chapter" data-level="11.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>11.2.2</b> Named arguments and defaults</a></li>
+<li class="chapter" data-level="11.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>11.2.3</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>11.3</b> Conditional execution</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>11.4</b> Loops</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-2"><i class="fa fa-check"></i><b>11.4.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>11.5</b> Avoiding loops</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-3"><i class="fa fa-check"></i><b>11.5.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>11.6</b> Random number generation</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-4"><i class="fa fa-check"></i><b>11.6.1</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="advanced-topics" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Advanced topics<a href="advanced-topics.html#advanced-topics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The following covers some advanced topics on Programming in R that I usually do
+not cover in the first introduction to R. Most of this is very useful when you
+want to simulate data in R, e.g., for power simulations.</p>
+<div id="programming-resources" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Programming resources<a href="advanced-topics.html#programming-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Some more advanced resources for R programming are the following:</p>
+<ul>
+<li><p>Advanced R <a href="https://adv-r.hadley.nz/" class="uri">https://adv-r.hadley.nz/</a></p></li>
+<li><p>Happy Git and GitHub for the useR <a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a></p></li>
+<li><p>R Programming for Research <a href="https://geanders.github.io/RProgrammingForResearch/" class="uri">https://geanders.github.io/RProgrammingForResearch/</a></p></li>
+<li><p>Building reproducible analytical pipelines with R <a href="https://raps-with-r.dev/" class="uri">https://raps-with-r.dev/</a></p></li>
+<li><p>Data Skills for Reproducible Science <a href="https://psyteachr.github.io/msc-data-skills/" class="uri">https://psyteachr.github.io/msc-data-skills/</a></p></li>
+</ul>
+</div>
+<div id="writing-functions" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Writing Functions<a href="advanced-topics.html#writing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Functions in R consist of</p>
+<ul>
+<li>a name</li>
+<li>a pair of brackets</li>
+<li>the arguments (none, one, or more)</li>
+<li>a return value (visible, invisible, )</li>
+</ul></li>
+<li><p>Arguments are passed</p>
+<ul>
+<li><p>either without name (in the defined order)</p>
+<p>-&gt; positional matching</p></li>
+<li><p>or with name (in arbitrary order)</p>
+<p>-&gt; keyword matching</p></li>
+</ul></li>
+<li><p>Even if no arguments are passed, the brackets need to be written, e.g.,
+<code>ls()</code>, <code>dir()</code>, <code>getwd()</code></p></li>
+<li><p>Entering only the name of a function without brackets will display the R code
+of that function</p></li>
+</ul>
+<div id="implementing-a-function-for-a-simple-two-sample-t-test" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Implementing a function for a simple two-sample t test<a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us implement a simple function ourselves. A function that implements a
+two-sample t test</p>
+<p><span class="math display">\[\begin{equation*}
+  T = \frac{\bar{x} - \bar{y}}
+      {\sqrt{\hat{\sigma}^2\, \left(\frac{1}{n} + \frac{1}{m}\right)}}
+    = \frac{\bar{x} - \bar{y}}
+      {\sqrt{\frac{(n-1) \, s_x^2 + (m-1) \, s_y^2}
+          {n+m-2}\cdot \left(\frac{1}{n} + \frac{1}{m}\right)}}
+\end{equation*}\]</span>
+with
+<span class="math display">\[\begin{equation*}
+  T \sim t(n+m-2)
+\end{equation*}\]</span></p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="advanced-topics.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: a handmade t test function</span></span>
+<span id="cb296-2"><a href="advanced-topics.html#cb296-2" aria-hidden="true" tabindex="-1"></a>twosam <span class="ot">&lt;-</span> <span class="cf">function</span>(y1, y2){              <span class="co"># definition</span></span>
+<span id="cb296-3"><a href="advanced-topics.html#cb296-3" aria-hidden="true" tabindex="-1"></a>  n1  <span class="ot">&lt;-</span> <span class="fu">length</span>(y1); n2  <span class="ot">&lt;-</span> <span class="fu">length</span>(y2)   <span class="co"># body</span></span>
+<span id="cb296-4"><a href="advanced-topics.html#cb296-4" aria-hidden="true" tabindex="-1"></a>  yb1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y1);   yb2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y2)</span>
+<span id="cb296-5"><a href="advanced-topics.html#cb296-5" aria-hidden="true" tabindex="-1"></a>  s1  <span class="ot">&lt;-</span> <span class="fu">var</span>(y1);    s2  <span class="ot">&lt;-</span> <span class="fu">var</span>(y2)</span>
+<span id="cb296-6"><a href="advanced-topics.html#cb296-6" aria-hidden="true" tabindex="-1"></a>  s   <span class="ot">&lt;-</span> ((n1 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>s1 <span class="sc">+</span> (n2 <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">*</span>s2)<span class="sc">/</span>(n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb296-7"><a href="advanced-topics.html#cb296-7" aria-hidden="true" tabindex="-1"></a>  tst <span class="ot">&lt;-</span> (yb1 <span class="sc">-</span> yb2)<span class="sc">/</span><span class="fu">sqrt</span>(s<span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span>
+<span id="cb296-8"><a href="advanced-topics.html#cb296-8" aria-hidden="true" tabindex="-1"></a>  tst                                    <span class="co"># return value, can also be a list</span></span>
+<span id="cb296-9"><a href="advanced-topics.html#cb296-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb296-10"><a href="advanced-topics.html#cb296-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-11"><a href="advanced-topics.html#cb296-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calling the function</span></span>
+<span id="cb296-12"><a href="advanced-topics.html#cb296-12" aria-hidden="true" tabindex="-1"></a>tstat <span class="ot">&lt;-</span> <span class="fu">twosam</span>(PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;ctrl&quot;</span>],</span>
+<span id="cb296-13"><a href="advanced-topics.html#cb296-13" aria-hidden="true" tabindex="-1"></a>                PlantGrowth<span class="sc">$</span>weight[PlantGrowth<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;trt1&quot;</span>])</span>
+<span id="cb296-14"><a href="advanced-topics.html#cb296-14" aria-hidden="true" tabindex="-1"></a>tstat</span></code></pre></div>
+<pre><code>## [1] 1.19126</code></pre>
+</div>
+<div id="named-arguments-and-defaults" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Named arguments and defaults<a href="advanced-topics.html#named-arguments-and-defaults" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If there is a function defined by</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="advanced-topics.html#cb298-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, data.frame, graph, limit) { </span>
+<span id="cb298-2"><a href="advanced-topics.html#cb298-2" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb298-3"><a href="advanced-topics.html#cb298-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>then the function may be invoked in several ways, for example</p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="advanced-topics.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(d, df, <span class="cn">TRUE</span>, <span class="dv">20</span>)</span>
+<span id="cb299-2"><a href="advanced-topics.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(d, df, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">limit =</span> <span class="dv">20</span>)</span>
+<span id="cb299-3"><a href="advanced-topics.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fun1</span>(<span class="at">data =</span> d, <span class="at">limit =</span> <span class="dv">20</span>, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">data.frame =</span> df)</span></code></pre></div>
+<p>All of them are equivalent (cf. positional matching and keyword matching)</p>
+<p>In many cases, arguments can be given commonly appropriate default values, in
+which case they may be omitted altogether from the call</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="advanced-topics.html#cb300-1" aria-hidden="true" tabindex="-1"></a>fun1 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, data.frame, <span class="at">graph =</span> <span class="cn">TRUE</span>, <span class="at">limit =</span> <span class="dv">20</span>) {</span>
+<span id="cb300-2"><a href="advanced-topics.html#cb300-2" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb300-3"><a href="advanced-topics.html#cb300-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>It could be called as</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="advanced-topics.html#cb301-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">fun1</span>(d, df)</span></code></pre></div>
+<p>which is now equivalent to the three cases above, or as</p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="advanced-topics.html#cb302-1" aria-hidden="true" tabindex="-1"></a>ans <span class="ot">&lt;-</span> <span class="fu">fun1</span>(d, df, <span class="at">limit =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>which changes one of the defaults.</p>
+</div>
+<div id="exercise" class="section level3 hasAnchor" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> Exercise<a href="advanced-topics.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Write a function in R that cumulatively sums up the values of vector <span class="math inline">\(\mathbf{x} = (1~2~3~4 \dots 20)&#39;\)</span>. The result should look like:
+<span class="math inline">\(\mathbf{y} = (1~3~6~10 \dots 210)&#39;\)</span>.</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="advanced-topics.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+</div>
+</div>
+<div id="conditional-execution" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Conditional execution<a href="advanced-topics.html#conditional-execution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When programming, a distinction of cases is often necessary for</p>
+<ul>
+<li><p>checking of arguments</p></li>
+<li><p>return of error messages</p></li>
+<li><p>interrupting a running process</p></li>
+<li><p>case distinction, e.,g., in mathematical expressions</p></li>
+</ul>
+<p>Conditional execution of code is available in R via</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="advanced-topics.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(expr_1) {</span>
+<span id="cb304-2"><a href="advanced-topics.html#cb304-2" aria-hidden="true" tabindex="-1"></a>  expr_2</span>
+<span id="cb304-3"><a href="advanced-topics.html#cb304-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb304-4"><a href="advanced-topics.html#cb304-4" aria-hidden="true" tabindex="-1"></a>  expr_3</span>
+<span id="cb304-5"><a href="advanced-topics.html#cb304-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>where <code>expr_1</code> must evaluate to a single logical value.</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="advanced-topics.html#cb305-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb305-2"><a href="advanced-topics.html#cb305-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-3"><a href="advanced-topics.html#cb305-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
+<span id="cb305-4"><a href="advanced-topics.html#cb305-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.na</span>(x)) y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="cf">else</span> <span class="fu">stop</span>(<span class="st">&quot;x is missing&quot;</span>)</span>
+<span id="cb305-5"><a href="advanced-topics.html#cb305-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-6"><a href="advanced-topics.html#cb305-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
+<span id="cb305-7"><a href="advanced-topics.html#cb305-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">==</span> <span class="dv">5</span>){   <span class="co"># in case x = 5:</span></span>
+<span id="cb305-8"><a href="advanced-topics.html#cb305-8" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span>  <span class="co"># add 1 to x and</span></span>
+<span id="cb305-9"><a href="advanced-topics.html#cb305-9" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">3</span>      <span class="co"># set y to three</span></span>
+<span id="cb305-10"><a href="advanced-topics.html#cb305-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>        <span class="co"># else:</span></span>
+<span id="cb305-11"><a href="advanced-topics.html#cb305-11" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">7</span>      <span class="co"># set y to seven</span></span>
+<span id="cb305-12"><a href="advanced-topics.html#cb305-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb305-13"><a href="advanced-topics.html#cb305-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3</span></span>
+<span id="cb305-14"><a href="advanced-topics.html#cb305-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">99</span>) <span class="fu">cat</span>(<span class="st">&quot;x is smaller than 99</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## x is smaller than 99</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="advanced-topics.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Vectorized version with ifelse() function</span></span>
+<span id="cb307-2"><a href="advanced-topics.html#cb307-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-3"><a href="advanced-topics.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1</span></span>
+<span id="cb307-4"><a href="advanced-topics.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>), <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;A3&quot;</span>, <span class="st">&quot;A4&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;A3&quot; &quot;A2&quot;</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="advanced-topics.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2</span></span>
+<span id="cb309-2"><a href="advanced-topics.html#cb309-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb309-3"><a href="advanced-topics.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="sc">-</span>x, x)</span></code></pre></div>
+<pre><code>## [1] 2 1 0 1 2</code></pre>
+<div id="exercise-1" class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Exercise<a href="advanced-topics.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Implement the following function in R:</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+-1 &amp; \text{if } x &lt; 0,\\
+  0 &amp; \text{if } x = 0,\\
+  1 &amp; \text{if } x &gt; 0.
+\end{cases}
+\]</span></p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="advanced-topics.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+</div>
+</div>
+<div id="loops" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Loops<a href="advanced-topics.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Loops are necessary to execute repeating commands</p></li>
+<li><p>Especially for simulations, loops are often used</p></li>
+<li><p>In this case, the same functions or commands are executed for different random numbers</p></li>
+<li><p>There are <code>for()</code> and <code>while()</code> loops for repeated execution</p></li>
+<li><p>The most simple “loop” is <code>replicate()</code></p></li>
+</ul>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="advanced-topics.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for central limit theorem</span></span>
+<span id="cb312-2"><a href="advanced-topics.html#cb312-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb312-3"><a href="advanced-topics.html#cb312-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>)     <span class="co"># Draw random numbers</span></span>
+<span id="cb312-4"><a href="advanced-topics.html#cb312-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="advanced-topics.html#cb313-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">runif</span>(<span class="dv">100</span>)))</span>
+<span id="cb313-2"><a href="advanced-topics.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span></code></pre></div>
+<p><img src="R_intro_files/figure-html/unnamed-chunk-79-2.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="advanced-topics.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples repeat and while</span></span>
+<span id="cb314-2"><a href="advanced-topics.html#cb314-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-3"><a href="advanced-topics.html#cb314-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb314-4"><a href="advanced-topics.html#cb314-4" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span> {</span>
+<span id="cb314-5"><a href="advanced-topics.html#cb314-5" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span>              <span class="co"># Add 1 to i</span></span>
+<span id="cb314-6"><a href="advanced-topics.html#cb314-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">3</span>) <span class="cf">break</span>       <span class="co"># Stop if i = 3</span></span>
+<span id="cb314-7"><a href="advanced-topics.html#cb314-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb314-8"><a href="advanced-topics.html#cb314-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-9"><a href="advanced-topics.html#cb314-9" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb314-10"><a href="advanced-topics.html#cb314-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">-</span> <span class="dv">1</span>              <span class="co"># As long as i &gt; 1, subtract 1</span></span>
+<span id="cb314-11"><a href="advanced-topics.html#cb314-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb314-12"><a href="advanced-topics.html#cb314-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-13"><a href="advanced-topics.html#cb314-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Example vector operations</span></span>
+<span id="cb314-14"><a href="advanced-topics.html#cb314-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-15"><a href="advanced-topics.html#cb314-15" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">0</span>)     <span class="co"># Vector of length 5</span></span>
+<span id="cb314-16"><a href="advanced-topics.html#cb314-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb314-17"><a href="advanced-topics.html#cb314-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> x)</span>
+<span id="cb314-18"><a href="advanced-topics.html#cb314-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(i))</span></code></pre></div>
+<pre><code>## [1] 1.732051
+## [1] 2.44949
+## [1] 2
+## [1] 2.828427
+## [1] 0</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="advanced-topics.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x))    <span class="co"># Same using indices</span></span>
+<span id="cb316-2"><a href="advanced-topics.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(x[i]))</span></code></pre></div>
+<pre><code>## [1] 1.732051
+## [1] 2.44949
+## [1] 2
+## [1] 2.828427
+## [1] 0</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="advanced-topics.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(x)){   <span class="co"># For all i [1,2,3,4,5]&#39;</span></span>
+<span id="cb318-2"><a href="advanced-topics.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  x[i] <span class="ot">&lt;-</span> x[i]<span class="sc">^</span><span class="dv">2</span>          <span class="co"># square ith element of x</span></span>
+<span id="cb318-3"><a href="advanced-topics.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x[i])             <span class="co"># and show it on monitor</span></span>
+<span id="cb318-4"><a href="advanced-topics.html#cb318-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 9
+## [1] 36
+## [1] 16
+## [1] 64
+## [1] 0</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="advanced-topics.html#cb320-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">^</span><span class="dv">2</span>                       <span class="co"># BETTER</span></span></code></pre></div>
+<pre><code>## [1]   81 1296  256 4096    0</code></pre>
+<div id="exercise-2" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Exercise<a href="advanced-topics.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Create a vector <span class="math inline">\(\mathbf{x} = (3~5~7~9~11~13~15~17)&#39;\)</span> with a for-loop</p>
+<p>Tip: Use the formula <span class="math inline">\(n\cdot2 + 1\)</span></p></li>
+<li><p>Implement two different methods:</p>
+<ol style="list-style-type: decimal">
+<li><p>Allocate memory: Start with a vector of zeros and the correct length and
+replace its elements iteratively</p></li>
+<li><p>Growing: Start with a <code>NULL</code> object and iteratively add new results</p></li>
+</ol></li>
+</ul>
+<p>Tip: The first method is more efficient, especially for long vectors.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="advanced-topics.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+</div>
+</div>
+<div id="avoiding-loops" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Avoiding loops<a href="advanced-topics.html#avoiding-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>apply()</code> family of functions may be used in many places where in
+traditional languages loops are employed. Using vector based alternatives is
+usually much faster in R.</p>
+<ul>
+<li><p>Matrices and arrays: <code>apply()</code></p></li>
+<li><p>Data frames, lists and vectors: <code>lapply()</code> and <code>sapply()</code></p></li>
+<li><p>Group-wise calculations: <code>tapply()</code></p></li>
+</ul>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="advanced-topics.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example apply()</span></span>
+<span id="cb323-2"><a href="advanced-topics.html#cb323-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-3"><a href="advanced-topics.html#cb323-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb323-4"><a href="advanced-topics.html#cb323-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-5"><a href="advanced-topics.html#cb323-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate row maxima</span></span>
+<span id="cb323-6"><a href="advanced-topics.html#cb323-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">nrow</span>(X))</span>
+<span id="cb323-7"><a href="advanced-topics.html#cb323-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(X)){</span>
+<span id="cb323-8"><a href="advanced-topics.html#cb323-8" aria-hidden="true" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> <span class="fu">max</span>(X[i,])</span>
+<span id="cb323-9"><a href="advanced-topics.html#cb323-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb323-10"><a href="advanced-topics.html#cb323-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-11"><a href="advanced-topics.html#cb323-11" aria-hidden="true" tabindex="-1"></a><span class="co"># or:</span></span>
+<span id="cb323-12"><a href="advanced-topics.html#cb323-12" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, <span class="dv">1</span>, max)  <span class="co"># Maximum for each row</span></span></code></pre></div>
+<pre><code>## [1] 8 9 4</code></pre>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="advanced-topics.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(X, <span class="dv">2</span>, max)  <span class="co"># Maximum for each column</span></span></code></pre></div>
+<pre><code>## [1] 7 9 6 4</code></pre>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="advanced-topics.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example lapply()</span></span>
+<span id="cb327-2"><a href="advanced-topics.html#cb327-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">+</span> 0i)</span>
+<span id="cb327-3"><a href="advanced-topics.html#cb327-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(L, mean)       <span class="co"># Keep list with data type</span></span></code></pre></div>
+<pre><code>## $x
+## [1] 5.5
+## 
+## $y
+## [1] 3+0i</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="advanced-topics.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(L, mean)       <span class="co"># Create vector, same data type</span></span></code></pre></div>
+<pre><code>##      x      y 
+## 5.5+0i 3.0+0i</code></pre>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="advanced-topics.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(iris, class)   <span class="co"># Work column wise on data frame</span></span></code></pre></div>
+<pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
+##    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;    &quot;numeric&quot;     &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="advanced-topics.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example tapply()</span></span>
+<span id="cb333-2"><a href="advanced-topics.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Oats, <span class="at">package =</span> <span class="st">&quot;nlme&quot;</span>)</span>
+<span id="cb333-3"><a href="advanced-topics.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(Oats, <span class="fu">tapply</span>(yield, <span class="fu">list</span>(Block, Variety), mean))</span></code></pre></div>
+<pre><code>##     Golden Rain Marvellous Victory
+## VI        90.25     109.00   89.50
+## V         95.50      85.25   92.00
+## III       86.75     118.50   82.50
+## IV       108.00      95.00   91.50
+## II       113.25     121.25   87.25
+## I        133.25     129.75  143.00</code></pre>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="advanced-topics.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(warpbreaks)</span>
+<span id="cb335-2"><a href="advanced-topics.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(warpbreaks<span class="sc">$</span>breaks, warpbreaks<span class="sc">$</span>tension, sum)</span></code></pre></div>
+<pre><code>##   L   M   H 
+## 655 475 390</code></pre>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="advanced-topics.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(warpbreaks<span class="sc">$</span>breaks, warpbreaks[ , <span class="sc">-</span><span class="dv">1</span>], mean)</span></code></pre></div>
+<pre><code>##     tension
+## wool        L        M        H
+##    A 44.55556 24.00000 24.55556
+##    B 28.22222 28.77778 18.77778</code></pre>
+<div id="exercise-3" class="section level3 hasAnchor" number="11.5.1">
+<h3><span class="header-section-number">11.5.1</span> Exercise<a href="advanced-topics.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Load the iris data set into R using <code>data(iris)</code></p></li>
+<li><p>Write a for-loop to calculate the means for the dependent variables
+(columns 1 to 4)</p></li>
+<li><p>Think of as many vector based alternatives as possible to avoid this loop and
+calculate the column means</p></li>
+</ul>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="advanced-topics.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+</div>
+</div>
+<div id="random-number-generation" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Random number generation<a href="advanced-topics.html#random-number-generation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most distributions that R handles have four functions. There is a root name,
+e.g., the root name for the normal distribution is <code>norm</code>. This root is prefixed
+by one of the letters <code>p</code>, <code>q</code>, <code>d</code>, <code>r</code>.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><code>p</code></td>
+<td>probability: the cumulative distribution function (CDF)</td>
+</tr>
+<tr class="even">
+<td><code>q</code></td>
+<td>quantile: the inverse CDF</td>
+</tr>
+<tr class="odd">
+<td><code>d</code></td>
+<td>density: the probability (density) function (PDF)</td>
+</tr>
+<tr class="even">
+<td><code>r</code></td>
+<td>random: a random variable having the specified distribution</td>
+</tr>
+</tbody>
+</table>
+<p>See <code>?Distributions</code> for a list of distributions or the CRAN task view
+<a href="https://cran.r-project.org/view=Distributions" class="uri">https://cran.r-project.org/view=Distributions</a>. The random number generator in R
+is <em>seeded</em>: Upon restart of R, new random numbers are generated. To replicate
+the results of a simulation, the seed (starting value) can be set explicitly
+with <code>set.seed()</code>.</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="advanced-topics.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples</span></span>
+<span id="cb340-2"><a href="advanced-topics.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)     <span class="co"># Draw from standard normal distribution</span></span></code></pre></div>
+<pre><code>##  [1]  0.2675468  1.2276608  0.6615322 -0.8732706 -0.5384081 -0.7154350 -1.5953854 -0.9341066
+##  [9]  0.9747744  1.4430671</code></pre>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="advanced-topics.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">1</span>)  <span class="co"># Draw from Poisson distribution</span></span></code></pre></div>
+<pre><code>##  [1] 1 1 0 3 0 1 1 1 2 2</code></pre>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="advanced-topics.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sampling with or without replacement from a vector</span></span>
+<span id="cb344-2"><a href="advanced-topics.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##  [1] 3 3 5 4 2 3 4 4 3 5</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="advanced-topics.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
+<span id="cb346-2"><a href="advanced-topics.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1223</span>)  <span class="co"># On each run, random numbers will be identical</span></span>
+<span id="cb346-3"><a href="advanced-topics.html#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 0.6289619 0.1267469 0.3285822</code></pre>
+<div id="exercise-4" class="section level3 hasAnchor" number="11.6.1">
+<h3><span class="header-section-number">11.6.1</span> Exercise<a href="advanced-topics.html#exercise-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Create a data frame with four variables and 20 observations:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(X \sim N(\mu=100, \sigma^2=15^2)\)</span></li>
+<li><span class="math inline">\(Y \sim Bin(n=10, p=0.2)\)</span></li>
+<li><span class="math inline">\(Z \sim Pois(\lambda=1)\)</span></li>
+<li><span class="math inline">\(S = X + Y + Z\)</span></li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="advanced-topics.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add solution to exercise</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="exercises-day-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
