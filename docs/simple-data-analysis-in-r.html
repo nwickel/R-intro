@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Simple data analysis in R | Introduction to R</title>
-  <meta name="description" content="Chapter 8 Simple data analysis in R | Introduction to R" />
+  <title>Chapter 9 Simple data analysis in R | Introduction to R</title>
+  <meta name="description" content="Chapter 9 Simple data analysis in R | Introduction to R" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Simple data analysis in R | Introduction to R" />
+  <meta property="og:title" content="Chapter 9 Simple data analysis in R | Introduction to R" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Simple data analysis in R | Introduction to R" />
+  <meta name="twitter:title" content="Chapter 9 Simple data analysis in R | Introduction to R" />
   
   
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Nora Wickelmaier" />
 
 
-<meta name="date" content="2024-10-11" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,6 +49,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -184,61 +185,83 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="indexing.html"><a href="indexing.html#indexing-vectors"><i class="fa fa-check"></i><b>4.1</b> Indexing vectors</a></li>
 <li class="chapter" data-level="4.2" data-path="indexing.html"><a href="indexing.html#indexing-data-frames"><i class="fa fa-check"></i><b>4.2</b> Indexing data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a>
+<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a></li>
+<li class="chapter" data-level="6" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html"><i class="fa fa-check"></i><b>6</b> Working with data frames</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="calling-functions.html"><a href="calling-functions.html#useful-functions"><i class="fa fa-check"></i><b>5.1</b> Useful functions</a>
+<li class="chapter" data-level="6.1" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#data-simulation"><i class="fa fa-check"></i><b>6.1</b> Data simulation</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#reshaping-data-frames-from-long-to-wide-and-vice-versa"><i class="fa fa-check"></i><b>6.2</b> Reshaping data frames from long to wide and vice versa</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#aggregating-data"><i class="fa fa-check"></i><b>6.3</b> Aggregating data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>7</b> Data input/output</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="calling-functions.html"><a href="calling-functions.html#function-reshape"><i class="fa fa-check"></i><b>5.1.1</b> Function <code>reshape()</code></a></li>
-<li class="chapter" data-level="5.1.2" data-path="calling-functions.html"><a href="calling-functions.html#function-aggregate"><i class="fa fa-check"></i><b>5.1.2</b> Function <code>aggregate()</code></a></li>
+<li class="chapter" data-level="7.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>7.1</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>8</b> Exercises Day 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-6"><i class="fa fa-check"></i>Exercise 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-7"><i class="fa fa-check"></i>Exercise 7</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-9"><i class="fa fa-check"></i>Exercise 9</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>9</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>9.1</b> <span class="math inline">\(t\)</span> tests</a></li>
+<li class="chapter" data-level="9.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>9.2</b> Linear models</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>9.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>10</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>10.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="10.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>10.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="10.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>10.3</b> The Grammar of Graphics <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>10.3.1</b> Some examples</a></li>
+<li class="chapter" data-level="10.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>10.3.2</b> Facets</a></li>
+<li class="chapter" data-level="10.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>10.3.3</b> Geometric objects</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>6</b> Data input/output</a>
+<li class="chapter" data-level="11" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>11</b> Exercises Day 2</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>6.1</b> Integrated data sets in R</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-1-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-2-1"><i class="fa fa-check"></i>Exercise 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>7</b> Exercises Day 1</a></li>
-<li class="chapter" data-level="8" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>8</b> Simple data analysis in R</a>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-3-1"><i class="fa fa-check"></i>Exercise 3</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>8.1</b> t tests</a></li>
-<li class="chapter" data-level="8.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>8.2</b> Linear models</a></li>
-<li class="chapter" data-level="8.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>8.3</b> Analysis of Variance (ANOVA)</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2-1"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>9</b> Plotting</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>9.1</b> Traditional plots</a></li>
-<li class="chapter" data-level="9.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>9.2</b> Lattice plots</a></li>
-<li class="chapter" data-level="9.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>9.3</b> The Grammar of Graphics <code>ggplot2</code></a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>9.3.1</b> Some examples</a></li>
-<li class="chapter" data-level="9.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>9.3.2</b> Facets</a></li>
-<li class="chapter" data-level="9.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>9.3.3</b> Geometric objects</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-4-1"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-5-1"><i class="fa fa-check"></i>Exercise 5</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>12</b> Advanced topics</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>12.1</b> Programming resources</a></li>
+<li class="chapter" data-level="12.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>12.2</b> Writing Functions</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> Implementing a function for a simple two-sample t test</a></li>
+<li class="chapter" data-level="12.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>12.2.2</b> Named arguments and defaults</a></li>
+<li class="chapter" data-level="12.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>12.2.3</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>10</b> Exercises Day 2</a></li>
-<li class="chapter" data-level="11" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>11</b> Advanced topics</a>
+<li class="chapter" data-level="12.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>12.3</b> Conditional execution</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>11.1</b> Programming resources</a></li>
-<li class="chapter" data-level="11.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>11.2</b> Writing Functions</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> Implementing a function for a simple two-sample t test</a></li>
-<li class="chapter" data-level="11.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>11.2.2</b> Named arguments and defaults</a></li>
-<li class="chapter" data-level="11.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>11.2.3</b> Exercise</a></li>
+<li class="chapter" data-level="12.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-8"><i class="fa fa-check"></i><b>12.3.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>11.3</b> Conditional execution</a>
+<li class="chapter" data-level="12.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>12.4</b> Loops</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-10"><i class="fa fa-check"></i><b>12.4.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>11.4</b> Loops</a>
+<li class="chapter" data-level="12.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>12.5</b> Avoiding loops</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-2"><i class="fa fa-check"></i><b>11.4.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-11"><i class="fa fa-check"></i><b>12.5.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>11.5</b> Avoiding loops</a>
+<li class="chapter" data-level="12.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>12.6</b> Random number generation</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-3"><i class="fa fa-check"></i><b>11.5.1</b> Exercise</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>11.6</b> Random number generation</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-4"><i class="fa fa-check"></i><b>11.6.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-12"><i class="fa fa-check"></i><b>12.6.1</b> Exercise</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -262,152 +285,103 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="simple-data-analysis-in-r" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Simple data analysis in R<a href="simple-data-analysis-in-r.html#simple-data-analysis-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="simple-data-analysis-in-r" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Simple data analysis in R<a href="simple-data-analysis-in-r.html#simple-data-analysis-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>R is a free software environment for statistical computing and graphics.
 The stats package, which is automatically loaded when R starts up, contains
 functions for statistical calculations and random number generation. For a
 complete list of functions, see <code>library(help = stats)</code>.</p>
-<div id="t-tests" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> t tests<a href="simple-data-analysis-in-r.html#t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="simple-data-analysis-in-r.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sample t test</span></span>
-<span id="cb234-2"><a href="simple-data-analysis-in-r.html#cb234-2" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">400</span>, <span class="at">sd =</span> <span class="dv">20</span>)</span>
-<span id="cb234-3"><a href="simple-data-analysis-in-r.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rt, <span class="at">mu =</span> <span class="dv">400</span>)</span></code></pre></div>
-<pre><code>## 
-##  One Sample t-test
-## 
-## data:  rt
-## t = -1.701, df = 99, p-value = 0.09208
-## alternative hypothesis: true mean is not equal to 400
-## 95 percent confidence interval:
-##  392.2731 400.5938
-## sample estimates:
-## mean of x 
-##  396.4334</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="simple-data-analysis-in-r.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t test for independent groups</span></span>
-<span id="cb236-2"><a href="simple-data-analysis-in-r.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(weight <span class="sc">~</span> group, PlantGrowth[PlantGrowth<span class="sc">$</span>group <span class="sc">!=</span> <span class="st">&quot;ctrl&quot;</span>, ],</span>
-<span id="cb236-3"><a href="simple-data-analysis-in-r.html#cb236-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## 
-##  Two Sample t-test
-## 
-## data:  weight by group
-## t = -3.0101, df = 18, p-value = 0.007518
-## alternative hypothesis: true difference in means between group trt1 and group trt2 is not equal to 0
-## 95 percent confidence interval:
-##  -1.4687336 -0.2612664
-## sample estimates:
-## mean in group trt1 mean in group trt2 
-##              4.661              5.526</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="simple-data-analysis-in-r.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t test for dependent groups</span></span>
-<span id="cb238-2"><a href="simple-data-analysis-in-r.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(extra <span class="sc">~</span> group, sleep, <span class="at">paired =</span> T)</span></code></pre></div>
-<pre><code>## 
-##  Paired t-test
-## 
-## data:  extra by group
-## t = -4.0621, df = 9, p-value = 0.002833
-## alternative hypothesis: true mean difference is not equal to 0
-## 95 percent confidence interval:
-##  -2.4598858 -0.7001142
-## sample estimates:
-## mean difference 
-##           -1.58</code></pre>
+<div id="t-tests" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> <span class="math inline">\(t\)</span> tests<a href="simple-data-analysis-in-r.html#t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb194-1"><a href="simple-data-analysis-in-r.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sample t test</span></span>
+<span id="cb194-2"><a href="simple-data-analysis-in-r.html#cb194-2" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">400</span>, <span class="at">sd =</span> <span class="dv">20</span>)</span>
+<span id="cb194-3"><a href="simple-data-analysis-in-r.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(rt, <span class="at">mu =</span> <span class="dv">400</span>)</span>
+<span id="cb194-4"><a href="simple-data-analysis-in-r.html#cb194-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-5"><a href="simple-data-analysis-in-r.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t test for independent groups</span></span>
+<span id="cb194-6"><a href="simple-data-analysis-in-r.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(weight <span class="sc">~</span> group, PlantGrowth[PlantGrowth<span class="sc">$</span>group <span class="sc">!=</span> <span class="st">&quot;ctrl&quot;</span>, ],</span>
+<span id="cb194-7"><a href="simple-data-analysis-in-r.html#cb194-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb194-8"><a href="simple-data-analysis-in-r.html#cb194-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-9"><a href="simple-data-analysis-in-r.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-sample t test for dependent groups</span></span>
+<span id="cb194-10"><a href="simple-data-analysis-in-r.html#cb194-10" aria-hidden="true" tabindex="-1"></a>sleep2 <span class="ot">&lt;-</span> <span class="fu">reshape</span>(sleep, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">idvar =</span> <span class="st">&quot;ID&quot;</span>, <span class="at">timevar =</span> <span class="st">&quot;group&quot;</span>)</span>
+<span id="cb194-11"><a href="simple-data-analysis-in-r.html#cb194-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-12"><a href="simple-data-analysis-in-r.html#cb194-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Traditional interface</span></span>
+<span id="cb194-13"><a href="simple-data-analysis-in-r.html#cb194-13" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sleep2<span class="sc">$</span>extra<span class="fl">.1</span>, sleep2<span class="sc">$</span>extra<span class="fl">.2</span>, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb194-14"><a href="simple-data-analysis-in-r.html#cb194-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-15"><a href="simple-data-analysis-in-r.html#cb194-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Formula interface</span></span>
+<span id="cb194-16"><a href="simple-data-analysis-in-r.html#cb194-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">Pair</span>(extra<span class="fl">.1</span>, extra<span class="fl">.2</span>) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> sleep2)</span></code></pre></div>
+</details>
 </div>
-<div id="linear-models" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Linear models<a href="simple-data-analysis-in-r.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="linear-models" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Linear models<a href="simple-data-analysis-in-r.html#linear-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let us first fit a simple linear regression.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="simple-data-analysis-in-r.html#cb240-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb240-2"><a href="simple-data-analysis-in-r.html#cb240-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">65</span>, <span class="dv">54</span>, <span class="dv">34</span>, <span class="dv">56</span>, <span class="dv">72</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">42</span>, <span class="dv">18</span>, <span class="dv">39</span>, <span class="dv">37</span>),</span>
-<span id="cb240-3"><a href="simple-data-analysis-in-r.html#cb240-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">202</span>, <span class="dv">186</span>, <span class="dv">187</span>, <span class="dv">180</span>, <span class="dv">156</span>, <span class="dv">169</span>, <span class="dv">174</span>, <span class="dv">172</span>, <span class="dv">153</span>, <span class="dv">199</span>, <span class="dv">193</span>, <span class="dv">174</span>, <span class="dv">198</span>, <span class="dv">183</span>, <span class="dv">178</span>)</span>
-<span id="cb240-4"><a href="simple-data-analysis-in-r.html#cb240-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb240-5"><a href="simple-data-analysis-in-r.html#cb240-5" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, dat)</span>
-<span id="cb240-6"><a href="simple-data-analysis-in-r.html#cb240-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, dat)</span>
-<span id="cb240-7"><a href="simple-data-analysis-in-r.html#cb240-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm1)</span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb195-1"><a href="simple-data-analysis-in-r.html#cb195-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb195-2"><a href="simple-data-analysis-in-r.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">25</span>, <span class="dv">35</span>, <span class="dv">65</span>, <span class="dv">54</span>, <span class="dv">34</span>, <span class="dv">56</span>, <span class="dv">72</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">42</span>, <span class="dv">18</span>, <span class="dv">39</span>, <span class="dv">37</span>),</span>
+<span id="cb195-3"><a href="simple-data-analysis-in-r.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">202</span>, <span class="dv">186</span>, <span class="dv">187</span>, <span class="dv">180</span>, <span class="dv">156</span>, <span class="dv">169</span>, <span class="dv">174</span>, <span class="dv">172</span>, <span class="dv">153</span>, <span class="dv">199</span>, <span class="dv">193</span>, <span class="dv">174</span>, <span class="dv">198</span>, <span class="dv">183</span>, <span class="dv">178</span>)</span>
+<span id="cb195-4"><a href="simple-data-analysis-in-r.html#cb195-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb195-5"><a href="simple-data-analysis-in-r.html#cb195-5" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, dat)</span>
+<span id="cb195-6"><a href="simple-data-analysis-in-r.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, dat)</span>
+<span id="cb195-7"><a href="simple-data-analysis-in-r.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm1)</span></code></pre></div>
+</details>
 <p><img src="R_intro_files/figure-html/unnamed-chunk-28-1.png" width="384" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="simple-data-analysis-in-r.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lm1)</span></code></pre></div>
-<pre><code>## (Intercept)           x 
-## 210.0484584  -0.7977266</code></pre>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="simple-data-analysis-in-r.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm1)</span></code></pre></div>
-<pre><code>##        1        2        3        4        5        6        7        8        9       10 
-## 195.6894 191.7007 190.1053 182.1280 158.1962 166.9712 182.9258 165.3758 152.6121 194.8917 
-##       11       12       13       14       15 
-## 191.7007 176.5439 195.6894 178.9371 180.5326</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="simple-data-analysis-in-r.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">resid</span>(lm1)</span></code></pre></div>
-<pre><code>##          1          2          3          4          5          6          7          8 
-##  6.3106197 -5.7007474 -3.1052943 -2.1280287 -2.1962317  2.0287761 -8.9257552  6.6242292 
-##          9         10         11         12         13         14         15 
-##  0.3878543  4.1083463  1.2992526 -2.5439427  2.3106197  4.0628776 -2.5325755</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="simple-data-analysis-in-r.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lm1)</span></code></pre></div>
-<pre><code>##  [1] &quot;coefficients&quot;  &quot;residuals&quot;     &quot;effects&quot;       &quot;rank&quot;          &quot;fitted.values&quot;
-##  [6] &quot;assign&quot;        &quot;qr&quot;            &quot;df.residual&quot;   &quot;xlevels&quot;       &quot;call&quot;         
-## [11] &quot;terms&quot;         &quot;model&quot;</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="simple-data-analysis-in-r.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = y ~ x, data = dat)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -8.9258 -2.5383  0.3879  3.1867  6.6242 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 210.04846    2.86694   73.27  &lt; 2e-16 ***
-## x            -0.79773    0.06996  -11.40 3.85e-08 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 4.578 on 13 degrees of freedom
-## Multiple R-squared:  0.9091, Adjusted R-squared:  0.9021 
-## F-statistic:   130 on 1 and 13 DF,  p-value: 3.848e-08</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="simple-data-analysis-in-r.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model diagnostics</span></span>
-<span id="cb251-2"><a href="simple-data-analysis-in-r.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb251-3"><a href="simple-data-analysis-in-r.html#cb251-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1)</span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb196-1"><a href="simple-data-analysis-in-r.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(lm1)</span>
+<span id="cb196-2"><a href="simple-data-analysis-in-r.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm1)</span>
+<span id="cb196-3"><a href="simple-data-analysis-in-r.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">resid</span>(lm1)</span>
+<span id="cb196-4"><a href="simple-data-analysis-in-r.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lm1)</span>
+<span id="cb196-5"><a href="simple-data-analysis-in-r.html#cb196-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb197-1"><a href="simple-data-analysis-in-r.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model diagnostics</span></span>
+<span id="cb197-2"><a href="simple-data-analysis-in-r.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb197-3"><a href="simple-data-analysis-in-r.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm1)</span></code></pre></div>
+</details>
 <p><img src="R_intro_files/figure-html/unnamed-chunk-29-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
-<div id="analysis-of-variance-anova" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Analysis of Variance (ANOVA)<a href="simple-data-analysis-in-r.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="analysis-of-variance-anova" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Analysis of Variance (ANOVA)<a href="simple-data-analysis-in-r.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An ANOVA is just a special case of a regression where all predictors are
 categorical. Using the function <code>aov()</code> instead of <code>lm()</code> gives us
 different results for the extractor functions.</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="simple-data-analysis-in-r.html#cb252-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> <span class="st">&quot;</span></span>
-<span id="cb252-2"><a href="simple-data-analysis-in-r.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="st">  id group   score</span></span>
-<span id="cb252-3"><a href="simple-data-analysis-in-r.html#cb252-3" aria-hidden="true" tabindex="-1"></a><span class="st">   1 control  8</span></span>
-<span id="cb252-4"><a href="simple-data-analysis-in-r.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="st">   2 control 12</span></span>
-<span id="cb252-5"><a href="simple-data-analysis-in-r.html#cb252-5" aria-hidden="true" tabindex="-1"></a><span class="st">   3 control  7</span></span>
-<span id="cb252-6"><a href="simple-data-analysis-in-r.html#cb252-6" aria-hidden="true" tabindex="-1"></a><span class="st">   4 control 10</span></span>
-<span id="cb252-7"><a href="simple-data-analysis-in-r.html#cb252-7" aria-hidden="true" tabindex="-1"></a><span class="st">   5 control 11</span></span>
-<span id="cb252-8"><a href="simple-data-analysis-in-r.html#cb252-8" aria-hidden="true" tabindex="-1"></a><span class="st">   6 control 12</span></span>
-<span id="cb252-9"><a href="simple-data-analysis-in-r.html#cb252-9" aria-hidden="true" tabindex="-1"></a><span class="st">   7 pro      7</span></span>
-<span id="cb252-10"><a href="simple-data-analysis-in-r.html#cb252-10" aria-hidden="true" tabindex="-1"></a><span class="st">   8 pro      9</span></span>
-<span id="cb252-11"><a href="simple-data-analysis-in-r.html#cb252-11" aria-hidden="true" tabindex="-1"></a><span class="st">   9 pro     15</span></span>
-<span id="cb252-12"><a href="simple-data-analysis-in-r.html#cb252-12" aria-hidden="true" tabindex="-1"></a><span class="st">  10 pro     13</span></span>
-<span id="cb252-13"><a href="simple-data-analysis-in-r.html#cb252-13" aria-hidden="true" tabindex="-1"></a><span class="st">  11 pro     11</span></span>
-<span id="cb252-14"><a href="simple-data-analysis-in-r.html#cb252-14" aria-hidden="true" tabindex="-1"></a><span class="st">  12 pro     16</span></span>
-<span id="cb252-15"><a href="simple-data-analysis-in-r.html#cb252-15" aria-hidden="true" tabindex="-1"></a><span class="st">  13 pro     12</span></span>
-<span id="cb252-16"><a href="simple-data-analysis-in-r.html#cb252-16" aria-hidden="true" tabindex="-1"></a><span class="st">  14 pro      8</span></span>
-<span id="cb252-17"><a href="simple-data-analysis-in-r.html#cb252-17" aria-hidden="true" tabindex="-1"></a><span class="st">  15 pro     13</span></span>
-<span id="cb252-18"><a href="simple-data-analysis-in-r.html#cb252-18" aria-hidden="true" tabindex="-1"></a><span class="st">  16 pro     16</span></span>
-<span id="cb252-19"><a href="simple-data-analysis-in-r.html#cb252-19" aria-hidden="true" tabindex="-1"></a><span class="st">  17 contra   4</span></span>
-<span id="cb252-20"><a href="simple-data-analysis-in-r.html#cb252-20" aria-hidden="true" tabindex="-1"></a><span class="st">  18 contra   5</span></span>
-<span id="cb252-21"><a href="simple-data-analysis-in-r.html#cb252-21" aria-hidden="true" tabindex="-1"></a><span class="st">  19 contra   6</span></span>
-<span id="cb252-22"><a href="simple-data-analysis-in-r.html#cb252-22" aria-hidden="true" tabindex="-1"></a><span class="st">  20 contra   3</span></span>
-<span id="cb252-23"><a href="simple-data-analysis-in-r.html#cb252-23" aria-hidden="true" tabindex="-1"></a><span class="st">  21 contra   8</span></span>
-<span id="cb252-24"><a href="simple-data-analysis-in-r.html#cb252-24" aria-hidden="true" tabindex="-1"></a><span class="st">  22 contra  10</span></span>
-<span id="cb252-25"><a href="simple-data-analysis-in-r.html#cb252-25" aria-hidden="true" tabindex="-1"></a><span class="st">  23 contra   3</span></span>
-<span id="cb252-26"><a href="simple-data-analysis-in-r.html#cb252-26" aria-hidden="true" tabindex="-1"></a><span class="st">  24 contra   9</span></span>
-<span id="cb252-27"><a href="simple-data-analysis-in-r.html#cb252-27" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb252-28"><a href="simple-data-analysis-in-r.html#cb252-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb252-29"><a href="simple-data-analysis-in-r.html#cb252-29" aria-hidden="true" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(score <span class="sc">~</span> group, <span class="at">data =</span> dat)</span>
-<span id="cb252-30"><a href="simple-data-analysis-in-r.html#cb252-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov1)</span></code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-## group        2    162      81   10.12 0.000834 ***
-## Residuals   21    168       8                     
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb198-1"><a href="simple-data-analysis-in-r.html#cb198-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> <span class="st">&quot;</span></span>
+<span id="cb198-2"><a href="simple-data-analysis-in-r.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="st">  id group   score</span></span>
+<span id="cb198-3"><a href="simple-data-analysis-in-r.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="st">   1 control  8</span></span>
+<span id="cb198-4"><a href="simple-data-analysis-in-r.html#cb198-4" aria-hidden="true" tabindex="-1"></a><span class="st">   2 control 12</span></span>
+<span id="cb198-5"><a href="simple-data-analysis-in-r.html#cb198-5" aria-hidden="true" tabindex="-1"></a><span class="st">   3 control  7</span></span>
+<span id="cb198-6"><a href="simple-data-analysis-in-r.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="st">   4 control 10</span></span>
+<span id="cb198-7"><a href="simple-data-analysis-in-r.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="st">   5 control 11</span></span>
+<span id="cb198-8"><a href="simple-data-analysis-in-r.html#cb198-8" aria-hidden="true" tabindex="-1"></a><span class="st">   6 control 12</span></span>
+<span id="cb198-9"><a href="simple-data-analysis-in-r.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="st">   7 pro      7</span></span>
+<span id="cb198-10"><a href="simple-data-analysis-in-r.html#cb198-10" aria-hidden="true" tabindex="-1"></a><span class="st">   8 pro      9</span></span>
+<span id="cb198-11"><a href="simple-data-analysis-in-r.html#cb198-11" aria-hidden="true" tabindex="-1"></a><span class="st">   9 pro     15</span></span>
+<span id="cb198-12"><a href="simple-data-analysis-in-r.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="st">  10 pro     13</span></span>
+<span id="cb198-13"><a href="simple-data-analysis-in-r.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="st">  11 pro     11</span></span>
+<span id="cb198-14"><a href="simple-data-analysis-in-r.html#cb198-14" aria-hidden="true" tabindex="-1"></a><span class="st">  12 pro     16</span></span>
+<span id="cb198-15"><a href="simple-data-analysis-in-r.html#cb198-15" aria-hidden="true" tabindex="-1"></a><span class="st">  13 pro     12</span></span>
+<span id="cb198-16"><a href="simple-data-analysis-in-r.html#cb198-16" aria-hidden="true" tabindex="-1"></a><span class="st">  14 pro      8</span></span>
+<span id="cb198-17"><a href="simple-data-analysis-in-r.html#cb198-17" aria-hidden="true" tabindex="-1"></a><span class="st">  15 pro     13</span></span>
+<span id="cb198-18"><a href="simple-data-analysis-in-r.html#cb198-18" aria-hidden="true" tabindex="-1"></a><span class="st">  16 pro     16</span></span>
+<span id="cb198-19"><a href="simple-data-analysis-in-r.html#cb198-19" aria-hidden="true" tabindex="-1"></a><span class="st">  17 contra   4</span></span>
+<span id="cb198-20"><a href="simple-data-analysis-in-r.html#cb198-20" aria-hidden="true" tabindex="-1"></a><span class="st">  18 contra   5</span></span>
+<span id="cb198-21"><a href="simple-data-analysis-in-r.html#cb198-21" aria-hidden="true" tabindex="-1"></a><span class="st">  19 contra   6</span></span>
+<span id="cb198-22"><a href="simple-data-analysis-in-r.html#cb198-22" aria-hidden="true" tabindex="-1"></a><span class="st">  20 contra   3</span></span>
+<span id="cb198-23"><a href="simple-data-analysis-in-r.html#cb198-23" aria-hidden="true" tabindex="-1"></a><span class="st">  21 contra   8</span></span>
+<span id="cb198-24"><a href="simple-data-analysis-in-r.html#cb198-24" aria-hidden="true" tabindex="-1"></a><span class="st">  22 contra  10</span></span>
+<span id="cb198-25"><a href="simple-data-analysis-in-r.html#cb198-25" aria-hidden="true" tabindex="-1"></a><span class="st">  23 contra   3</span></span>
+<span id="cb198-26"><a href="simple-data-analysis-in-r.html#cb198-26" aria-hidden="true" tabindex="-1"></a><span class="st">  24 contra   9</span></span>
+<span id="cb198-27"><a href="simple-data-analysis-in-r.html#cb198-27" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb198-28"><a href="simple-data-analysis-in-r.html#cb198-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-29"><a href="simple-data-analysis-in-r.html#cb198-29" aria-hidden="true" tabindex="-1"></a>aov1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(score <span class="sc">~</span> group, <span class="at">data =</span> dat)</span>
+<span id="cb198-30"><a href="simple-data-analysis-in-r.html#cb198-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov1)</span></code></pre></div>
+</details>
 <p>We can again look at the model diagnostics.</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="simple-data-analysis-in-r.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model diagnostics</span></span>
-<span id="cb254-2"><a href="simple-data-analysis-in-r.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb254-3"><a href="simple-data-analysis-in-r.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov1)</span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb199-1"><a href="simple-data-analysis-in-r.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model diagnostics</span></span>
+<span id="cb199-2"><a href="simple-data-analysis-in-r.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb199-3"><a href="simple-data-analysis-in-r.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov1)</span></code></pre></div>
+</details>
 <p><img src="R_intro_files/figure-html/unnamed-chunk-30-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 </div>

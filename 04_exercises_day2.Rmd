@@ -2,132 +2,140 @@
 
 ```{r include = FALSE}
 # Hide/show R chunks
-#knitr::opts_chunk$set(echo = FALSE, results = "hide", fig.show = "hide", warning = FALSE, message = FALSE)
-#setwd("C:/Users/nwickelmaier/Nextcloud/Documents/teaching/iwm/R_intro/exercises/")
-rm(list=ls())
+knitr::opts_chunk$set(class.source = "fold-hide", results = "hide")
 ```
 
 Write an executable and commented R script.
 
-1. Load the built-in data set \verb+cars+. Find out about the data with
-   `?cars`. Create a scatter plot of "Distance" as a function of "Speed."
-   Adjust the size of the margins (`mai`) and the spacing between labels
-   and axes (`mgp`). Set `type = "n"` and `axes = FALSE` and create the
-   plot from scratch, step by step adding `points()`, `axis()`, `legend()`,
-   etc.
+## Exercise 1 {-}
 
-   Export the plot to a png or pdf file. All labels should be readable, so
-   reduce `width` and `height` of the output device.
+Load the built-in data set `cars`. Find out about the data with
+`?cars`. Create a scatter plot of "Distance" as a function of "Speed."
+Adjust the size of the margins (`mai`) and the spacing between labels
+and axes (`mgp`). Set `type = "n"` and `axes = FALSE` and create the
+plot from scratch, step by step adding `points()`, `axis()`, `legend()`,
+etc.
 
-   ```{r, results = "hide", fig.height = 3.375, fig.width = 3.375}
-   par(mai = c(.6,.6,.15,.1), mgp = c(2,.7,0), tck = -.015)
-   plot(cars, type = "n", axes = FALSE, xlim = c(0, 30),
-     xlab = "Speed (mph)", ylab = "Stopping distance (ft)")
-   points(cars, pch = 16)
-   axis(side = 1)
-   axis(side = 2)
-   abline(lm(dist ~ speed, cars), lwd = 2)
-   box(bty = "L")
-   legend(0, 120, expression(hat(y) == hat(beta)[0] + hat(beta)[1] * Speed),
-     lty = 1, lwd = 2, bty = "n")
-   ```
+Export the plot to a png or pdf file. All labels should be readable, so
+reduce `width` and `height` of the output device.
 
-2. Load `Vocabulary.txt` into R again. Make a scatter plot of "score in
-   vocabulary test" as a function of "years of education." Set `pch = "."`
-   and use the `jitter()` function to actually see the structure in the
-   data.
+```{r, results = "hide", fig.height = 3.375, fig.width = 3.375}
+par(mai = c(.6,.6,.15,.1), mgp = c(2,.7,0), tck = -.015)
+plot(cars, type = "n", axes = FALSE, xlim = c(0, 30),
+  xlab = "Speed (mph)", ylab = "Stopping distance (ft)")
+points(cars, pch = 16)
+axis(side = 1)
+axis(side = 2)
+abline(lm(dist ~ speed, cars), lwd = 2)
+box(bty = "L")
+legend(0, 120, expression(hat(y) == hat(beta)[0] + hat(beta)[1] * Speed),
+  lty = 1, lwd = 2, bty = "n")
+```
 
-   Add the mean vocabulary score for each year of education to your plot.
-   Use `aggregate()` or `tapply()` to get these means. Add the standard
-   errors (use `arrows()`).
+## Exercise 2 {-}
 
-   Export the plot to a file. Play with the graphical parameters. The goal
-   is a publication-ready figure.
+Load `Vocabulary.txt` into R again. Make a scatter plot of "score in
+vocabulary test" as a function of "years of education." Set `pch = "."`
+and use the `jitter()` function to actually see the structure in the
+data.
 
-   ```{r, results = "hide", fig.height = 3.375, fig.width = 3.375}
-   voc <- read.table("data/Vocabulary.txt", header = TRUE, stringsAsFactors = TRUE)
+Add the mean vocabulary score for each year of education to your plot.
+Use `aggregate()` or `tapply()` to get these means. Add the standard
+errors (use `arrows()`).
+
+Export the plot to a file. Play with the graphical parameters. The goal
+is a publication-ready figure.
+
+```{r, results = "hide", fig.height = 3.375, fig.width = 3.375}
+voc <- read.table("data/Vocabulary.txt", header = TRUE, stringsAsFactors = TRUE)
+
+# calculate standard errors
+vocm    <- aggregate(vocabulary ~ education, voc, mean)
+vocm$sd <- aggregate(vocabulary ~ education, voc, sd)[,2]
+vocm$n  <- aggregate(vocabulary ~ education, voc, length)[,2]
+vocm$se <- vocm$sd / sqrt(vocm$n)
+
+par(mai = c(.6,.6,.15,.1), mgp = c(2,.7,0), tck = -.015)
+plot(jitter(vocabulary, 2) ~ jitter(education, 2), voc, pch = ".", 
+  cex = .8, xlab = "Education (in years)", ylab = "Vocabulary (words correct)",
+  col = "darkgrey")
+points(vocabulary ~ I(0:20), vocm, pch = 16)
+with(vocm, arrows(0:20, vocabulary + se, 0:20, vocabulary - se, angle = 90,
+  length = .05, code = 3))
+```
+
+### Solution with `ggplot2` {-}
+
+```{r, fig.width = 3.375, fig.height = 3.375}
+library(ggplot2)
+
+ggplot(data = vocm, mapping = aes(x = education, y = vocabulary)) +
+  geom_jitter(data = voc, mapping = aes(x = education, y = vocabulary), pch=".",
+              color = "gray") +
+  labs(x = "Education (in years)", y = "Vocabulary (words correct)") +
+  geom_point() + #geom_line() +
+  geom_errorbar(aes(ymin = vocabulary - se, ymax = vocabulary + se), width = 0.5) +
+  theme_bw()
+```
+
+## Exercise 3 {-}
+
+Find out if there are sex differences in the relationship of "years of
+education" and "score in vocabulary test," and if these differences
+depend on the year the test was taken in. Load the `lattice` package and
+use the `xyplot()` function. You can also use functions from the
+`ggplot2` package. Hint: Make one scatter plot for each year
+of education with one regression line for men and one for women.
+
+```{r, fig.height = 6.75, fig.width = 6.75}
+library(lattice)
+
+voc$year <- factor(voc$year)
+
+xyplot(jitter(vocabulary, 2) ~ jitter(education, 2) | year, data = voc,
+  groups = sex, type = c("p", "r"), col = c("darkgrey","black"), pch = ".", lwd = 2,
+  xlab = "Education (in years)", ylab = "Vocabulary (words correct)", lty = 1:2,
+  scales = list(tck = .5, cex = .7),
+  par.strip.text = list(cex = .7),
+  par.settings = list(strip.background = list(col = "lightgrey")),
+  key = list(lines = list(lwd = 2, col = c("darkgrey", "black"), lty = 1:2),
+    text = list(levels(voc$sex)), columns = 2)
+)
+```
+
+### Solution with `ggplot2` {-}
    
-   # calculate standard errors
-   vocm    <- aggregate(vocabulary ~ education, voc, mean)
-   vocm$sd <- aggregate(vocabulary ~ education, voc, sd)[,2]
-   vocm$n  <- aggregate(vocabulary ~ education, voc, length)[,2]
-   vocm$se <- vocm$sd / sqrt(vocm$n)
-   
-   par(mai = c(.6,.6,.15,.1), mgp = c(2,.7,0), tck = -.015)
-   plot(jitter(vocabulary, 2) ~ jitter(education, 2), voc, pch = ".", 
-     cex = .8, xlab = "Education (in years)", ylab = "Vocabulary (words correct)",
-     col = "darkgrey")
-   points(vocabulary ~ I(0:20), vocm, pch = 16)
-   with(vocm, arrows(0:20, vocabulary + se, 0:20, vocabulary - se, angle = 90,
-     length = .05, code = 3))
-   ```
+```{r, message = FALSE, fig.width = 7, fig.height = 6.75}
+ggplot(data = voc, mapping = aes(x = education, y = vocabulary, color = sex)) +
+  geom_jitter(pch=".") +
+  labs(x = "Education (in years)", y = "Vocabulary (words correct)") +
+  stat_smooth(method = "lm", se = FALSE) +
+  theme_bw() +
+  facet_wrap(vars(year))
+```
 
-   ```{r, fig.width = 3.375, fig.height = 3.375}
-   # Solution with ggplot()
-   library(ggplot2)
+## Exercise 4 {-}
 
-   ggplot(data = vocm, mapping = aes(x = education, y = vocabulary)) +
-     geom_jitter(data = voc, mapping = aes(x = education, y = vocabulary), pch=".",
-                 color = "gray") +
-     labs(x = "Education (in years)", y = "Vocabulary (words correct)") +
-     geom_point() + #geom_line() +
-     geom_errorbar(aes(ymin = vocabulary - se, ymax = vocabulary + se), width = 0.5) +
-     theme_bw()
-   ```
-
-3. Find out if there are sex differences in the relationship of "years of
-   education" and "score in vocabulary test," and if these differences
-   depend on the year the test was taken in. Load the `lattice` package and
-   use the `xyplot()` function. You can also use functions from the
-   `ggplot2` package. Hint: Make one scatter plot for each year
-   of education with one regression line for men and one for women.
-
-   ```{r, fig.height = 6.75, fig.width = 6.75}
-   library(lattice)
-
-   voc$year <- factor(voc$year)
-
-   xyplot(jitter(vocabulary, 2) ~ jitter(education, 2) | year, data = voc,
-     groups = sex, type = c("p", "r"), col = c("darkgrey","black"), pch = ".", lwd = 2,
-     xlab = "Education (in years)", ylab = "Vocabulary (words correct)", lty = 1:2,
-     scales = list(tck = .5, cex = .7),
-     par.strip.text = list(cex = .7),
-     par.settings = list(strip.background = list(col = "lightgrey")),
-     key = list(lines = list(lwd = 2, col = c("darkgrey", "black"), lty = 1:2),
-       text = list(levels(voc$sex)), columns = 2)
-   )
-   ```
-   
-   ```{r, message = FALSE, fig.width = 7, fig.height = 6.75}
-   # Solution with ggplot()
-   ggplot(data = voc, mapping = aes(x = education, y = vocabulary, color = sex)) +
-     geom_jitter(pch=".") +
-     labs(x = "Education (in years)", y = "Vocabulary (words correct)") +
-     stat_smooth(method = "lm", se = FALSE) +
-     theme_bw() +
-     facet_wrap(vars(year))
-   ```
-
-4. Subjects are supposed to solve two mental exercises. Time needed will be
-   measured in minutes. Between the two exercises subjects get a training
-   which is supposed to enhance speed in solving these kind of mental
-   exercises. Ten subjects are tested. The following table shows the
-   solving times:
+Subjects are supposed to solve two mental exercises. Time needed will be
+measured in minutes. Between the two exercises subjects get a training
+which is supposed to enhance speed in solving these kind of mental
+exercises. Ten subjects are tested. The following table shows the
+solving times:
 
 
-   ```{r}
-   dat <- data.frame(
-     Vp = 1:10,
-      A = c(5.68, 4.52, 5.56, 5.17, 4.67, 5.97, 5.65, 6.04, 4.94, 5.17),
-      B = c(5.45, 4.37, 5.31, 5.19, 4.18, 5.44, 5.19, 5.84, 4.95, 5.04)
-   )
-   ```
+```{r}
+dat <- data.frame(
+  Vp = 1:10,
+   A = c(5.68, 4.52, 5.56, 5.17, 4.67, 5.97, 5.65, 6.04, 4.94, 5.17),
+   B = c(5.45, 4.37, 5.31, 5.19, 4.18, 5.44, 5.19, 5.84, 4.95, 5.04)
+)
+```
 
 
-   ```{r, echo = FALSE, tab.align = "center", results = "show"}
-   knitr::kable(dat, col.names = c("Subj", "Exercise A", "Exercise B"), align = "c")
-   ```
-   a. Create a data frame that contains the depicted variables. Use the
+```{r, echo = FALSE, tab.align = "center", results = "show"}
+knitr::kable(dat, col.names = c("Subj", "Exercise A", "Exercise B"), align = "c")
+```
+a. Create a data frame that contains the depicted variables. Use the
    function `reshape()` to transform the data frame to the "long"
    format.
    
@@ -139,7 +147,7 @@ Write an executable and commented R script.
    rownames(dat2) <- NULL
    ```
 
-   b. Plot the solving time for each subject depending on the exercise (one
+b. Plot the solving time for each subject depending on the exercise (one
    panel per person). Use `xyplot()` from the `lattice` package. Export
    your graphic as a png or pdf file.
 
@@ -148,48 +156,50 @@ Write an executable and commented R script.
                 pch = 16, xlab = "Exercise", ylab = "Solving time (in min)")
    ```
    
-   c. Check if the solving times differ for both exercises using a Wilcoxon
+c. Check if the solving times differ for both exercises using a Wilcoxon
    test ($\alpha = 0.05$).
    
    ```{r}
    with(dat2, wilcox.test(Lzeit[Aufg == "A"], Lzeit[Aufg == "B"], paired = TRUE))
    ```
    
-   d. Check the same hypothesis using a $t$ test ($\alpha = 0.05$).
+d. Check the same hypothesis using a $t$ test ($\alpha = 0.05$).
    
    ```{r}
    with(dat2, t.test(Lzeit[Aufg == "A"], Lzeit[Aufg == "B"], paired = TRUE))
    ```
    
-5. For $n = 12$ subjects, intelligence (variable $X$) and memory
-   performance (variable $Y$) have been measured. The following value pairs
-   were obtained:
-   
-   ```{r}
-   dat <- data.frame(
-      Vp = 1:12,
-     int = c(106, 92, 90, 118, 87, 123, 118, 115, 111, 95, 110, 108),
-     mem = c(94, 100, 84, 126, 95, 93, 120, 103, 100, 102, 120, 125)
-   )
-   ```
-   
-   
-   ```{r, echo = FALSE, tab.align = "center", results = "show"}
-   tab <- t(dat[, -1])
-   rownames(tab) <- c("$X$", "$Y$")
-   knitr::kable(tab, digits = 0, align = "c")
-   ```
+## Exercise 5 {-}
 
-   a. Create a data frame for these data.
+For $n = 12$ subjects, intelligence (variable $X$) and memory
+performance (variable $Y$) have been measured. The following value pairs
+were obtained:
 
-   b. Check the normality assumption separately for each variable using
+```{r}
+dat <- data.frame(
+   Vp = 1:12,
+  int = c(106, 92, 90, 118, 87, 123, 118, 115, 111, 95, 110, 108),
+  mem = c(94, 100, 84, 126, 95, 93, 120, 103, 100, 102, 120, 125)
+)
+```
+
+
+```{r, echo = FALSE, tab.align = "center", results = "show"}
+tab <- t(dat[, -1])
+rownames(tab) <- c("$X$", "$Y$")
+knitr::kable(tab, digits = 0, align = "c")
+```
+
+a. Create a data frame for these data.
+
+b. Check the normality assumption separately for each variable using
    quantile-quantile plots. Interpret the results.
 
-   c. Plot memory performance depending on intelligence in a scatter plot
+c. Plot memory performance depending on intelligence in a scatter plot
    and add a regression line. Export your graphic as a png or pdf
    file.
 
-   d. Check the hypothesis $\rho_{XY} = 0$ (if $X$ and $Y$ are
+d. Check the hypothesis $\rho_{XY} = 0$ (if $X$ and $Y$ are
    uncorrelated) using an appropriate statistical test ($\alpha = 0.05$).
 
    ```{r qq_iqmemory, fig.width = 6, fig.height = 3.375}

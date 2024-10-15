@@ -1,5 +1,6 @@
 ```{r, include = FALSE}
-knitr::opts_chunk$set(fig.align = "center", fig.show = "")
+knitr::opts_chunk$set(fig.align = "center", fig.show = TRUE,
+                      class.source = "fold-show")
 ```
 
 # Simple data analysis in R
@@ -9,7 +10,7 @@ The stats package, which is automatically loaded when R starts up, contains
 functions for statistical calculations and random number generation. For a
 complete list of functions, see `library(help = stats)`.
 
-## t tests
+## $t$ tests
 
 ```{r}
 # One-sample t test
@@ -21,7 +22,13 @@ t.test(weight ~ group, PlantGrowth[PlantGrowth$group != "ctrl", ],
        var.equal = TRUE)
 
 # Two-sample t test for dependent groups
-t.test(extra ~ group, sleep, paired = T)
+sleep2 <- reshape(sleep, direction = "wide", idvar = "ID", timevar = "group")
+
+## Traditional interface
+t.test(sleep2$extra.1, sleep2$extra.2, paired = TRUE)
+
+## Formula interface
+t.test(Pair(extra.1, extra.2) ~ 1, data = sleep2)
 ```
 
 ## Linear models
@@ -324,9 +331,9 @@ ggplot(data = mpg) +
 
 * A `geom` is the geometrical object that a plot uses to represent data
 * For example bar charts, box plots, line charts, ...
-* Every `geom` function takes a `mapping` argument `ggplot2` provides over
-  40 `geoms`, and extension packages provide even more (see
-  https://exts.ggplot2.tidyverse.org/gallery/ for a sampling)
+* Every `geom` function takes a `mapping` argument.
+* `ggplot2` provides over 40 `geoms`, and extension packages provide even more
+  (see https://exts.ggplot2.tidyverse.org/gallery/ for a sampling)
 
 ```{r, fig.dim = c(4, 3)}
 # scatter plot

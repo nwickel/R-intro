@@ -235,11 +235,12 @@ Another way to call functions is to use pipes. Pipes are sometimes useful
 to not store intermediate objects. Sometimes they are better "readable".
 
 ```{r, fig.show = "hide"}
-dat |> plot(weight ~ height, data = _)
+dat |> subset(weight > 60)
 ```
 
+# Working with data frames
 
-## Useful functions
+## Data simulation
 
 ```{r}
 set.seed(1124)      # set seed for reproducibility
@@ -269,25 +270,23 @@ t2 <- dat2[dat2$time == "t2", "iqscore"]
 cor.test( ~ t1 + t2)
 ```
 
-### Function `reshape()`
+## Reshaping data frames from long to wide and vice versa
 
 ```{r}
-dat2[order(dat2$time), ] # sort by time
+dat2 |> sort_by( ~ time) # sort by time
 
 datw <- reshape(dat2, direction = "wide", idvar = c("id", "cond"),
                 timevar = "time")
 names(datw)[3:4] <- c("t1", "t2")
 cor.test( ~ t1 + t2, datw)
 
-reshape(datw, direction = "long", varying = 3:4, idvar = "id", v.names = "iqscore",
-        times = c("t1", "t2"))
 reshape(datw, direction = "long", varying = c("t1", "t2"), idvar = "id",
         v.names = "iqscore", times = c("t1", "t2"))
 
 datl <- reshape(datw, direction = "long", varying = c("t1", "t2"), idvar = "id",
                 v.names = "iqscore", times = c("t1", "t2"))
 
-datl[order(datl$id), ]
+datl |> sort_by( ~ id)
 
 # with more than one independent variable
 dat2$math <- rnorm(20)
@@ -299,7 +298,7 @@ reshape(dat3, direction = "long", varying = list(c(3, 5), c(4, 6)), idvar = "id"
         v.names = c("iqscore", "math"), times = c("t1", "t2"))
 ```
 
-### Function `aggregate()`
+## Aggregating data
 
 ```{r}
 aggregate(iqscore ~ cond + time, dat2, mean)

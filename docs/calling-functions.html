@@ -23,7 +23,7 @@
 <meta name="author" content="Nora Wickelmaier" />
 
 
-<meta name="date" content="2024-10-11" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="indexing.html"/>
-<link rel="next" href="data-inputoutput.html"/>
+<link rel="next" href="working-with-data-frames.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,6 +49,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -184,61 +185,83 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="indexing.html"><a href="indexing.html#indexing-vectors"><i class="fa fa-check"></i><b>4.1</b> Indexing vectors</a></li>
 <li class="chapter" data-level="4.2" data-path="indexing.html"><a href="indexing.html#indexing-data-frames"><i class="fa fa-check"></i><b>4.2</b> Indexing data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a>
+<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a></li>
+<li class="chapter" data-level="6" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html"><i class="fa fa-check"></i><b>6</b> Working with data frames</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="calling-functions.html"><a href="calling-functions.html#useful-functions"><i class="fa fa-check"></i><b>5.1</b> Useful functions</a>
+<li class="chapter" data-level="6.1" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#data-simulation"><i class="fa fa-check"></i><b>6.1</b> Data simulation</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#reshaping-data-frames-from-long-to-wide-and-vice-versa"><i class="fa fa-check"></i><b>6.2</b> Reshaping data frames from long to wide and vice versa</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#aggregating-data"><i class="fa fa-check"></i><b>6.3</b> Aggregating data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>7</b> Data input/output</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="calling-functions.html"><a href="calling-functions.html#function-reshape"><i class="fa fa-check"></i><b>5.1.1</b> Function <code>reshape()</code></a></li>
-<li class="chapter" data-level="5.1.2" data-path="calling-functions.html"><a href="calling-functions.html#function-aggregate"><i class="fa fa-check"></i><b>5.1.2</b> Function <code>aggregate()</code></a></li>
+<li class="chapter" data-level="7.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>7.1</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>8</b> Exercises Day 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-6"><i class="fa fa-check"></i>Exercise 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-7"><i class="fa fa-check"></i>Exercise 7</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-9"><i class="fa fa-check"></i>Exercise 9</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>9</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>9.1</b> <span class="math inline">\(t\)</span> tests</a></li>
+<li class="chapter" data-level="9.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>9.2</b> Linear models</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>9.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>10</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>10.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="10.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>10.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="10.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>10.3</b> The Grammar of Graphics <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>10.3.1</b> Some examples</a></li>
+<li class="chapter" data-level="10.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>10.3.2</b> Facets</a></li>
+<li class="chapter" data-level="10.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>10.3.3</b> Geometric objects</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>6</b> Data input/output</a>
+<li class="chapter" data-level="11" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>11</b> Exercises Day 2</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>6.1</b> Integrated data sets in R</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-1-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-2-1"><i class="fa fa-check"></i>Exercise 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>7</b> Exercises Day 1</a></li>
-<li class="chapter" data-level="8" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>8</b> Simple data analysis in R</a>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-3-1"><i class="fa fa-check"></i>Exercise 3</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>8.1</b> t tests</a></li>
-<li class="chapter" data-level="8.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>8.2</b> Linear models</a></li>
-<li class="chapter" data-level="8.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>8.3</b> Analysis of Variance (ANOVA)</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2-1"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>9</b> Plotting</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>9.1</b> Traditional plots</a></li>
-<li class="chapter" data-level="9.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>9.2</b> Lattice plots</a></li>
-<li class="chapter" data-level="9.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>9.3</b> The Grammar of Graphics <code>ggplot2</code></a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>9.3.1</b> Some examples</a></li>
-<li class="chapter" data-level="9.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>9.3.2</b> Facets</a></li>
-<li class="chapter" data-level="9.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>9.3.3</b> Geometric objects</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-4-1"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-5-1"><i class="fa fa-check"></i>Exercise 5</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>12</b> Advanced topics</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>12.1</b> Programming resources</a></li>
+<li class="chapter" data-level="12.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>12.2</b> Writing Functions</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> Implementing a function for a simple two-sample t test</a></li>
+<li class="chapter" data-level="12.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>12.2.2</b> Named arguments and defaults</a></li>
+<li class="chapter" data-level="12.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>12.2.3</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>10</b> Exercises Day 2</a></li>
-<li class="chapter" data-level="11" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>11</b> Advanced topics</a>
+<li class="chapter" data-level="12.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>12.3</b> Conditional execution</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>11.1</b> Programming resources</a></li>
-<li class="chapter" data-level="11.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>11.2</b> Writing Functions</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> Implementing a function for a simple two-sample t test</a></li>
-<li class="chapter" data-level="11.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>11.2.2</b> Named arguments and defaults</a></li>
-<li class="chapter" data-level="11.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>11.2.3</b> Exercise</a></li>
+<li class="chapter" data-level="12.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-8"><i class="fa fa-check"></i><b>12.3.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>11.3</b> Conditional execution</a>
+<li class="chapter" data-level="12.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>12.4</b> Loops</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-10"><i class="fa fa-check"></i><b>12.4.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>11.4</b> Loops</a>
+<li class="chapter" data-level="12.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>12.5</b> Avoiding loops</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-2"><i class="fa fa-check"></i><b>11.4.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-11"><i class="fa fa-check"></i><b>12.5.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>11.5</b> Avoiding loops</a>
+<li class="chapter" data-level="12.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>12.6</b> Random number generation</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-3"><i class="fa fa-check"></i><b>11.5.1</b> Exercise</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>11.6</b> Random number generation</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-4"><i class="fa fa-check"></i><b>11.6.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-12"><i class="fa fa-check"></i><b>12.6.1</b> Exercise</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -272,270 +295,30 @@ div.csl-indent {
 <li>a return value (visible, invisible, NULL).</li>
 </ul>
 <p>Functions can be called either with positional or with keyword matching.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="calling-functions.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Keyword matching</span></span>
 <span id="cb142-2"><a href="calling-functions.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> weight, <span class="at">x =</span> height, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="calling-functions.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Positional matching</span></span>
 <span id="cb143-2"><a href="calling-functions.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(height, weight)</span></code></pre></div>
+</details>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="calling-functions.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># see ?plot.default</span></span>
 <span id="cb144-2"><a href="calling-functions.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb144-3"><a href="calling-functions.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mixed</span></span>
 <span id="cb144-4"><a href="calling-functions.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(height, weight, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+</details>
 <p>Another way to call functions is to use pipes. Pipes are sometimes useful
 to not store intermediate objects. Sometimes they are better “readable”.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="calling-functions.html#cb145-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">|&gt;</span> <span class="fu">plot</span>(weight <span class="sc">~</span> height, <span class="at">data =</span> _)</span></code></pre></div>
-<div id="useful-functions" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Useful functions<a href="calling-functions.html#useful-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="calling-functions.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1124</span>)      <span class="co"># set seed for reproducibility</span></span>
-<span id="cb146-2"><a href="calling-functions.html#cb146-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb146-3"><a href="calling-functions.html#cb146-3" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb146-4"><a href="calling-functions.html#cb146-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id      =</span> <span class="fu">rep</span>(<span class="fu">paste0</span>(<span class="st">&quot;subj&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">each =</span> <span class="dv">2</span>), </span>
-<span id="cb146-5"><a href="calling-functions.html#cb146-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cond    =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>), <span class="at">each =</span> <span class="dv">10</span>)),</span>
-<span id="cb146-6"><a href="calling-functions.html#cb146-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">time    =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>)),</span>
-<span id="cb146-7"><a href="calling-functions.html#cb146-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iqscore =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
-<span id="cb146-8"><a href="calling-functions.html#cb146-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb146-9"><a href="calling-functions.html#cb146-9" aria-hidden="true" tabindex="-1"></a>dat2</span></code></pre></div>
-<pre><code>##        id cond time   iqscore
-## 1   subj1   c1   t1 104.50714
-## 2   subj1   c1   t2  74.84047
-## 3   subj2   c1   t1  78.13192
-## 4   subj2   c1   t2 100.21989
-## 5   subj3   c1   t1 115.99902
-## 6   subj3   c1   t2 105.75139
-## 7   subj4   c1   t1  92.50256
-## 8   subj4   c1   t2 105.19623
-## 9   subj5   c1   t1  98.27768
-## 10  subj5   c1   t2 102.94239
-## 11  subj6   c2   t1 128.22955
-## 12  subj6   c2   t2 109.66484
-## 13  subj7   c2   t1  96.73849
-## 14  subj7   c2   t2  97.51510
-## 15  subj8   c2   t1 115.96479
-## 16  subj8   c2   t2  86.68053
-## 17  subj9   c2   t1  98.28299
-## 18  subj9   c2   t2 114.95694
-## 19 subj10   c2   t1  82.90272
-## 20 subj10   c2   t2  96.77230</code></pre>
-<p>In R, data from different distributions can be randomly generated. See
-<code>?Distributions</code> for a list of the distributions inbuilt in the stats
-package. All of them follow the same schema: there is a root name (<code>norm</code>
-for the normal distribution); one can get density values for a certain
-range with <code>dnorm()</code>, quantiles for certain probability values with
-<code>qnorm()</code>, probability values for certain quantiles with <code>pnorm()</code> and
-random numbers drawn from the distribution with <code>rnorm()</code>.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="calling-functions.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating correlation</span></span>
-<span id="cb148-2"><a href="calling-functions.html#cb148-2" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> dat2[dat2<span class="sc">$</span>time <span class="sc">==</span> <span class="st">&quot;t1&quot;</span>, <span class="st">&quot;iqscore&quot;</span>]</span>
-<span id="cb148-3"><a href="calling-functions.html#cb148-3" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> dat2[dat2<span class="sc">$</span>time <span class="sc">==</span> <span class="st">&quot;t2&quot;</span>, <span class="st">&quot;iqscore&quot;</span>]</span>
-<span id="cb148-4"><a href="calling-functions.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>( <span class="sc">~</span> t1 <span class="sc">+</span> t2)</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s product-moment correlation
-## 
-## data:  t1 and t2
-## t = 0.059322, df = 8, p-value = 0.9542
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.6168009  0.6421175
-## sample estimates:
-##        cor 
-## 0.02096875</code></pre>
-<div id="function-reshape" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Function <code>reshape()</code><a href="calling-functions.html#function-reshape" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="calling-functions.html#cb150-1" aria-hidden="true" tabindex="-1"></a>dat2[<span class="fu">order</span>(dat2<span class="sc">$</span>time), ] <span class="co"># sort by time</span></span></code></pre></div>
-<pre><code>##        id cond time   iqscore
-## 1   subj1   c1   t1 104.50714
-## 3   subj2   c1   t1  78.13192
-## 5   subj3   c1   t1 115.99902
-## 7   subj4   c1   t1  92.50256
-## 9   subj5   c1   t1  98.27768
-## 11  subj6   c2   t1 128.22955
-## 13  subj7   c2   t1  96.73849
-## 15  subj8   c2   t1 115.96479
-## 17  subj9   c2   t1  98.28299
-## 19 subj10   c2   t1  82.90272
-## 2   subj1   c1   t2  74.84047
-## 4   subj2   c1   t2 100.21989
-## 6   subj3   c1   t2 105.75139
-## 8   subj4   c1   t2 105.19623
-## 10  subj5   c1   t2 102.94239
-## 12  subj6   c2   t2 109.66484
-## 14  subj7   c2   t2  97.51510
-## 16  subj8   c2   t2  86.68053
-## 18  subj9   c2   t2 114.95694
-## 20 subj10   c2   t2  96.77230</code></pre>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="calling-functions.html#cb152-1" aria-hidden="true" tabindex="-1"></a>datw <span class="ot">&lt;-</span> <span class="fu">reshape</span>(dat2, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;cond&quot;</span>),</span>
-<span id="cb152-2"><a href="calling-functions.html#cb152-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">timevar =</span> <span class="st">&quot;time&quot;</span>)</span>
-<span id="cb152-3"><a href="calling-functions.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datw)[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>)</span>
-<span id="cb152-4"><a href="calling-functions.html#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>( <span class="sc">~</span> t1 <span class="sc">+</span> t2, datw)</span></code></pre></div>
-<pre><code>## 
-##  Pearson&#39;s product-moment correlation
-## 
-## data:  t1 and t2
-## t = 0.059322, df = 8, p-value = 0.9542
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.6168009  0.6421175
-## sample estimates:
-##        cor 
-## 0.02096875</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="calling-functions.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reshape</span>(datw, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>, <span class="at">v.names =</span> <span class="st">&quot;iqscore&quot;</span>,</span>
-<span id="cb154-2"><a href="calling-functions.html#cb154-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span></code></pre></div>
-<pre><code>##               id cond time   iqscore
-## subj1.t1   subj1   c1   t1 104.50714
-## subj2.t1   subj2   c1   t1  78.13192
-## subj3.t1   subj3   c1   t1 115.99902
-## subj4.t1   subj4   c1   t1  92.50256
-## subj5.t1   subj5   c1   t1  98.27768
-## subj6.t1   subj6   c2   t1 128.22955
-## subj7.t1   subj7   c2   t1  96.73849
-## subj8.t1   subj8   c2   t1 115.96479
-## subj9.t1   subj9   c2   t1  98.28299
-## subj10.t1 subj10   c2   t1  82.90272
-## subj1.t2   subj1   c1   t2  74.84047
-## subj2.t2   subj2   c1   t2 100.21989
-## subj3.t2   subj3   c1   t2 105.75139
-## subj4.t2   subj4   c1   t2 105.19623
-## subj5.t2   subj5   c1   t2 102.94239
-## subj6.t2   subj6   c2   t2 109.66484
-## subj7.t2   subj7   c2   t2  97.51510
-## subj8.t2   subj8   c2   t2  86.68053
-## subj9.t2   subj9   c2   t2 114.95694
-## subj10.t2 subj10   c2   t2  96.77230</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="calling-functions.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reshape</span>(datw, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>), <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb156-2"><a href="calling-functions.html#cb156-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">v.names =</span> <span class="st">&quot;iqscore&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span></code></pre></div>
-<pre><code>##               id cond time   iqscore
-## subj1.t1   subj1   c1   t1 104.50714
-## subj2.t1   subj2   c1   t1  78.13192
-## subj3.t1   subj3   c1   t1 115.99902
-## subj4.t1   subj4   c1   t1  92.50256
-## subj5.t1   subj5   c1   t1  98.27768
-## subj6.t1   subj6   c2   t1 128.22955
-## subj7.t1   subj7   c2   t1  96.73849
-## subj8.t1   subj8   c2   t1 115.96479
-## subj9.t1   subj9   c2   t1  98.28299
-## subj10.t1 subj10   c2   t1  82.90272
-## subj1.t2   subj1   c1   t2  74.84047
-## subj2.t2   subj2   c1   t2 100.21989
-## subj3.t2   subj3   c1   t2 105.75139
-## subj4.t2   subj4   c1   t2 105.19623
-## subj5.t2   subj5   c1   t2 102.94239
-## subj6.t2   subj6   c2   t2 109.66484
-## subj7.t2   subj7   c2   t2  97.51510
-## subj8.t2   subj8   c2   t2  86.68053
-## subj9.t2   subj9   c2   t2 114.95694
-## subj10.t2 subj10   c2   t2  96.77230</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="calling-functions.html#cb158-1" aria-hidden="true" tabindex="-1"></a>datl <span class="ot">&lt;-</span> <span class="fu">reshape</span>(datw, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>), <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb158-2"><a href="calling-functions.html#cb158-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">v.names =</span> <span class="st">&quot;iqscore&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span>
-<span id="cb158-3"><a href="calling-functions.html#cb158-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-4"><a href="calling-functions.html#cb158-4" aria-hidden="true" tabindex="-1"></a>datl[<span class="fu">order</span>(datl<span class="sc">$</span>id), ]</span></code></pre></div>
-<pre><code>##               id cond time   iqscore
-## subj1.t1   subj1   c1   t1 104.50714
-## subj1.t2   subj1   c1   t2  74.84047
-## subj10.t1 subj10   c2   t1  82.90272
-## subj10.t2 subj10   c2   t2  96.77230
-## subj2.t1   subj2   c1   t1  78.13192
-## subj2.t2   subj2   c1   t2 100.21989
-## subj3.t1   subj3   c1   t1 115.99902
-## subj3.t2   subj3   c1   t2 105.75139
-## subj4.t1   subj4   c1   t1  92.50256
-## subj4.t2   subj4   c1   t2 105.19623
-## subj5.t1   subj5   c1   t1  98.27768
-## subj5.t2   subj5   c1   t2 102.94239
-## subj6.t1   subj6   c2   t1 128.22955
-## subj6.t2   subj6   c2   t2 109.66484
-## subj7.t1   subj7   c2   t1  96.73849
-## subj7.t2   subj7   c2   t2  97.51510
-## subj8.t1   subj8   c2   t1 115.96479
-## subj8.t2   subj8   c2   t2  86.68053
-## subj9.t1   subj9   c2   t1  98.28299
-## subj9.t2   subj9   c2   t2 114.95694</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="calling-functions.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with more than one independent variable</span></span>
-<span id="cb160-2"><a href="calling-functions.html#cb160-2" aria-hidden="true" tabindex="-1"></a>dat2<span class="sc">$</span>math <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>)</span>
-<span id="cb160-3"><a href="calling-functions.html#cb160-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-4"><a href="calling-functions.html#cb160-4" aria-hidden="true" tabindex="-1"></a>dat3 <span class="ot">&lt;-</span> <span class="fu">reshape</span>(dat2, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;cond&quot;</span>),</span>
-<span id="cb160-5"><a href="calling-functions.html#cb160-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">timevar =</span> <span class="st">&quot;time&quot;</span>)</span>
-<span id="cb160-6"><a href="calling-functions.html#cb160-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-7"><a href="calling-functions.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reshape</span>(dat3, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>)), <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb160-8"><a href="calling-functions.html#cb160-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">v.names =</span> <span class="fu">c</span>(<span class="st">&quot;iqscore&quot;</span>, <span class="st">&quot;math&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span></code></pre></div>
-<pre><code>##               id cond time   iqscore         math
-## subj1.t1   subj1   c1   t1 104.50714 -0.768464562
-## subj2.t1   subj2   c1   t1  78.13192  0.579968826
-## subj3.t1   subj3   c1   t1 115.99902  1.513784838
-## subj4.t1   subj4   c1   t1  92.50256 -1.208003812
-## subj5.t1   subj5   c1   t1  98.27768 -0.453062994
-## subj6.t1   subj6   c2   t1 128.22955 -1.572056301
-## subj7.t1   subj7   c2   t1  96.73849  0.015114245
-## subj8.t1   subj8   c2   t1 115.96479 -1.192682340
-## subj9.t1   subj9   c2   t1  98.28299  1.652416420
-## subj10.t1 subj10   c2   t1  82.90272 -2.452581136
-## subj1.t2   subj1   c1   t2  74.84047 -1.872061937
-## subj2.t2   subj2   c1   t2 100.21989 -0.457552388
-## subj3.t2   subj3   c1   t2 105.75139  0.731783080
-## subj4.t2   subj4   c1   t2 105.19623 -0.300922946
-## subj5.t2   subj5   c1   t2 102.94239  0.655609659
-## subj6.t2   subj6   c2   t2 109.66484 -0.005842239
-## subj7.t2   subj7   c2   t2  97.51510 -1.307909316
-## subj8.t2   subj8   c2   t2  86.68053 -0.053038257
-## subj9.t2   subj9   c2   t2 114.95694 -0.388632715
-## subj10.t2 subj10   c2   t2  96.77230 -0.805467444</code></pre>
-</div>
-<div id="function-aggregate" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> Function <code>aggregate()</code><a href="calling-functions.html#function-aggregate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="calling-functions.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(iqscore <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, mean)</span></code></pre></div>
-<pre><code>##   cond time   iqscore
-## 1   c1   t1  97.88366
-## 2   c2   t1 104.42371
-## 3   c1   t2  97.79008
-## 4   c2   t2 101.11794</code></pre>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="calling-functions.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, mean)</span></code></pre></div>
-<pre><code>##   cond time   iqscore        math
-## 1   c1   t1  97.88366 -0.06715554
-## 2   c2   t1 104.42371 -0.70995782
-## 3   c1   t2  97.79008 -0.24862891
-## 4   c2   t2 101.11794 -0.51217799</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="calling-functions.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, sd)</span></code></pre></div>
-<pre><code>##   cond time  iqscore      math
-## 1   c1   t1 14.06484 1.1023198
-## 2   c2   t1 17.74710 1.5905592
-## 3   c1   t2 13.01315 1.0560272
-## 4   c2   t2 11.23467 0.5481003</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="calling-functions.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, var)</span></code></pre></div>
-<pre><code>##   cond time  iqscore      math
-## 1   c1   t1 197.8199 1.2151090
-## 2   c2   t1 314.9596 2.5298786
-## 3   c1   t2 169.3421 1.1151934
-## 4   c2   t2 126.2178 0.3004139</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="calling-functions.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, sum)</span></code></pre></div>
-<pre><code>##   cond time  iqscore       math
-## 1   c1   t1 489.4183 -0.3357777
-## 2   c2   t1 522.1185 -3.5497891
-## 3   c1   t2 488.9504 -1.2431445
-## 4   c2   t2 505.5897 -2.5608900</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="calling-functions.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, length)</span></code></pre></div>
-<pre><code>##   cond time iqscore math
-## 1   c1   t1       5    5
-## 2   c2   t1       5    5
-## 3   c1   t2       5    5
-## 4   c2   t2       5    5</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="calling-functions.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a customized function</span></span>
-<span id="cb174-2"><a href="calling-functions.html#cb174-2" aria-hidden="true" tabindex="-1"></a>ms <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb174-3"><a href="calling-functions.html#cb174-3" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb174-4"><a href="calling-functions.html#cb174-4" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
-<span id="cb174-5"><a href="calling-functions.html#cb174-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb174-6"><a href="calling-functions.html#cb174-6" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb174-7"><a href="calling-functions.html#cb174-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">sd =</span> s, <span class="at">mean =</span> m, <span class="at">se =</span> se, <span class="at">n =</span> n)</span>
-<span id="cb174-8"><a href="calling-functions.html#cb174-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb174-9"><a href="calling-functions.html#cb174-9" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, ms)</span></code></pre></div>
-<pre><code>##   cond time iqscore.sd iqscore.mean iqscore.se  iqscore.n     math.sd   math.mean
-## 1   c1   t1  14.064845    97.883665   6.289990   5.000000  1.10231984 -0.06715554
-## 2   c2   t1  17.747102   104.423708   7.936745   5.000000  1.59055920 -0.70995782
-## 3   c1   t2  13.013151    97.790077   5.819658   5.000000  1.05602717 -0.24862891
-## 4   c2   t2  11.234669   101.117943   5.024297   5.000000  0.54810028 -0.51217799
-##       math.se      math.n
-## 1  0.49297242  5.00000000
-## 2  0.71131970  5.00000000
-## 3  0.47226971  5.00000000
-## 4  0.24511790  5.00000000</code></pre>
-</div>
-</div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="calling-functions.html#cb145-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">|&gt;</span> <span class="fu">subset</span>(weight <span class="sc">&gt;</span> <span class="dv">60</span>)</span></code></pre></div>
+</details>
+<pre><code>##   id weight height
+## 2 s2     72   1.80
+## 4 s4     90   1.90
+## 5 s5     95   1.74
+## 6 s6     72   1.91</code></pre>
 </div>
             </section>
 
@@ -543,7 +326,7 @@ random numbers drawn from the distribution with <code>rnorm()</code>.</p>
         </div>
       </div>
 <a href="indexing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-inputoutput.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="working-with-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

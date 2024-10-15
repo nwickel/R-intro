@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Working with data frames | Introduction to R</title>
+  <meta name="description" content="Chapter 6 Working with data frames | Introduction to R" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Working with data frames | Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Working with data frames | Introduction to R" />
+  
+  
+  
+
+<meta name="author" content="Nora Wickelmaier" />
+
+
+<meta name="date" content="2024-10-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="calling-functions.html"/>
+<link rel="next" href="data-inputoutput.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#r-resources"><i class="fa fa-check"></i>R resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lets-get-started"><i class="fa fa-check"></i>Let’s get started</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="r-as-calculator.html"><a href="r-as-calculator.html"><i class="fa fa-check"></i><b>1</b> R as calculator</a></li>
+<li class="chapter" data-level="2" data-path="creating-variables.html"><a href="creating-variables.html"><i class="fa fa-check"></i><b>2</b> Creating variables</a></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#vectors"><i class="fa fa-check"></i><b>3.1</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-types.html"><a href="data-types.html#creating-vectors"><i class="fa fa-check"></i><b>3.1.1</b> Creating vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matrices"><i class="fa fa-check"></i><b>3.2</b> Matrices</a></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#lists"><i class="fa fa-check"></i><b>3.3</b> Lists</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#data-frames"><i class="fa fa-check"></i><b>3.4</b> Data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="indexing.html"><a href="indexing.html"><i class="fa fa-check"></i><b>4</b> Indexing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="indexing.html"><a href="indexing.html#indexing-vectors"><i class="fa fa-check"></i><b>4.1</b> Indexing vectors</a></li>
+<li class="chapter" data-level="4.2" data-path="indexing.html"><a href="indexing.html#indexing-data-frames"><i class="fa fa-check"></i><b>4.2</b> Indexing data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a></li>
+<li class="chapter" data-level="6" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html"><i class="fa fa-check"></i><b>6</b> Working with data frames</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#data-simulation"><i class="fa fa-check"></i><b>6.1</b> Data simulation</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#reshaping-data-frames-from-long-to-wide-and-vice-versa"><i class="fa fa-check"></i><b>6.2</b> Reshaping data frames from long to wide and vice versa</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#aggregating-data"><i class="fa fa-check"></i><b>6.3</b> Aggregating data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>7</b> Data input/output</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>7.1</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>8</b> Exercises Day 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-6"><i class="fa fa-check"></i>Exercise 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-7"><i class="fa fa-check"></i>Exercise 7</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-9"><i class="fa fa-check"></i>Exercise 9</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>9</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>9.1</b> <span class="math inline">\(t\)</span> tests</a></li>
+<li class="chapter" data-level="9.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>9.2</b> Linear models</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>9.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>10</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>10.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="10.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>10.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="10.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>10.3</b> The Grammar of Graphics <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>10.3.1</b> Some examples</a></li>
+<li class="chapter" data-level="10.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>10.3.2</b> Facets</a></li>
+<li class="chapter" data-level="10.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>10.3.3</b> Geometric objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>11</b> Exercises Day 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-1-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-2-1"><i class="fa fa-check"></i>Exercise 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-3-1"><i class="fa fa-check"></i>Exercise 3</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2-1"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-4-1"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-5-1"><i class="fa fa-check"></i>Exercise 5</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>12</b> Advanced topics</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>12.1</b> Programming resources</a></li>
+<li class="chapter" data-level="12.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>12.2</b> Writing Functions</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> Implementing a function for a simple two-sample t test</a></li>
+<li class="chapter" data-level="12.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>12.2.2</b> Named arguments and defaults</a></li>
+<li class="chapter" data-level="12.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>12.2.3</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>12.3</b> Conditional execution</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-8"><i class="fa fa-check"></i><b>12.3.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>12.4</b> Loops</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-10"><i class="fa fa-check"></i><b>12.4.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>12.5</b> Avoiding loops</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-11"><i class="fa fa-check"></i><b>12.5.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>12.6</b> Random number generation</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-12"><i class="fa fa-check"></i><b>12.6.1</b> Exercise</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-with-data-frames" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Working with data frames<a href="working-with-data-frames.html#working-with-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-simulation" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Data simulation<a href="working-with-data-frames.html#data-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="working-with-data-frames.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1124</span>)      <span class="co"># set seed for reproducibility</span></span>
+<span id="cb147-2"><a href="working-with-data-frames.html#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-3"><a href="working-with-data-frames.html#cb147-3" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb147-4"><a href="working-with-data-frames.html#cb147-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id      =</span> <span class="fu">rep</span>(<span class="fu">paste0</span>(<span class="st">&quot;subj&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">each =</span> <span class="dv">2</span>), </span>
+<span id="cb147-5"><a href="working-with-data-frames.html#cb147-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cond    =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>), <span class="at">each =</span> <span class="dv">10</span>)),</span>
+<span id="cb147-6"><a href="working-with-data-frames.html#cb147-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">time    =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>)),</span>
+<span id="cb147-7"><a href="working-with-data-frames.html#cb147-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">iqscore =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">15</span>)</span>
+<span id="cb147-8"><a href="working-with-data-frames.html#cb147-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb147-9"><a href="working-with-data-frames.html#cb147-9" aria-hidden="true" tabindex="-1"></a>dat2</span></code></pre></div>
+</details>
+<pre><code>##        id cond time   iqscore
+## 1   subj1   c1   t1 104.50714
+## 2   subj1   c1   t2  74.84047
+## 3   subj2   c1   t1  78.13192
+## 4   subj2   c1   t2 100.21989
+## 5   subj3   c1   t1 115.99902
+## 6   subj3   c1   t2 105.75139
+## 7   subj4   c1   t1  92.50256
+## 8   subj4   c1   t2 105.19623
+## 9   subj5   c1   t1  98.27768
+## 10  subj5   c1   t2 102.94239
+## 11  subj6   c2   t1 128.22955
+## 12  subj6   c2   t2 109.66484
+## 13  subj7   c2   t1  96.73849
+## 14  subj7   c2   t2  97.51510
+## 15  subj8   c2   t1 115.96479
+## 16  subj8   c2   t2  86.68053
+## 17  subj9   c2   t1  98.28299
+## 18  subj9   c2   t2 114.95694
+## 19 subj10   c2   t1  82.90272
+## 20 subj10   c2   t2  96.77230</code></pre>
+<p>In R, data from different distributions can be randomly generated. See
+<code>?Distributions</code> for a list of the distributions inbuilt in the stats
+package. All of them follow the same schema: there is a root name (<code>norm</code>
+for the normal distribution); one can get density values for a certain
+range with <code>dnorm()</code>, quantiles for certain probability values with
+<code>qnorm()</code>, probability values for certain quantiles with <code>pnorm()</code> and
+random numbers drawn from the distribution with <code>rnorm()</code>.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="working-with-data-frames.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculating correlation</span></span>
+<span id="cb149-2"><a href="working-with-data-frames.html#cb149-2" aria-hidden="true" tabindex="-1"></a>t1 <span class="ot">&lt;-</span> dat2[dat2<span class="sc">$</span>time <span class="sc">==</span> <span class="st">&quot;t1&quot;</span>, <span class="st">&quot;iqscore&quot;</span>]</span>
+<span id="cb149-3"><a href="working-with-data-frames.html#cb149-3" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> dat2[dat2<span class="sc">$</span>time <span class="sc">==</span> <span class="st">&quot;t2&quot;</span>, <span class="st">&quot;iqscore&quot;</span>]</span>
+<span id="cb149-4"><a href="working-with-data-frames.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>( <span class="sc">~</span> t1 <span class="sc">+</span> t2)</span></code></pre></div>
+</details>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  t1 and t2
+## t = 0.059322, df = 8, p-value = 0.9542
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.6168009  0.6421175
+## sample estimates:
+##        cor 
+## 0.02096875</code></pre>
+</div>
+<div id="reshaping-data-frames-from-long-to-wide-and-vice-versa" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Reshaping data frames from long to wide and vice versa<a href="working-with-data-frames.html#reshaping-data-frames-from-long-to-wide-and-vice-versa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="working-with-data-frames.html#cb151-1" aria-hidden="true" tabindex="-1"></a>dat2 <span class="sc">|&gt;</span> <span class="fu">sort_by</span>( <span class="sc">~</span> time) <span class="co"># sort by time</span></span></code></pre></div>
+</details>
+<pre><code>##        id cond time   iqscore
+## 1   subj1   c1   t1 104.50714
+## 3   subj2   c1   t1  78.13192
+## 5   subj3   c1   t1 115.99902
+## 7   subj4   c1   t1  92.50256
+## 9   subj5   c1   t1  98.27768
+## 11  subj6   c2   t1 128.22955
+## 13  subj7   c2   t1  96.73849
+## 15  subj8   c2   t1 115.96479
+## 17  subj9   c2   t1  98.28299
+## 19 subj10   c2   t1  82.90272
+## 2   subj1   c1   t2  74.84047
+## 4   subj2   c1   t2 100.21989
+## 6   subj3   c1   t2 105.75139
+## 8   subj4   c1   t2 105.19623
+## 10  subj5   c1   t2 102.94239
+## 12  subj6   c2   t2 109.66484
+## 14  subj7   c2   t2  97.51510
+## 16  subj8   c2   t2  86.68053
+## 18  subj9   c2   t2 114.95694
+## 20 subj10   c2   t2  96.77230</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="working-with-data-frames.html#cb153-1" aria-hidden="true" tabindex="-1"></a>datw <span class="ot">&lt;-</span> <span class="fu">reshape</span>(dat2, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;cond&quot;</span>),</span>
+<span id="cb153-2"><a href="working-with-data-frames.html#cb153-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">timevar =</span> <span class="st">&quot;time&quot;</span>)</span>
+<span id="cb153-3"><a href="working-with-data-frames.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datw)[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>)</span>
+<span id="cb153-4"><a href="working-with-data-frames.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>( <span class="sc">~</span> t1 <span class="sc">+</span> t2, datw)</span></code></pre></div>
+</details>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  t1 and t2
+## t = 0.059322, df = 8, p-value = 0.9542
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.6168009  0.6421175
+## sample estimates:
+##        cor 
+## 0.02096875</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="working-with-data-frames.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reshape</span>(datw, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>), <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb155-2"><a href="working-with-data-frames.html#cb155-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">v.names =</span> <span class="st">&quot;iqscore&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span></code></pre></div>
+</details>
+<pre><code>##               id cond time   iqscore
+## subj1.t1   subj1   c1   t1 104.50714
+## subj2.t1   subj2   c1   t1  78.13192
+## subj3.t1   subj3   c1   t1 115.99902
+## subj4.t1   subj4   c1   t1  92.50256
+## subj5.t1   subj5   c1   t1  98.27768
+## subj6.t1   subj6   c2   t1 128.22955
+## subj7.t1   subj7   c2   t1  96.73849
+## subj8.t1   subj8   c2   t1 115.96479
+## subj9.t1   subj9   c2   t1  98.28299
+## subj10.t1 subj10   c2   t1  82.90272
+## subj1.t2   subj1   c1   t2  74.84047
+## subj2.t2   subj2   c1   t2 100.21989
+## subj3.t2   subj3   c1   t2 105.75139
+## subj4.t2   subj4   c1   t2 105.19623
+## subj5.t2   subj5   c1   t2 102.94239
+## subj6.t2   subj6   c2   t2 109.66484
+## subj7.t2   subj7   c2   t2  97.51510
+## subj8.t2   subj8   c2   t2  86.68053
+## subj9.t2   subj9   c2   t2 114.95694
+## subj10.t2 subj10   c2   t2  96.77230</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="working-with-data-frames.html#cb157-1" aria-hidden="true" tabindex="-1"></a>datl <span class="ot">&lt;-</span> <span class="fu">reshape</span>(datw, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>), <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb157-2"><a href="working-with-data-frames.html#cb157-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">v.names =</span> <span class="st">&quot;iqscore&quot;</span>, <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span>
+<span id="cb157-3"><a href="working-with-data-frames.html#cb157-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-4"><a href="working-with-data-frames.html#cb157-4" aria-hidden="true" tabindex="-1"></a>datl <span class="sc">|&gt;</span> <span class="fu">sort_by</span>( <span class="sc">~</span> id)</span></code></pre></div>
+</details>
+<pre><code>##               id cond time   iqscore
+## subj1.t1   subj1   c1   t1 104.50714
+## subj1.t2   subj1   c1   t2  74.84047
+## subj10.t1 subj10   c2   t1  82.90272
+## subj10.t2 subj10   c2   t2  96.77230
+## subj2.t1   subj2   c1   t1  78.13192
+## subj2.t2   subj2   c1   t2 100.21989
+## subj3.t1   subj3   c1   t1 115.99902
+## subj3.t2   subj3   c1   t2 105.75139
+## subj4.t1   subj4   c1   t1  92.50256
+## subj4.t2   subj4   c1   t2 105.19623
+## subj5.t1   subj5   c1   t1  98.27768
+## subj5.t2   subj5   c1   t2 102.94239
+## subj6.t1   subj6   c2   t1 128.22955
+## subj6.t2   subj6   c2   t2 109.66484
+## subj7.t1   subj7   c2   t1  96.73849
+## subj7.t2   subj7   c2   t2  97.51510
+## subj8.t1   subj8   c2   t1 115.96479
+## subj8.t2   subj8   c2   t2  86.68053
+## subj9.t1   subj9   c2   t1  98.28299
+## subj9.t2   subj9   c2   t2 114.95694</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="working-with-data-frames.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># with more than one independent variable</span></span>
+<span id="cb159-2"><a href="working-with-data-frames.html#cb159-2" aria-hidden="true" tabindex="-1"></a>dat2<span class="sc">$</span>math <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>)</span>
+<span id="cb159-3"><a href="working-with-data-frames.html#cb159-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-4"><a href="working-with-data-frames.html#cb159-4" aria-hidden="true" tabindex="-1"></a>dat3 <span class="ot">&lt;-</span> <span class="fu">reshape</span>(dat2, <span class="at">direction =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">idvar =</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;cond&quot;</span>),</span>
+<span id="cb159-5"><a href="working-with-data-frames.html#cb159-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">timevar =</span> <span class="st">&quot;time&quot;</span>)</span>
+<span id="cb159-6"><a href="working-with-data-frames.html#cb159-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb159-7"><a href="working-with-data-frames.html#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reshape</span>(dat3, <span class="at">direction =</span> <span class="st">&quot;long&quot;</span>, <span class="at">varying =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">6</span>)), <span class="at">idvar =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb159-8"><a href="working-with-data-frames.html#cb159-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">v.names =</span> <span class="fu">c</span>(<span class="st">&quot;iqscore&quot;</span>, <span class="st">&quot;math&quot;</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="st">&quot;t1&quot;</span>, <span class="st">&quot;t2&quot;</span>))</span></code></pre></div>
+</details>
+<pre><code>##               id cond time   iqscore         math
+## subj1.t1   subj1   c1   t1 104.50714 -0.768464562
+## subj2.t1   subj2   c1   t1  78.13192  0.579968826
+## subj3.t1   subj3   c1   t1 115.99902  1.513784838
+## subj4.t1   subj4   c1   t1  92.50256 -1.208003812
+## subj5.t1   subj5   c1   t1  98.27768 -0.453062994
+## subj6.t1   subj6   c2   t1 128.22955 -1.572056301
+## subj7.t1   subj7   c2   t1  96.73849  0.015114245
+## subj8.t1   subj8   c2   t1 115.96479 -1.192682340
+## subj9.t1   subj9   c2   t1  98.28299  1.652416420
+## subj10.t1 subj10   c2   t1  82.90272 -2.452581136
+## subj1.t2   subj1   c1   t2  74.84047 -1.872061937
+## subj2.t2   subj2   c1   t2 100.21989 -0.457552388
+## subj3.t2   subj3   c1   t2 105.75139  0.731783080
+## subj4.t2   subj4   c1   t2 105.19623 -0.300922946
+## subj5.t2   subj5   c1   t2 102.94239  0.655609659
+## subj6.t2   subj6   c2   t2 109.66484 -0.005842239
+## subj7.t2   subj7   c2   t2  97.51510 -1.307909316
+## subj8.t2   subj8   c2   t2  86.68053 -0.053038257
+## subj9.t2   subj9   c2   t2 114.95694 -0.388632715
+## subj10.t2 subj10   c2   t2  96.77230 -0.805467444</code></pre>
+</div>
+<div id="aggregating-data" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Aggregating data<a href="working-with-data-frames.html#aggregating-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="working-with-data-frames.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(iqscore <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, mean)</span></code></pre></div>
+</details>
+<pre><code>##   cond time   iqscore
+## 1   c1   t1  97.88366
+## 2   c2   t1 104.42371
+## 3   c1   t2  97.79008
+## 4   c2   t2 101.11794</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="working-with-data-frames.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, mean)</span></code></pre></div>
+</details>
+<pre><code>##   cond time   iqscore        math
+## 1   c1   t1  97.88366 -0.06715554
+## 2   c2   t1 104.42371 -0.70995782
+## 3   c1   t2  97.79008 -0.24862891
+## 4   c2   t2 101.11794 -0.51217799</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="working-with-data-frames.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, sd)</span></code></pre></div>
+</details>
+<pre><code>##   cond time  iqscore      math
+## 1   c1   t1 14.06484 1.1023198
+## 2   c2   t1 17.74710 1.5905592
+## 3   c1   t2 13.01315 1.0560272
+## 4   c2   t2 11.23467 0.5481003</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="working-with-data-frames.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, var)</span></code></pre></div>
+</details>
+<pre><code>##   cond time  iqscore      math
+## 1   c1   t1 197.8199 1.2151090
+## 2   c2   t1 314.9596 2.5298786
+## 3   c1   t2 169.3421 1.1151934
+## 4   c2   t2 126.2178 0.3004139</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="working-with-data-frames.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, sum)</span></code></pre></div>
+</details>
+<pre><code>##   cond time  iqscore       math
+## 1   c1   t1 489.4183 -0.3357777
+## 2   c2   t1 522.1185 -3.5497891
+## 3   c1   t2 488.9504 -1.2431445
+## 4   c2   t2 505.5897 -2.5608900</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="working-with-data-frames.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, length)</span></code></pre></div>
+</details>
+<pre><code>##   cond time iqscore math
+## 1   c1   t1       5    5
+## 2   c2   t1       5    5
+## 3   c1   t2       5    5
+## 4   c2   t2       5    5</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="working-with-data-frames.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a customized function</span></span>
+<span id="cb173-2"><a href="working-with-data-frames.html#cb173-2" aria-hidden="true" tabindex="-1"></a>ms <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb173-3"><a href="working-with-data-frames.html#cb173-3" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb173-4"><a href="working-with-data-frames.html#cb173-4" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
+<span id="cb173-5"><a href="working-with-data-frames.html#cb173-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb173-6"><a href="working-with-data-frames.html#cb173-6" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> s<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb173-7"><a href="working-with-data-frames.html#cb173-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">sd =</span> s, <span class="at">mean =</span> m, <span class="at">se =</span> se, <span class="at">n =</span> n)</span>
+<span id="cb173-8"><a href="working-with-data-frames.html#cb173-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb173-9"><a href="working-with-data-frames.html#cb173-9" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="fu">cbind</span>(iqscore, math) <span class="sc">~</span> cond <span class="sc">+</span> time, dat2, ms)</span></code></pre></div>
+</details>
+<pre><code>##   cond time iqscore.sd iqscore.mean iqscore.se  iqscore.n     math.sd   math.mean
+## 1   c1   t1  14.064845    97.883665   6.289990   5.000000  1.10231984 -0.06715554
+## 2   c2   t1  17.747102   104.423708   7.936745   5.000000  1.59055920 -0.70995782
+## 3   c1   t2  13.013151    97.790077   5.819658   5.000000  1.05602717 -0.24862891
+## 4   c2   t2  11.234669   101.117943   5.024297   5.000000  0.54810028 -0.51217799
+##       math.se      math.n
+## 1  0.49297242  5.00000000
+## 2  0.71131970  5.00000000
+## 3  0.47226971  5.00000000
+## 4  0.24511790  5.00000000</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="calling-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-inputoutput.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

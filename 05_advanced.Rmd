@@ -1,3 +1,7 @@
+```{r, include = FALSE}
+knitr::opts_chunk$set(class.source = "fold-show")
+```
+
 # Advanced topics
 
 The following covers some advanced topics on Programming in R that I usually do
@@ -35,7 +39,6 @@ nocite: |
   - either without name (in the defined order)
 
     -> positional matching
- 
   - or with name (in arbitrary order)
 
     -> keyword matching
@@ -96,10 +99,10 @@ fun1(d, df, graph = TRUE, limit = 20)
 fun1(data = d, limit = 20, graph = TRUE, data.frame = df)
 ```
 
-All of them are equivalent (cf. positional matching and keyword matching)
+All of them are equivalent (cf. positional matching and keyword matching).
 
 In many cases, arguments can be given commonly appropriate default values, in
-which case they may be omitted altogether from the call
+which case they may be omitted altogether from the call.
 
 ```{r, eval = FALSE}
 fun1 <- function(data, data.frame, graph = TRUE, limit = 20) {
@@ -135,13 +138,13 @@ $\mathbf{y} = (1~3~6~10 \dots 210)'$.
 
 When programming, a distinction of cases is often necessary for
 
-* checking of arguments
+* checking of arguments,
 
-* return of error messages
+* return of error messages,
 
-* interrupting a running process
+* interrupting a running process,
 
-* case distinction, e.\,g., in mathematical expressions
+* case distinction, e.g., in mathematical expressions.
 
 Conditional execution of code is available in R via
 
@@ -200,15 +203,15 @@ f(x) =
 
 ## Loops
 
-* Loops are necessary to execute repeating commands
+* Loops are necessary to execute repeating commands.
 
-* Especially for simulations, loops are often used
+* Especially for simulations, loops are often used.
 
-* In this case, the same functions or commands are executed for different random numbers
+* In this case, the same functions or commands are executed for different random numbers.
 
-* There are `for()` and `while()` loops for repeated execution
+* There are `for()` and `while()` loops for repeated execution.
 
-* The most simple "loop" is `replicate()`
+* The most simple "loop" is `replicate()`.
 
 ```{r}
 # Example for central limit theorem
@@ -258,9 +261,9 @@ x^2                       # BETTER
 * Implement two different methods:
 
   1. Allocate memory: Start with a vector of zeros and the correct length and
-     replace its elements iteratively
+     replace its elements iteratively.
     
-  2. Growing: Start with a `NULL` object and iteratively add new results
+  2. Growing: Start with a `NULL` object and iteratively add new results.
 
 Tip: The first method is more efficient, especially for long vectors.
 
@@ -313,13 +316,13 @@ tapply(warpbreaks$breaks, warpbreaks[ , -1], mean)
 
 ### Exercise
 
-* Load the iris data set into R using `data(iris)`
+* Load the iris data set into R using `data(iris)`.
 
 * Write a for-loop to calculate the means for the dependent variables
-  (columns 1 to 4)
+  (columns 1 to 4).
 
 * Think of as many vector based alternatives as possible to avoid this loop and
-  calculate the column means
+  calculate the column means.
 
 
 ```{r}

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Data input/output | Introduction to R</title>
-  <meta name="description" content="Chapter 6 Data input/output | Introduction to R" />
+  <title>Chapter 7 Data input/output | Introduction to R</title>
+  <meta name="description" content="Chapter 7 Data input/output | Introduction to R" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Data input/output | Introduction to R" />
+  <meta property="og:title" content="Chapter 7 Data input/output | Introduction to R" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Data input/output | Introduction to R" />
+  <meta name="twitter:title" content="Chapter 7 Data input/output | Introduction to R" />
   
   
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Nora Wickelmaier" />
 
 
-<meta name="date" content="2024-10-11" />
+<meta name="date" content="2024-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="calling-functions.html"/>
+<link rel="prev" href="working-with-data-frames.html"/>
 <link rel="next" href="exercises-day-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -49,6 +49,7 @@
 
 
 
+<link href="libs/codefolding-lua-1.1/codefolding-lua.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -184,61 +185,83 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="indexing.html"><a href="indexing.html#indexing-vectors"><i class="fa fa-check"></i><b>4.1</b> Indexing vectors</a></li>
 <li class="chapter" data-level="4.2" data-path="indexing.html"><a href="indexing.html#indexing-data-frames"><i class="fa fa-check"></i><b>4.2</b> Indexing data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a>
+<li class="chapter" data-level="5" data-path="calling-functions.html"><a href="calling-functions.html"><i class="fa fa-check"></i><b>5</b> Calling functions</a></li>
+<li class="chapter" data-level="6" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html"><i class="fa fa-check"></i><b>6</b> Working with data frames</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="calling-functions.html"><a href="calling-functions.html#useful-functions"><i class="fa fa-check"></i><b>5.1</b> Useful functions</a>
+<li class="chapter" data-level="6.1" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#data-simulation"><i class="fa fa-check"></i><b>6.1</b> Data simulation</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#reshaping-data-frames-from-long-to-wide-and-vice-versa"><i class="fa fa-check"></i><b>6.2</b> Reshaping data frames from long to wide and vice versa</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-data-frames.html"><a href="working-with-data-frames.html#aggregating-data"><i class="fa fa-check"></i><b>6.3</b> Aggregating data</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>7</b> Data input/output</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="calling-functions.html"><a href="calling-functions.html#function-reshape"><i class="fa fa-check"></i><b>5.1.1</b> Function <code>reshape()</code></a></li>
-<li class="chapter" data-level="5.1.2" data-path="calling-functions.html"><a href="calling-functions.html#function-aggregate"><i class="fa fa-check"></i><b>5.1.2</b> Function <code>aggregate()</code></a></li>
+<li class="chapter" data-level="7.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>7.1</b> Integrated data sets in R</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>8</b> Exercises Day 1</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-4"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-5"><i class="fa fa-check"></i>Exercise 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-6"><i class="fa fa-check"></i>Exercise 6</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-7"><i class="fa fa-check"></i>Exercise 7</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-1.html"><a href="exercises-day-1.html#exercise-9"><i class="fa fa-check"></i>Exercise 9</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>9</b> Simple data analysis in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>9.1</b> <span class="math inline">\(t\)</span> tests</a></li>
+<li class="chapter" data-level="9.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>9.2</b> Linear models</a></li>
+<li class="chapter" data-level="9.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>9.3</b> Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>10</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>10.1</b> Traditional plots</a></li>
+<li class="chapter" data-level="10.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>10.2</b> Lattice plots</a></li>
+<li class="chapter" data-level="10.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>10.3</b> The Grammar of Graphics <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>10.3.1</b> Some examples</a></li>
+<li class="chapter" data-level="10.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>10.3.2</b> Facets</a></li>
+<li class="chapter" data-level="10.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>10.3.3</b> Geometric objects</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="data-inputoutput.html"><a href="data-inputoutput.html"><i class="fa fa-check"></i><b>6</b> Data input/output</a>
+<li class="chapter" data-level="11" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>11</b> Exercises Day 2</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="data-inputoutput.html"><a href="data-inputoutput.html#integrated-data-sets-in-r"><i class="fa fa-check"></i><b>6.1</b> Integrated data sets in R</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-1-1"><i class="fa fa-check"></i>Exercise 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-2-1"><i class="fa fa-check"></i>Exercise 2</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exercises-day-1.html"><a href="exercises-day-1.html"><i class="fa fa-check"></i><b>7</b> Exercises Day 1</a></li>
-<li class="chapter" data-level="8" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html"><i class="fa fa-check"></i><b>8</b> Simple data analysis in R</a>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-3-1"><i class="fa fa-check"></i>Exercise 3</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#t-tests"><i class="fa fa-check"></i><b>8.1</b> t tests</a></li>
-<li class="chapter" data-level="8.2" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#linear-models"><i class="fa fa-check"></i><b>8.2</b> Linear models</a></li>
-<li class="chapter" data-level="8.3" data-path="simple-data-analysis-in-r.html"><a href="simple-data-analysis-in-r.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>8.3</b> Analysis of Variance (ANOVA)</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#solution-with-ggplot2-1"><i class="fa fa-check"></i>Solution with <code>ggplot2</code></a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>9</b> Plotting</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="plotting.html"><a href="plotting.html#traditional-plots"><i class="fa fa-check"></i><b>9.1</b> Traditional plots</a></li>
-<li class="chapter" data-level="9.2" data-path="plotting.html"><a href="plotting.html#lattice-plots"><i class="fa fa-check"></i><b>9.2</b> Lattice plots</a></li>
-<li class="chapter" data-level="9.3" data-path="plotting.html"><a href="plotting.html#the-grammar-of-graphics-ggplot2"><i class="fa fa-check"></i><b>9.3</b> The Grammar of Graphics <code>ggplot2</code></a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="plotting.html"><a href="plotting.html#some-examples"><i class="fa fa-check"></i><b>9.3.1</b> Some examples</a></li>
-<li class="chapter" data-level="9.3.2" data-path="plotting.html"><a href="plotting.html#facets"><i class="fa fa-check"></i><b>9.3.2</b> Facets</a></li>
-<li class="chapter" data-level="9.3.3" data-path="plotting.html"><a href="plotting.html#geometric-objects"><i class="fa fa-check"></i><b>9.3.3</b> Geometric objects</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-4-1"><i class="fa fa-check"></i>Exercise 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-day-2.html"><a href="exercises-day-2.html#exercise-5-1"><i class="fa fa-check"></i>Exercise 5</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>12</b> Advanced topics</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>12.1</b> Programming resources</a></li>
+<li class="chapter" data-level="12.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>12.2</b> Writing Functions</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> Implementing a function for a simple two-sample t test</a></li>
+<li class="chapter" data-level="12.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>12.2.2</b> Named arguments and defaults</a></li>
+<li class="chapter" data-level="12.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>12.2.3</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="exercises-day-2.html"><a href="exercises-day-2.html"><i class="fa fa-check"></i><b>10</b> Exercises Day 2</a></li>
-<li class="chapter" data-level="11" data-path="advanced-topics.html"><a href="advanced-topics.html"><i class="fa fa-check"></i><b>11</b> Advanced topics</a>
+<li class="chapter" data-level="12.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>12.3</b> Conditional execution</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="advanced-topics.html"><a href="advanced-topics.html#programming-resources"><i class="fa fa-check"></i><b>11.1</b> Programming resources</a></li>
-<li class="chapter" data-level="11.2" data-path="advanced-topics.html"><a href="advanced-topics.html#writing-functions"><i class="fa fa-check"></i><b>11.2</b> Writing Functions</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="advanced-topics.html"><a href="advanced-topics.html#implementing-a-function-for-a-simple-two-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> Implementing a function for a simple two-sample t test</a></li>
-<li class="chapter" data-level="11.2.2" data-path="advanced-topics.html"><a href="advanced-topics.html#named-arguments-and-defaults"><i class="fa fa-check"></i><b>11.2.2</b> Named arguments and defaults</a></li>
-<li class="chapter" data-level="11.2.3" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise"><i class="fa fa-check"></i><b>11.2.3</b> Exercise</a></li>
+<li class="chapter" data-level="12.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-8"><i class="fa fa-check"></i><b>12.3.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="advanced-topics.html"><a href="advanced-topics.html#conditional-execution"><i class="fa fa-check"></i><b>11.3</b> Conditional execution</a>
+<li class="chapter" data-level="12.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>12.4</b> Loops</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-1"><i class="fa fa-check"></i><b>11.3.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-10"><i class="fa fa-check"></i><b>12.4.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="advanced-topics.html"><a href="advanced-topics.html#loops"><i class="fa fa-check"></i><b>11.4</b> Loops</a>
+<li class="chapter" data-level="12.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>12.5</b> Avoiding loops</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-2"><i class="fa fa-check"></i><b>11.4.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-11"><i class="fa fa-check"></i><b>12.5.1</b> Exercise</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="advanced-topics.html"><a href="advanced-topics.html#avoiding-loops"><i class="fa fa-check"></i><b>11.5</b> Avoiding loops</a>
+<li class="chapter" data-level="12.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>12.6</b> Random number generation</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-3"><i class="fa fa-check"></i><b>11.5.1</b> Exercise</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="advanced-topics.html"><a href="advanced-topics.html#random-number-generation"><i class="fa fa-check"></i><b>11.6</b> Random number generation</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-4"><i class="fa fa-check"></i><b>11.6.1</b> Exercise</a></li>
+<li class="chapter" data-level="12.6.1" data-path="advanced-topics.html"><a href="advanced-topics.html#exercise-12"><i class="fa fa-check"></i><b>12.6.1</b> Exercise</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -262,14 +285,18 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-inputoutput" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Data input/output<a href="data-inputoutput.html#data-inputoutput" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-inputoutput" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Data input/output<a href="data-inputoutput.html#data-inputoutput" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The most flexible function to read (text) data into R is <code>read.table()</code>.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="data-inputoutput.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()     <span class="co"># Get working directory</span></span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="data-inputoutput.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()     <span class="co"># Get working directory</span></span></code></pre></div>
+</details>
 <pre><code>## [1] &quot;C:/Users/nwickelmaier/Nextcloud/Documents/teaching/iwm/R_intro&quot;</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="data-inputoutput.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setwd()   # Set working directory</span></span>
-<span id="cb178-2"><a href="data-inputoutput.html#cb178-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/ourdata.dat&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb178-3"><a href="data-inputoutput.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="data-inputoutput.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># setwd()   # Set working directory</span></span>
+<span id="cb177-2"><a href="data-inputoutput.html#cb177-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/ourdata.dat&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb177-3"><a href="data-inputoutput.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+</details>
 <pre><code>## &#39;data.frame&#39;:    30 obs. of  7 variables:
 ##  $ id : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ sex: Factor w/ 2 levels &quot;f&quot;,&quot;m&quot;: 2 2 2 2 2 2 2 2 2 2 ...
@@ -278,27 +305,35 @@ div.csl-indent {
 ##  $ mt2: int  6 7 6 6 6 5 7 5 3 6 ...
 ##  $ mt3: int  7 3 7 7 1 2 2 1 4 5 ...
 ##  $ mt4: int  4 4 5 5 7 7 4 6 5 5 ...</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="data-inputoutput.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix error</span></span>
-<span id="cb180-2"><a href="data-inputoutput.html#cb180-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>id <span class="sc">==</span> <span class="dv">20</span>, <span class="st">&quot;age&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">31</span></span>
-<span id="cb180-3"><a href="data-inputoutput.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(df, <span class="st">&quot;data/ourdata_corr.dat&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb180-4"><a href="data-inputoutput.html#cb180-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-5"><a href="data-inputoutput.html#cb180-5" aria-hidden="true" tabindex="-1"></a><span class="co"># SPSS files</span></span>
-<span id="cb180-6"><a href="data-inputoutput.html#cb180-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
-<span id="cb180-7"><a href="data-inputoutput.html#cb180-7" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/lowbwt.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## re-encoding from CP1252</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="data-inputoutput.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(ds, <span class="st">&quot;data/spss_to_excel.csv&quot;</span>)</span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="data-inputoutput.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix error</span></span>
+<span id="cb179-2"><a href="data-inputoutput.html#cb179-2" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>id <span class="sc">==</span> <span class="dv">20</span>, <span class="st">&quot;age&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">31</span></span>
+<span id="cb179-3"><a href="data-inputoutput.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(df, <span class="st">&quot;data/ourdata_corr.dat&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb179-4"><a href="data-inputoutput.html#cb179-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-5"><a href="data-inputoutput.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="co"># SPSS files</span></span>
+<span id="cb179-6"><a href="data-inputoutput.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb179-7"><a href="data-inputoutput.html#cb179-7" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">read.spss</span>(<span class="st">&quot;data/lowbwt.sav&quot;</span>, <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
+<pre><code>## Zurückkodierung von CP1252</code></pre>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="data-inputoutput.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv2</span>(ds, <span class="st">&quot;data/spss_to_excel.csv&quot;</span>)</span></code></pre></div>
+</details>
 <p>Look up information about <code>read.table()</code> with <code>?read.table</code>. More
 information can be found on the slides.</p>
-<div id="integrated-data-sets-in-r" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Integrated data sets in R<a href="data-inputoutput.html#integrated-data-sets-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="integrated-data-sets-in-r" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Integrated data sets in R<a href="data-inputoutput.html#integrated-data-sets-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R has plenty of data sets already available. These data sets can be
 listed with <code>data()</code>. If all available data sets in all installed packages
 should be listed use <code>data(package = .packages(all.available = TRUE))</code>.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="data-inputoutput.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb183-2"><a href="data-inputoutput.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cars)</span>
-<span id="cb183-3"><a href="data-inputoutput.html#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="data-inputoutput.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb182-2"><a href="data-inputoutput.html#cb182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(cars)</span>
+<span id="cb182-3"><a href="data-inputoutput.html#cb182-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+</details>
 <pre><code>## [1] &quot;cars&quot;</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="data-inputoutput.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?cars</span></span></code></pre></div>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="data-inputoutput.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?cars</span></span></code></pre></div>
+</details>
 
 </div>
 </div>
@@ -307,7 +342,7 @@ should be listed use <code>data(package = .packages(all.available = TRUE))</code
           </div>
         </div>
       </div>
-<a href="calling-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-data-frames.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="exercises-day-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

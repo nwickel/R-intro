@@ -2,7 +2,9 @@
 title: "Introduction to R"
 author: "Nora Wickelmaier"
 date: "`r Sys.Date()`"
-output: bookdown::gitbook
+output:
+  bookdown::gitbook:
+    code_folding: show
 bibliography: literature/lit.bib
 biblio-style: apalike
 link-citations: yes
